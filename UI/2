@@ -1,0 +1,27 @@
+import { Check } from "lucide-react";
+import type { Character } from "@/api/characters";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+
+type Props = {
+	character: Character;
+};
+
+export function Pericies({ character }: Props) {
+	return (
+		<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+			{character.pericies.map((skill) => (
+				<Card key={skill.name} className="p-2 flex flex-row items-center justify-between bg-background/50">
+					<div className="flex flex-row items-center gap-2">
+						<Checkbox checked={skill.trained} />
+						<span className="font-medium">
+							{skill.name} <Badge className="text-xs">{skill.attribute}</Badge>
+						</span>
+					</div>
+					<Badge className="font-bold">{skill.total}</Badge>
+				</Card>
+			))}
+		</div>
+	);
+}
