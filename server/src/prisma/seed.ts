@@ -1,0 +1,31 @@
+import { prisma } from "@/prisma/prisma";
+
+await prisma.expertise.createMany({
+	data: [
+		{ name: "Acrobacia", attribute: "dexterity" },
+		{ name: "Atletismo", attribute: "strength" },
+		{ name: "Atuação", attribute: "charisma" },
+		{ name: "Cavalgar", attribute: "dexterity" },
+		{ name: "Conhecimento", attribute: "intelligence" },
+		{ name: "Cura", attribute: "wisdom" },
+		{ name: "Diplomacia", attribute: "charisma" },
+		{ name: "Enganação", attribute: "charisma" },
+		{ name: "Fortitude", attribute: "constitution" },
+		{ name: "Furtividade", attribute: "dexterity" },
+		{ name: "Guerra", attribute: "intelligence" },
+		{ name: "Iniciativa", attribute: "dexterity" },
+		{ name: "Intimidação", attribute: "charisma" },
+		{ name: "Intuição", attribute: "wisdom" },
+		{ name: "Investigação", attribute: "intelligence" },
+		{ name: "Luta", attribute: "strength" },
+		{ name: "Misticismo", attribute: "intelligence" },
+		{ name: "Nobreza", attribute: "charisma" },
+		{ name: "Ofício", attribute: "intelligence" },
+		{ name: "Percepção", attribute: "wisdom" },
+		{ name: "Pontaria", attribute: "dexterity" },
+		{ name: "Reflexos", attribute: "dexterity" },
+		{ name: "Religião", attribute: "wisdom" },
+		{ name: "Sobrevivência", attribute: "wisdom" },
+		{ name: "Vontade", attribute: "wisdom" },
+	],
+});

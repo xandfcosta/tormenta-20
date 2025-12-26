@@ -1,10 +1,15 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserContextProvider } from "@/contexts/user-context";
-import Index from "@/pages";
+import { Index } from "@/pages";
 
-export default function App() {
+const queryClient = new QueryClient();
+
+export function App() {
 	return (
 		<UserContextProvider>
-			<Index />
+			<QueryClientProvider client={queryClient}>
+				<Index />
+			</QueryClientProvider>
 		</UserContextProvider>
 	);
 }

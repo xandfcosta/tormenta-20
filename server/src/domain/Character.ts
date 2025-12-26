@@ -1,5 +1,3 @@
-import { api } from "@/api/client";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import z from "zod";
 
 export const Attributes = z.object({
@@ -94,7 +92,14 @@ export const Attack = z.object({
 
 export type TAttack = z.infer<typeof Attack>;
 
-export const InventoryItemType = z.enum(["weapon", "armor", "shield", "consumable", "accessory", "misc"]);
+export const InventoryItemType = z.enum([
+	"weapon",
+	"armor",
+	"shield",
+	"consumable",
+	"accessory",
+	"misc",
+]);
 
 export type TInventoryItemType = z.infer<typeof InventoryItemType>;
 
@@ -214,38 +219,3 @@ export const Character = z.object({
 });
 
 export type TCharacter = z.infer<typeof Character>;
-
-export function useCharacters() {
-	return useQuery({
-		queryKey: ["characters"],
-		queryFn: () =>
-			api.get("/characters").then((res) => {
-				return Character.pick({
-					id: true,
-					name: true,
-					player: true,
-					level: true,
-					classes: true,
-					races: true,
-					hp: true,
-					mp: true,
-				})
-					.array()
-					.parse(res.data);
-			}),
-	});
-}
-
-export function useCharacter(id: number) {
-	return useQuery({
-		queryKey: ["characters", id],
-		queryFn: () =>
-			api.get(`/characters/${id}`).then((res) => {
-				return Character.parse(res.data);
-			}),
-	});
-}
-
-export function getCharacterImage(id: number) {
-	return `${api.defaults.baseURL || ""}/images/${id}.jpeg`;
-}

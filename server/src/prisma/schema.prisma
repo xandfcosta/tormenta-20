@@ -1,0 +1,147 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Character {
+  id Int @id @default(autoincrement())
+
+  // Identity
+  name        String
+  player      String
+  origin      String
+  races       Json
+  classes     Json
+  divinity    String?
+  description String  @default("")
+  notes       String  @default("")
+
+  // Progression
+  level           Int    @default(1)
+  experience      Int    @default(0)
+  size            String @default("Médio")
+  movement        Int    @default(9)
+  defense         Int    @default(0)
+  magicResistence Int    @default(10)
+
+  // Core stats
+  hp          Int                  @default(0)
+  hpMax       Int                  @default(0)
+  mp          Int                  @default(0)
+  mpMax       Int                  @default(0)
+  attributes  Attributes?
+  expertisies ExpertiseCharacter[]
+
+  // Relations
+  inventory Inventory?
+  abilities Ability[]
+  effects   Effect[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Attributes {
+  characterId Int @id
+
+  strength     Int
+  dexterity    Int
+  constitution Int
+  intelligence Int
+  wisdom       Int
+  charisma     Int
+
+  character Character @relation(fields: [characterId], references: [id])
+}
+
+model Expertise {
+  id        Int    @id @default(autoincrement())
+  name      String
+  attribute String
+
+  characterLink ExpertiseCharacter[]
+}
+
+model ExpertiseCharacter {
+  id          Int @id @default(autoincrement())
+  characterId Int
+  expertiseId Int
+
+  trained    Boolean @default(false)
+  trainBonus Int     @default(0)
+
+  character Character @relation(fields: [characterId], references: [id])
+  expertise Expertise @relation(fields: [expertiseId], references: [id])
+}
+
+model Inventory {
+  characterId Int @id
+
+  load    Json
+  tibares Int
+
+  items InventoryItem[]
+
+  character Character @relation(fields: [characterId], references: [id])
+}
+
+model InventoryItem {
+  inventoryId Int @id
+
+  type        String
+  name        String
+  description String
+
+  quantity Int
+  slot     Int
+
+  isEquippable Boolean
+  equipped     Boolean
+  passive      Boolean
+
+  attacks   Json
+  modifiers Json
+
+  inventory Inventory @relation(fields: [inventoryId], references: [characterId])
+}
+
+model Ability {
+  characterId Int @id
+
+  type        String
+  name        String
+  description String
+
+  passive  Boolean
+  manaCost Int
+
+  attacks   Json
+  modifiers Json
+
+  character Character @relation(fields: [characterId], references: [id])
+}
+
+model Effect {
+  characterId Int @id
+
+  sourceType String
+  sourceId   Int?
+  sourceName String
+
+  active   Boolean
+  duration Json
+  stacks   Int
+
+  modifiers Json
+
+  startedAt DateTime
+
+  character Character @relation(fields: [characterId], references: [id])
+}

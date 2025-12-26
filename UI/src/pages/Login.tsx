@@ -1,5 +1,5 @@
 import { Crown, User } from "lucide-react";
-import { useCharacters } from "@/api/characters";
+import { getCharacterImage, useCharacters } from "@/api/characters";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -14,7 +14,9 @@ import { useUser } from "@/contexts/user-context";
 
 export function Login() {
 	const { login } = useUser();
-	const { data: characters } = useCharacters();
+	const { data: characters, error } = useCharacters();
+
+	console.log({ error });
 
 	return (
 		<div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -35,9 +37,7 @@ export function Login() {
 
 							<Dialog>
 								<DialogTrigger asChild>
-									<Button className="w-full bg-amber-500 hover:bg-amber-600 text-black">
-										Entrar como jogador
-									</Button>
+									<Button className="w-full bg-amber-500 hover:bg-amber-600 text-black">Entrar como jogador</Button>
 								</DialogTrigger>
 								<DialogContent>
 									<DialogHeader>
@@ -46,7 +46,7 @@ export function Login() {
 									</DialogHeader>
 
 									<div className="space-y-2">
-										{characters.map((char) => (
+										{characters?.map((char) => (
 											<Button
 												key={char.id}
 												variant="outline"
@@ -57,15 +57,13 @@ export function Login() {
 											>
 												<div className="w-8 h-8 rounded-full overflow-hidden mr-2 shrink-0">
 													<img
-														src={char.image || "/placeholder.svg"}
+														src={getCharacterImage(char.id) || "/placeholder.svg"}
 														alt={char.name}
 														className="w-full h-full object-cover"
 													/>
 												</div>
 												<div className="text-left flex-1 min-w-0">
-													<div className="font-semibold truncate">
-														{char.name}
-													</div>
+													<div className="font-semibold truncate">{char.name}</div>
 													<div className="text-xs text-muted-foreground">
 														{char.races.join(",")} {char.classes.join(",")}
 													</div>
@@ -97,9 +95,7 @@ export function Login() {
 				</div>
 
 				<div className="text-center mt-6">
-					<p className="text-xs text-muted-foreground">
-						You can change your role anytime from the interface
-					</p>
+					<p className="text-xs text-muted-foreground">You can change your role anytime from the interface</p>
 				</div>
 			</div>
 		</div>

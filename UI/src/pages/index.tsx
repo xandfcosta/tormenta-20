@@ -1,14 +1,18 @@
+import { useCharacters } from "@/api/characters";
 import { useUser } from "@/contexts/user-context";
 import { Login } from "@/pages/Login";
 import { Master } from "@/pages/Master";
-import { Player } from "@/pages/player/Player";
+import { PlayerView } from "@/pages/player/Player";
 
-export default function Index() {
+export function Index() {
 	const { user } = useUser();
+	const { data: characters } = useCharacters();
 
 	if (!user) return <Login />;
 
 	if (user.role === "master") return <Master />;
 
-	return <Player />;
+	if (user.characterId && characters?.length) return <PlayerView characterId={user.characterId as number} />;
+
+	return null;
 }

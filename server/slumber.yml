@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/LucasPickering/slumber/refs/tags/v4.2.0/schemas/collection.json
+# ^ This enables schema validation and autocomplete in your editor
+# https://github.com/redhat-developer/yaml-language-server
+
+# For basic usage info, see:
+# https://slumber.lucaspickering.me/getting_started.html
+# For all collection options, see:
+# https://slumber.lucaspickering.me/api/request_collection/index.html
+
+name: RPG
+
+# Profiles are groups of data you can easily switch between. A common usage is
+# to define profiles for various environments of a REST service
+
+profiles:
+  local:
+    name: Local
+    data:
+      host: http://localhost:3000
+
+requests:
+  devices:
+    name: Characters
+    requests:
+      list_all:
+        name: List all
+        method: GET
+        url: "{{ host }}/characters"
+      list_id:
+        name: List id
+        method: GET
+        url: "{{ host }}/characters/1/view"
+      create:
+        name: Create character
+        method: POST
+        url: "{{ host }}/characters"
+        body:
+          type: json
+          data:
+            {
+              "name": "Kharvos",
+              "player": "Xand",
+              "origin": "Refugiado",
+              "races": ["Minotauro", "Lefou"],
+              "classes": ["Bárbaro"],
+              "divinity": "Tauron",
+              "description": "",
+            }

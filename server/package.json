@@ -1,26 +1,37 @@
 {
-  "name": "rpg-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "dev": "tsx src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.22.0",
-  "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.0.2",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "@biomejs/biome": "^2.3.9",
-    "express": "^5.2.1",
-    "socket.io": "^4.8.1"
-  }
+	"name": "rpg-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "tsx src/server.ts",
+		"db:reset": "pnpm exec prisma migrate reset",
+		"db:seed": "pnpm exec prisma db seed",
+		"db:studio": "pnpm exec prisma studio"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.22.0",
+	"devDependencies": {
+		"@types/better-sqlite3": "^7.6.13",
+		"@types/node": "^25.0.2",
+		"prisma": "^7.2.0",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"@biomejs/biome": "^2.3.9",
+		"@prisma/adapter-better-sqlite3": "^7.2.0",
+		"@prisma/client": "^7.2.0",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.3",
+		"express": "^5.2.1",
+		"socket.io": "^4.8.1",
+		"sqlite3": "^5.1.7",
+		"zod": "^4.2.1"
+	}
 }
