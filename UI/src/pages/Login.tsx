@@ -14,9 +14,7 @@ import { useUser } from "@/contexts/user-context";
 
 export function Login() {
 	const { login } = useUser();
-	const { data: characters, error } = useCharacters();
-
-	console.log({ error });
+	const { data: characters } = useCharacters();
 
 	return (
 		<div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -37,7 +35,9 @@ export function Login() {
 
 							<Dialog>
 								<DialogTrigger asChild>
-									<Button className="w-full bg-amber-500 hover:bg-amber-600 text-black">Entrar como jogador</Button>
+									<Button className="w-full rounded-md bg-amber-500 hover:bg-amber-600 text-black">
+										Entrar como jogador
+									</Button>
 								</DialogTrigger>
 								<DialogContent>
 									<DialogHeader>

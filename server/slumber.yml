@@ -22,14 +22,34 @@ requests:
   devices:
     name: Characters
     requests:
-      list_all:
-        name: List all
+      complete_all:
+        name: All Complete
         method: GET
         url: "{{ host }}/characters"
-      list_id:
-        name: List id
+      overview_all:
+        name: All Overviews
         method: GET
-        url: "{{ host }}/characters/1/view"
+        url: "{{ host }}/characters/overview"
+      complete:
+        name: One Complete
+        method: GET
+        url: "{{ host }}/characters/1"
+      overview:
+        name: One Overview
+        method: GET
+        url: "{{ host }}/characters/1/overview"
+      expertisies:
+        name: One Expertisies
+        method: GET
+        url: "{{ host }}/characters/1/expertisies"
+      inventoru:
+        name: One Inventory
+        method: GET
+        url: "{{ host }}/characters/1/inventory"
+      abilities:
+        name: One Abilties
+        method: GET
+        url: "{{ host }}/characters/1/abilities"
       create:
         name: Create character
         method: POST

@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "@/contexts/theme-context";
 import { UserContextProvider } from "@/contexts/user-context";
 import { Index } from "@/pages";
 
@@ -8,7 +9,9 @@ export function App() {
 	return (
 		<UserContextProvider>
 			<QueryClientProvider client={queryClient}>
-				<Index />
+				<ThemeProvider>
+					<Index />
+				</ThemeProvider>
 			</QueryClientProvider>
 		</UserContextProvider>
 	);

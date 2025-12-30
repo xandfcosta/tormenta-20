@@ -3,7 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/prisma/client"
+  output   = "client"
 }
 
 datasource db {
@@ -36,6 +36,7 @@ model Character {
   hpMax       Int                  @default(0)
   mp          Int                  @default(0)
   mpMax       Int                  @default(0)
+  condition   String               @default("alive")
   attributes  Attributes?
   expertisies ExpertiseCharacter[]
 
@@ -44,6 +45,7 @@ model Character {
   abilities Ability[]
   effects   Effect[]
 
+  disable   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -51,12 +53,12 @@ model Character {
 model Attributes {
   characterId Int @id
 
-  strength     Int
-  dexterity    Int
-  constitution Int
-  intelligence Int
-  wisdom       Int
-  charisma     Int
+  strength     Int @default(0)
+  dexterity    Int @default(0)
+  constitution Int @default(0)
+  intelligence Int @default(0)
+  wisdom       Int @default(0)
+  charisma     Int @default(0)
 
   character Character @relation(fields: [characterId], references: [id])
 }
@@ -70,22 +72,24 @@ model Expertise {
 }
 
 model ExpertiseCharacter {
-  id          Int @id @default(autoincrement())
   characterId Int
   expertiseId Int
 
+  value      Int     @default(0)
   trained    Boolean @default(false)
   trainBonus Int     @default(0)
 
   character Character @relation(fields: [characterId], references: [id])
   expertise Expertise @relation(fields: [expertiseId], references: [id])
+
+  @@id([characterId, expertiseId])
 }
 
 model Inventory {
   characterId Int @id
 
-  load    Json
-  tibares Int
+  limit   Int @default(0)
+  tibares Int @default(0)
 
   items InventoryItem[]
 
@@ -93,7 +97,8 @@ model Inventory {
 }
 
 model InventoryItem {
-  inventoryId Int @id
+  id          Int @id @default(autoincrement())
+  inventoryId Int
 
   type        String
   name        String
@@ -106,14 +111,34 @@ model InventoryItem {
   equipped     Boolean
   passive      Boolean
 
-  attacks   Json
-  modifiers Json
+  modifiers ItemModifier[]
+  attacks   ItemAttack[]
+  inventory Inventory      @relation(fields: [inventoryId], references: [characterId])
+}
 
-  inventory Inventory @relation(fields: [inventoryId], references: [characterId])
+model ItemModifier {
+  itemId     Int
+  modifierId Int
+
+  item     InventoryItem @relation(fields: [itemId], references: [id])
+  modifier Modifier      @relation(fields: [modifierId], references: [id])
+
+  @@id([itemId, modifierId])
+}
+
+model ItemAttack {
+  itemId   Int
+  attackId Int
+
+  item   InventoryItem @relation(fields: [itemId], references: [id])
+  attack Attack        @relation(fields: [attackId], references: [id])
+
+  @@id([itemId, attackId])
 }
 
 model Ability {
-  characterId Int @id
+  id          Int @id @default(autoincrement())
+  characterId Int
 
   type        String
   name        String
@@ -122,14 +147,34 @@ model Ability {
   passive  Boolean
   manaCost Int
 
-  attacks   Json
-  modifiers Json
+  character Character         @relation(fields: [characterId], references: [id])
+  modifiers AbilityModifier[]
+  attacks   AbilityAttack[]
+}
 
-  character Character @relation(fields: [characterId], references: [id])
+model AbilityModifier {
+  abilityId  Int
+  modifierId Int
+
+  ability  Ability  @relation(fields: [abilityId], references: [id])
+  modifier Modifier @relation(fields: [modifierId], references: [id])
+
+  @@id([abilityId, modifierId])
+}
+
+model AbilityAttack {
+  abilityId Int
+  attackId  Int
+
+  ability Ability @relation(fields: [abilityId], references: [id])
+  attack  Attack  @relation(fields: [attackId], references: [id])
+
+  @@id([abilityId, attackId])
 }
 
 model Effect {
-  characterId Int @id
+  id          Int @id @default(autoincrement())
+  characterId Int
 
   sourceType String
   sourceId   Int?
@@ -139,9 +184,42 @@ model Effect {
   duration Json
   stacks   Int
 
-  modifiers Json
-
   startedAt DateTime
 
-  character Character @relation(fields: [characterId], references: [id])
+  character Character        @relation(fields: [characterId], references: [id])
+  modifiers EffectModifier[]
+}
+
+model EffectModifier {
+  effectId   Int
+  modifierId Int
+
+  effect   Effect   @relation(fields: [effectId], references: [id])
+  modifier Modifier @relation(fields: [modifierId], references: [id])
+
+  @@id([effectId, modifierId])
+}
+
+model Modifier {
+  id Int @id @default(autoincrement())
+
+  target Json
+  value  Int
+  type   String
+
+  effects   EffectModifier[]
+  abilities AbilityModifier[]
+  items     ItemModifier[]
+}
+
+model Attack {
+  id Int @id @default(autoincrement())
+
+  category   String
+  attackRoll Json
+  damage     Json
+  critical   Json
+
+  items   ItemAttack[]
+  ability AbilityAttack[]
 }

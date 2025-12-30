@@ -44,15 +44,50 @@ export type Inventory = $Result.DefaultSelection<Prisma.$InventoryPayload>
  */
 export type InventoryItem = $Result.DefaultSelection<Prisma.$InventoryItemPayload>
 /**
+ * Model ItemModifier
+ * 
+ */
+export type ItemModifier = $Result.DefaultSelection<Prisma.$ItemModifierPayload>
+/**
+ * Model ItemAttack
+ * 
+ */
+export type ItemAttack = $Result.DefaultSelection<Prisma.$ItemAttackPayload>
+/**
  * Model Ability
  * 
  */
 export type Ability = $Result.DefaultSelection<Prisma.$AbilityPayload>
 /**
+ * Model AbilityModifier
+ * 
+ */
+export type AbilityModifier = $Result.DefaultSelection<Prisma.$AbilityModifierPayload>
+/**
+ * Model AbilityAttack
+ * 
+ */
+export type AbilityAttack = $Result.DefaultSelection<Prisma.$AbilityAttackPayload>
+/**
  * Model Effect
  * 
  */
 export type Effect = $Result.DefaultSelection<Prisma.$EffectPayload>
+/**
+ * Model EffectModifier
+ * 
+ */
+export type EffectModifier = $Result.DefaultSelection<Prisma.$EffectModifierPayload>
+/**
+ * Model Modifier
+ * 
+ */
+export type Modifier = $Result.DefaultSelection<Prisma.$ModifierPayload>
+/**
+ * Model Attack
+ * 
+ */
+export type Attack = $Result.DefaultSelection<Prisma.$AttackPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -232,6 +267,26 @@ export class PrismaClient<
   get inventoryItem(): Prisma.InventoryItemDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.itemModifier`: Exposes CRUD operations for the **ItemModifier** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ItemModifiers
+    * const itemModifiers = await prisma.itemModifier.findMany()
+    * ```
+    */
+  get itemModifier(): Prisma.ItemModifierDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.itemAttack`: Exposes CRUD operations for the **ItemAttack** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ItemAttacks
+    * const itemAttacks = await prisma.itemAttack.findMany()
+    * ```
+    */
+  get itemAttack(): Prisma.ItemAttackDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.ability`: Exposes CRUD operations for the **Ability** model.
     * Example usage:
     * ```ts
@@ -242,6 +297,26 @@ export class PrismaClient<
   get ability(): Prisma.AbilityDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.abilityModifier`: Exposes CRUD operations for the **AbilityModifier** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AbilityModifiers
+    * const abilityModifiers = await prisma.abilityModifier.findMany()
+    * ```
+    */
+  get abilityModifier(): Prisma.AbilityModifierDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.abilityAttack`: Exposes CRUD operations for the **AbilityAttack** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AbilityAttacks
+    * const abilityAttacks = await prisma.abilityAttack.findMany()
+    * ```
+    */
+  get abilityAttack(): Prisma.AbilityAttackDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.effect`: Exposes CRUD operations for the **Effect** model.
     * Example usage:
     * ```ts
@@ -250,6 +325,36 @@ export class PrismaClient<
     * ```
     */
   get effect(): Prisma.EffectDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.effectModifier`: Exposes CRUD operations for the **EffectModifier** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EffectModifiers
+    * const effectModifiers = await prisma.effectModifier.findMany()
+    * ```
+    */
+  get effectModifier(): Prisma.EffectModifierDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.modifier`: Exposes CRUD operations for the **Modifier** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Modifiers
+    * const modifiers = await prisma.modifier.findMany()
+    * ```
+    */
+  get modifier(): Prisma.ModifierDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.attack`: Exposes CRUD operations for the **Attack** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Attacks
+    * const attacks = await prisma.attack.findMany()
+    * ```
+    */
+  get attack(): Prisma.AttackDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -690,8 +795,15 @@ export namespace Prisma {
     ExpertiseCharacter: 'ExpertiseCharacter',
     Inventory: 'Inventory',
     InventoryItem: 'InventoryItem',
+    ItemModifier: 'ItemModifier',
+    ItemAttack: 'ItemAttack',
     Ability: 'Ability',
-    Effect: 'Effect'
+    AbilityModifier: 'AbilityModifier',
+    AbilityAttack: 'AbilityAttack',
+    Effect: 'Effect',
+    EffectModifier: 'EffectModifier',
+    Modifier: 'Modifier',
+    Attack: 'Attack'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -707,7 +819,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "character" | "attributes" | "expertise" | "expertiseCharacter" | "inventory" | "inventoryItem" | "ability" | "effect"
+      modelProps: "character" | "attributes" | "expertise" | "expertiseCharacter" | "inventory" | "inventoryItem" | "itemModifier" | "itemAttack" | "ability" | "abilityModifier" | "abilityAttack" | "effect" | "effectModifier" | "modifier" | "attack"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1155,6 +1267,154 @@ export namespace Prisma {
           }
         }
       }
+      ItemModifier: {
+        payload: Prisma.$ItemModifierPayload<ExtArgs>
+        fields: Prisma.ItemModifierFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ItemModifierFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ItemModifierFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>
+          }
+          findFirst: {
+            args: Prisma.ItemModifierFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ItemModifierFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>
+          }
+          findMany: {
+            args: Prisma.ItemModifierFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>[]
+          }
+          create: {
+            args: Prisma.ItemModifierCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>
+          }
+          createMany: {
+            args: Prisma.ItemModifierCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ItemModifierCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>[]
+          }
+          delete: {
+            args: Prisma.ItemModifierDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>
+          }
+          update: {
+            args: Prisma.ItemModifierUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>
+          }
+          deleteMany: {
+            args: Prisma.ItemModifierDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ItemModifierUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ItemModifierUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>[]
+          }
+          upsert: {
+            args: Prisma.ItemModifierUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemModifierPayload>
+          }
+          aggregate: {
+            args: Prisma.ItemModifierAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateItemModifier>
+          }
+          groupBy: {
+            args: Prisma.ItemModifierGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ItemModifierGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ItemModifierCountArgs<ExtArgs>
+            result: $Utils.Optional<ItemModifierCountAggregateOutputType> | number
+          }
+        }
+      }
+      ItemAttack: {
+        payload: Prisma.$ItemAttackPayload<ExtArgs>
+        fields: Prisma.ItemAttackFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ItemAttackFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ItemAttackFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>
+          }
+          findFirst: {
+            args: Prisma.ItemAttackFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ItemAttackFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>
+          }
+          findMany: {
+            args: Prisma.ItemAttackFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>[]
+          }
+          create: {
+            args: Prisma.ItemAttackCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>
+          }
+          createMany: {
+            args: Prisma.ItemAttackCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ItemAttackCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>[]
+          }
+          delete: {
+            args: Prisma.ItemAttackDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>
+          }
+          update: {
+            args: Prisma.ItemAttackUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>
+          }
+          deleteMany: {
+            args: Prisma.ItemAttackDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ItemAttackUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ItemAttackUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>[]
+          }
+          upsert: {
+            args: Prisma.ItemAttackUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ItemAttackPayload>
+          }
+          aggregate: {
+            args: Prisma.ItemAttackAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateItemAttack>
+          }
+          groupBy: {
+            args: Prisma.ItemAttackGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ItemAttackGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ItemAttackCountArgs<ExtArgs>
+            result: $Utils.Optional<ItemAttackCountAggregateOutputType> | number
+          }
+        }
+      }
       Ability: {
         payload: Prisma.$AbilityPayload<ExtArgs>
         fields: Prisma.AbilityFieldRefs
@@ -1229,6 +1489,154 @@ export namespace Prisma {
           }
         }
       }
+      AbilityModifier: {
+        payload: Prisma.$AbilityModifierPayload<ExtArgs>
+        fields: Prisma.AbilityModifierFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AbilityModifierFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AbilityModifierFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>
+          }
+          findFirst: {
+            args: Prisma.AbilityModifierFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AbilityModifierFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>
+          }
+          findMany: {
+            args: Prisma.AbilityModifierFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>[]
+          }
+          create: {
+            args: Prisma.AbilityModifierCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>
+          }
+          createMany: {
+            args: Prisma.AbilityModifierCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AbilityModifierCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>[]
+          }
+          delete: {
+            args: Prisma.AbilityModifierDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>
+          }
+          update: {
+            args: Prisma.AbilityModifierUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>
+          }
+          deleteMany: {
+            args: Prisma.AbilityModifierDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AbilityModifierUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AbilityModifierUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>[]
+          }
+          upsert: {
+            args: Prisma.AbilityModifierUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityModifierPayload>
+          }
+          aggregate: {
+            args: Prisma.AbilityModifierAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAbilityModifier>
+          }
+          groupBy: {
+            args: Prisma.AbilityModifierGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AbilityModifierGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AbilityModifierCountArgs<ExtArgs>
+            result: $Utils.Optional<AbilityModifierCountAggregateOutputType> | number
+          }
+        }
+      }
+      AbilityAttack: {
+        payload: Prisma.$AbilityAttackPayload<ExtArgs>
+        fields: Prisma.AbilityAttackFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AbilityAttackFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AbilityAttackFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>
+          }
+          findFirst: {
+            args: Prisma.AbilityAttackFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AbilityAttackFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>
+          }
+          findMany: {
+            args: Prisma.AbilityAttackFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>[]
+          }
+          create: {
+            args: Prisma.AbilityAttackCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>
+          }
+          createMany: {
+            args: Prisma.AbilityAttackCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AbilityAttackCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>[]
+          }
+          delete: {
+            args: Prisma.AbilityAttackDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>
+          }
+          update: {
+            args: Prisma.AbilityAttackUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>
+          }
+          deleteMany: {
+            args: Prisma.AbilityAttackDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AbilityAttackUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AbilityAttackUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>[]
+          }
+          upsert: {
+            args: Prisma.AbilityAttackUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AbilityAttackPayload>
+          }
+          aggregate: {
+            args: Prisma.AbilityAttackAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAbilityAttack>
+          }
+          groupBy: {
+            args: Prisma.AbilityAttackGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AbilityAttackGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AbilityAttackCountArgs<ExtArgs>
+            result: $Utils.Optional<AbilityAttackCountAggregateOutputType> | number
+          }
+        }
+      }
       Effect: {
         payload: Prisma.$EffectPayload<ExtArgs>
         fields: Prisma.EffectFieldRefs
@@ -1300,6 +1708,228 @@ export namespace Prisma {
           count: {
             args: Prisma.EffectCountArgs<ExtArgs>
             result: $Utils.Optional<EffectCountAggregateOutputType> | number
+          }
+        }
+      }
+      EffectModifier: {
+        payload: Prisma.$EffectModifierPayload<ExtArgs>
+        fields: Prisma.EffectModifierFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EffectModifierFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EffectModifierFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>
+          }
+          findFirst: {
+            args: Prisma.EffectModifierFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EffectModifierFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>
+          }
+          findMany: {
+            args: Prisma.EffectModifierFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>[]
+          }
+          create: {
+            args: Prisma.EffectModifierCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>
+          }
+          createMany: {
+            args: Prisma.EffectModifierCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EffectModifierCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>[]
+          }
+          delete: {
+            args: Prisma.EffectModifierDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>
+          }
+          update: {
+            args: Prisma.EffectModifierUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>
+          }
+          deleteMany: {
+            args: Prisma.EffectModifierDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EffectModifierUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EffectModifierUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>[]
+          }
+          upsert: {
+            args: Prisma.EffectModifierUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EffectModifierPayload>
+          }
+          aggregate: {
+            args: Prisma.EffectModifierAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEffectModifier>
+          }
+          groupBy: {
+            args: Prisma.EffectModifierGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EffectModifierGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EffectModifierCountArgs<ExtArgs>
+            result: $Utils.Optional<EffectModifierCountAggregateOutputType> | number
+          }
+        }
+      }
+      Modifier: {
+        payload: Prisma.$ModifierPayload<ExtArgs>
+        fields: Prisma.ModifierFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ModifierFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ModifierFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>
+          }
+          findFirst: {
+            args: Prisma.ModifierFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ModifierFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>
+          }
+          findMany: {
+            args: Prisma.ModifierFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>[]
+          }
+          create: {
+            args: Prisma.ModifierCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>
+          }
+          createMany: {
+            args: Prisma.ModifierCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ModifierCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>[]
+          }
+          delete: {
+            args: Prisma.ModifierDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>
+          }
+          update: {
+            args: Prisma.ModifierUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>
+          }
+          deleteMany: {
+            args: Prisma.ModifierDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ModifierUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ModifierUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>[]
+          }
+          upsert: {
+            args: Prisma.ModifierUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModifierPayload>
+          }
+          aggregate: {
+            args: Prisma.ModifierAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateModifier>
+          }
+          groupBy: {
+            args: Prisma.ModifierGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ModifierGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ModifierCountArgs<ExtArgs>
+            result: $Utils.Optional<ModifierCountAggregateOutputType> | number
+          }
+        }
+      }
+      Attack: {
+        payload: Prisma.$AttackPayload<ExtArgs>
+        fields: Prisma.AttackFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AttackFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AttackFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>
+          }
+          findFirst: {
+            args: Prisma.AttackFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AttackFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>
+          }
+          findMany: {
+            args: Prisma.AttackFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>[]
+          }
+          create: {
+            args: Prisma.AttackCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>
+          }
+          createMany: {
+            args: Prisma.AttackCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AttackCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>[]
+          }
+          delete: {
+            args: Prisma.AttackDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>
+          }
+          update: {
+            args: Prisma.AttackUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>
+          }
+          deleteMany: {
+            args: Prisma.AttackDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AttackUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AttackUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>[]
+          }
+          upsert: {
+            args: Prisma.AttackUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttackPayload>
+          }
+          aggregate: {
+            args: Prisma.AttackAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAttack>
+          }
+          groupBy: {
+            args: Prisma.AttackGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AttackGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AttackCountArgs<ExtArgs>
+            result: $Utils.Optional<AttackCountAggregateOutputType> | number
           }
         }
       }
@@ -1417,8 +2047,15 @@ export namespace Prisma {
     expertiseCharacter?: ExpertiseCharacterOmit
     inventory?: InventoryOmit
     inventoryItem?: InventoryItemOmit
+    itemModifier?: ItemModifierOmit
+    itemAttack?: ItemAttackOmit
     ability?: AbilityOmit
+    abilityModifier?: AbilityModifierOmit
+    abilityAttack?: AbilityAttackOmit
     effect?: EffectOmit
+    effectModifier?: EffectModifierOmit
+    modifier?: ModifierOmit
+    attack?: AttackOmit
   }
 
   /* Types for Logging */
@@ -1606,6 +2243,206 @@ export namespace Prisma {
 
 
   /**
+   * Count Type InventoryItemCountOutputType
+   */
+
+  export type InventoryItemCountOutputType = {
+    modifiers: number
+    attacks: number
+  }
+
+  export type InventoryItemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    modifiers?: boolean | InventoryItemCountOutputTypeCountModifiersArgs
+    attacks?: boolean | InventoryItemCountOutputTypeCountAttacksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * InventoryItemCountOutputType without action
+   */
+  export type InventoryItemCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InventoryItemCountOutputType
+     */
+    select?: InventoryItemCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * InventoryItemCountOutputType without action
+   */
+  export type InventoryItemCountOutputTypeCountModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemModifierWhereInput
+  }
+
+  /**
+   * InventoryItemCountOutputType without action
+   */
+  export type InventoryItemCountOutputTypeCountAttacksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemAttackWhereInput
+  }
+
+
+  /**
+   * Count Type AbilityCountOutputType
+   */
+
+  export type AbilityCountOutputType = {
+    modifiers: number
+    attacks: number
+  }
+
+  export type AbilityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    modifiers?: boolean | AbilityCountOutputTypeCountModifiersArgs
+    attacks?: boolean | AbilityCountOutputTypeCountAttacksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AbilityCountOutputType without action
+   */
+  export type AbilityCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityCountOutputType
+     */
+    select?: AbilityCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AbilityCountOutputType without action
+   */
+  export type AbilityCountOutputTypeCountModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AbilityModifierWhereInput
+  }
+
+  /**
+   * AbilityCountOutputType without action
+   */
+  export type AbilityCountOutputTypeCountAttacksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AbilityAttackWhereInput
+  }
+
+
+  /**
+   * Count Type EffectCountOutputType
+   */
+
+  export type EffectCountOutputType = {
+    modifiers: number
+  }
+
+  export type EffectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    modifiers?: boolean | EffectCountOutputTypeCountModifiersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EffectCountOutputType without action
+   */
+  export type EffectCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectCountOutputType
+     */
+    select?: EffectCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EffectCountOutputType without action
+   */
+  export type EffectCountOutputTypeCountModifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EffectModifierWhereInput
+  }
+
+
+  /**
+   * Count Type ModifierCountOutputType
+   */
+
+  export type ModifierCountOutputType = {
+    effects: number
+    abilities: number
+    items: number
+  }
+
+  export type ModifierCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    effects?: boolean | ModifierCountOutputTypeCountEffectsArgs
+    abilities?: boolean | ModifierCountOutputTypeCountAbilitiesArgs
+    items?: boolean | ModifierCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ModifierCountOutputType without action
+   */
+  export type ModifierCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModifierCountOutputType
+     */
+    select?: ModifierCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ModifierCountOutputType without action
+   */
+  export type ModifierCountOutputTypeCountEffectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EffectModifierWhereInput
+  }
+
+  /**
+   * ModifierCountOutputType without action
+   */
+  export type ModifierCountOutputTypeCountAbilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AbilityModifierWhereInput
+  }
+
+  /**
+   * ModifierCountOutputType without action
+   */
+  export type ModifierCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemModifierWhereInput
+  }
+
+
+  /**
+   * Count Type AttackCountOutputType
+   */
+
+  export type AttackCountOutputType = {
+    items: number
+    ability: number
+  }
+
+  export type AttackCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | AttackCountOutputTypeCountItemsArgs
+    ability?: boolean | AttackCountOutputTypeCountAbilityArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AttackCountOutputType without action
+   */
+  export type AttackCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttackCountOutputType
+     */
+    select?: AttackCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AttackCountOutputType without action
+   */
+  export type AttackCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemAttackWhereInput
+  }
+
+  /**
+   * AttackCountOutputType without action
+   */
+  export type AttackCountOutputTypeCountAbilityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AbilityAttackWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1665,6 +2502,8 @@ export namespace Prisma {
     hpMax: number | null
     mp: number | null
     mpMax: number | null
+    condition: string | null
+    disable: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1687,6 +2526,8 @@ export namespace Prisma {
     hpMax: number | null
     mp: number | null
     mpMax: number | null
+    condition: string | null
+    disable: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1711,6 +2552,8 @@ export namespace Prisma {
     hpMax: number
     mp: number
     mpMax: number
+    condition: number
+    disable: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1761,6 +2604,8 @@ export namespace Prisma {
     hpMax?: true
     mp?: true
     mpMax?: true
+    condition?: true
+    disable?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1783,6 +2628,8 @@ export namespace Prisma {
     hpMax?: true
     mp?: true
     mpMax?: true
+    condition?: true
+    disable?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1807,6 +2654,8 @@ export namespace Prisma {
     hpMax?: true
     mp?: true
     mpMax?: true
+    condition?: true
+    disable?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1918,6 +2767,8 @@ export namespace Prisma {
     hpMax: number
     mp: number
     mpMax: number
+    condition: string
+    disable: boolean
     createdAt: Date
     updatedAt: Date
     _count: CharacterCountAggregateOutputType | null
@@ -1961,6 +2812,8 @@ export namespace Prisma {
     hpMax?: boolean
     mp?: boolean
     mpMax?: boolean
+    condition?: boolean
+    disable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     attributes?: boolean | Character$attributesArgs<ExtArgs>
@@ -1991,6 +2844,8 @@ export namespace Prisma {
     hpMax?: boolean
     mp?: boolean
     mpMax?: boolean
+    condition?: boolean
+    disable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["character"]>
@@ -2015,6 +2870,8 @@ export namespace Prisma {
     hpMax?: boolean
     mp?: boolean
     mpMax?: boolean
+    condition?: boolean
+    disable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["character"]>
@@ -2039,11 +2896,13 @@ export namespace Prisma {
     hpMax?: boolean
     mp?: boolean
     mpMax?: boolean
+    condition?: boolean
+    disable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CharacterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "player" | "origin" | "races" | "classes" | "divinity" | "description" | "notes" | "level" | "experience" | "size" | "movement" | "defense" | "magicResistence" | "hp" | "hpMax" | "mp" | "mpMax" | "createdAt" | "updatedAt", ExtArgs["result"]["character"]>
+  export type CharacterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "player" | "origin" | "races" | "classes" | "divinity" | "description" | "notes" | "level" | "experience" | "size" | "movement" | "defense" | "magicResistence" | "hp" | "hpMax" | "mp" | "mpMax" | "condition" | "disable" | "createdAt" | "updatedAt", ExtArgs["result"]["character"]>
   export type CharacterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     attributes?: boolean | Character$attributesArgs<ExtArgs>
     expertisies?: boolean | Character$expertisiesArgs<ExtArgs>
@@ -2084,6 +2943,8 @@ export namespace Prisma {
       hpMax: number
       mp: number
       mpMax: number
+      condition: string
+      disable: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["character"]>
@@ -2533,6 +3394,8 @@ export namespace Prisma {
     readonly hpMax: FieldRef<"Character", 'Int'>
     readonly mp: FieldRef<"Character", 'Int'>
     readonly mpMax: FieldRef<"Character", 'Int'>
+    readonly condition: FieldRef<"Character", 'String'>
+    readonly disable: FieldRef<"Character", 'Boolean'>
     readonly createdAt: FieldRef<"Character", 'DateTime'>
     readonly updatedAt: FieldRef<"Character", 'DateTime'>
   }
@@ -5278,39 +6141,39 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterAvgAggregateOutputType = {
-    id: number | null
     characterId: number | null
     expertiseId: number | null
+    value: number | null
     trainBonus: number | null
   }
 
   export type ExpertiseCharacterSumAggregateOutputType = {
-    id: number | null
     characterId: number | null
     expertiseId: number | null
+    value: number | null
     trainBonus: number | null
   }
 
   export type ExpertiseCharacterMinAggregateOutputType = {
-    id: number | null
     characterId: number | null
     expertiseId: number | null
+    value: number | null
     trained: boolean | null
     trainBonus: number | null
   }
 
   export type ExpertiseCharacterMaxAggregateOutputType = {
-    id: number | null
     characterId: number | null
     expertiseId: number | null
+    value: number | null
     trained: boolean | null
     trainBonus: number | null
   }
 
   export type ExpertiseCharacterCountAggregateOutputType = {
-    id: number
     characterId: number
     expertiseId: number
+    value: number
     trained: number
     trainBonus: number
     _all: number
@@ -5318,39 +6181,39 @@ export namespace Prisma {
 
 
   export type ExpertiseCharacterAvgAggregateInputType = {
-    id?: true
     characterId?: true
     expertiseId?: true
+    value?: true
     trainBonus?: true
   }
 
   export type ExpertiseCharacterSumAggregateInputType = {
-    id?: true
     characterId?: true
     expertiseId?: true
+    value?: true
     trainBonus?: true
   }
 
   export type ExpertiseCharacterMinAggregateInputType = {
-    id?: true
     characterId?: true
     expertiseId?: true
+    value?: true
     trained?: true
     trainBonus?: true
   }
 
   export type ExpertiseCharacterMaxAggregateInputType = {
-    id?: true
     characterId?: true
     expertiseId?: true
+    value?: true
     trained?: true
     trainBonus?: true
   }
 
   export type ExpertiseCharacterCountAggregateInputType = {
-    id?: true
     characterId?: true
     expertiseId?: true
+    value?: true
     trained?: true
     trainBonus?: true
     _all?: true
@@ -5443,9 +6306,9 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterGroupByOutputType = {
-    id: number
     characterId: number
     expertiseId: number
+    value: number
     trained: boolean
     trainBonus: number
     _count: ExpertiseCharacterCountAggregateOutputType | null
@@ -5470,9 +6333,9 @@ export namespace Prisma {
 
 
   export type ExpertiseCharacterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     characterId?: boolean
     expertiseId?: boolean
+    value?: boolean
     trained?: boolean
     trainBonus?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
@@ -5480,9 +6343,9 @@ export namespace Prisma {
   }, ExtArgs["result"]["expertiseCharacter"]>
 
   export type ExpertiseCharacterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     characterId?: boolean
     expertiseId?: boolean
+    value?: boolean
     trained?: boolean
     trainBonus?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
@@ -5490,9 +6353,9 @@ export namespace Prisma {
   }, ExtArgs["result"]["expertiseCharacter"]>
 
   export type ExpertiseCharacterSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     characterId?: boolean
     expertiseId?: boolean
+    value?: boolean
     trained?: boolean
     trainBonus?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
@@ -5500,14 +6363,14 @@ export namespace Prisma {
   }, ExtArgs["result"]["expertiseCharacter"]>
 
   export type ExpertiseCharacterSelectScalar = {
-    id?: boolean
     characterId?: boolean
     expertiseId?: boolean
+    value?: boolean
     trained?: boolean
     trainBonus?: boolean
   }
 
-  export type ExpertiseCharacterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "characterId" | "expertiseId" | "trained" | "trainBonus", ExtArgs["result"]["expertiseCharacter"]>
+  export type ExpertiseCharacterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"characterId" | "expertiseId" | "value" | "trained" | "trainBonus", ExtArgs["result"]["expertiseCharacter"]>
   export type ExpertiseCharacterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     character?: boolean | CharacterDefaultArgs<ExtArgs>
     expertise?: boolean | ExpertiseDefaultArgs<ExtArgs>
@@ -5528,9 +6391,9 @@ export namespace Prisma {
       expertise: Prisma.$ExpertisePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       characterId: number
       expertiseId: number
+      value: number
       trained: boolean
       trainBonus: number
     }, ExtArgs["result"]["expertiseCharacter"]>
@@ -5616,8 +6479,8 @@ export namespace Prisma {
      * // Get first 10 ExpertiseCharacters
      * const expertiseCharacters = await prisma.expertiseCharacter.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const expertiseCharacterWithIdOnly = await prisma.expertiseCharacter.findMany({ select: { id: true } })
+     * // Only select the `characterId`
+     * const expertiseCharacterWithCharacterIdOnly = await prisma.expertiseCharacter.findMany({ select: { characterId: true } })
      * 
      */
     findMany<T extends ExpertiseCharacterFindManyArgs>(args?: SelectSubset<T, ExpertiseCharacterFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExpertiseCharacterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -5661,9 +6524,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many ExpertiseCharacters and only return the `id`
-     * const expertiseCharacterWithIdOnly = await prisma.expertiseCharacter.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many ExpertiseCharacters and only return the `characterId`
+     * const expertiseCharacterWithCharacterIdOnly = await prisma.expertiseCharacter.createManyAndReturn({
+     *   select: { characterId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -5752,9 +6615,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more ExpertiseCharacters and only return the `id`
-     * const expertiseCharacterWithIdOnly = await prisma.expertiseCharacter.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more ExpertiseCharacters and only return the `characterId`
+     * const expertiseCharacterWithCharacterIdOnly = await prisma.expertiseCharacter.updateManyAndReturn({
+     *   select: { characterId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5958,9 +6821,9 @@ export namespace Prisma {
    * Fields of the ExpertiseCharacter model
    */
   interface ExpertiseCharacterFieldRefs {
-    readonly id: FieldRef<"ExpertiseCharacter", 'Int'>
     readonly characterId: FieldRef<"ExpertiseCharacter", 'Int'>
     readonly expertiseId: FieldRef<"ExpertiseCharacter", 'Int'>
+    readonly value: FieldRef<"ExpertiseCharacter", 'Int'>
     readonly trained: FieldRef<"ExpertiseCharacter", 'Boolean'>
     readonly trainBonus: FieldRef<"ExpertiseCharacter", 'Int'>
   }
@@ -6389,27 +7252,31 @@ export namespace Prisma {
 
   export type InventoryAvgAggregateOutputType = {
     characterId: number | null
+    limit: number | null
     tibares: number | null
   }
 
   export type InventorySumAggregateOutputType = {
     characterId: number | null
+    limit: number | null
     tibares: number | null
   }
 
   export type InventoryMinAggregateOutputType = {
     characterId: number | null
+    limit: number | null
     tibares: number | null
   }
 
   export type InventoryMaxAggregateOutputType = {
     characterId: number | null
+    limit: number | null
     tibares: number | null
   }
 
   export type InventoryCountAggregateOutputType = {
     characterId: number
-    load: number
+    limit: number
     tibares: number
     _all: number
   }
@@ -6417,27 +7284,31 @@ export namespace Prisma {
 
   export type InventoryAvgAggregateInputType = {
     characterId?: true
+    limit?: true
     tibares?: true
   }
 
   export type InventorySumAggregateInputType = {
     characterId?: true
+    limit?: true
     tibares?: true
   }
 
   export type InventoryMinAggregateInputType = {
     characterId?: true
+    limit?: true
     tibares?: true
   }
 
   export type InventoryMaxAggregateInputType = {
     characterId?: true
+    limit?: true
     tibares?: true
   }
 
   export type InventoryCountAggregateInputType = {
     characterId?: true
-    load?: true
+    limit?: true
     tibares?: true
     _all?: true
   }
@@ -6530,7 +7401,7 @@ export namespace Prisma {
 
   export type InventoryGroupByOutputType = {
     characterId: number
-    load: JsonValue
+    limit: number
     tibares: number
     _count: InventoryCountAggregateOutputType | null
     _avg: InventoryAvgAggregateOutputType | null
@@ -6555,7 +7426,7 @@ export namespace Prisma {
 
   export type InventorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     characterId?: boolean
-    load?: boolean
+    limit?: boolean
     tibares?: boolean
     items?: boolean | Inventory$itemsArgs<ExtArgs>
     character?: boolean | CharacterDefaultArgs<ExtArgs>
@@ -6564,25 +7435,25 @@ export namespace Prisma {
 
   export type InventorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     characterId?: boolean
-    load?: boolean
+    limit?: boolean
     tibares?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventory"]>
 
   export type InventorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     characterId?: boolean
-    load?: boolean
+    limit?: boolean
     tibares?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventory"]>
 
   export type InventorySelectScalar = {
     characterId?: boolean
-    load?: boolean
+    limit?: boolean
     tibares?: boolean
   }
 
-  export type InventoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"characterId" | "load" | "tibares", ExtArgs["result"]["inventory"]>
+  export type InventoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"characterId" | "limit" | "tibares", ExtArgs["result"]["inventory"]>
   export type InventoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     items?: boolean | Inventory$itemsArgs<ExtArgs>
     character?: boolean | CharacterDefaultArgs<ExtArgs>
@@ -6603,7 +7474,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       characterId: number
-      load: Prisma.JsonValue
+      limit: number
       tibares: number
     }, ExtArgs["result"]["inventory"]>
     composites: {}
@@ -7031,7 +7902,7 @@ export namespace Prisma {
    */
   interface InventoryFieldRefs {
     readonly characterId: FieldRef<"Inventory", 'Int'>
-    readonly load: FieldRef<"Inventory", 'Json'>
+    readonly limit: FieldRef<"Inventory", 'Int'>
     readonly tibares: FieldRef<"Inventory", 'Int'>
   }
     
@@ -7482,18 +8353,21 @@ export namespace Prisma {
   }
 
   export type InventoryItemAvgAggregateOutputType = {
+    id: number | null
     inventoryId: number | null
     quantity: number | null
     slot: number | null
   }
 
   export type InventoryItemSumAggregateOutputType = {
+    id: number | null
     inventoryId: number | null
     quantity: number | null
     slot: number | null
   }
 
   export type InventoryItemMinAggregateOutputType = {
+    id: number | null
     inventoryId: number | null
     type: string | null
     name: string | null
@@ -7506,6 +8380,7 @@ export namespace Prisma {
   }
 
   export type InventoryItemMaxAggregateOutputType = {
+    id: number | null
     inventoryId: number | null
     type: string | null
     name: string | null
@@ -7518,6 +8393,7 @@ export namespace Prisma {
   }
 
   export type InventoryItemCountAggregateOutputType = {
+    id: number
     inventoryId: number
     type: number
     name: number
@@ -7527,25 +8403,26 @@ export namespace Prisma {
     isEquippable: number
     equipped: number
     passive: number
-    attacks: number
-    modifiers: number
     _all: number
   }
 
 
   export type InventoryItemAvgAggregateInputType = {
+    id?: true
     inventoryId?: true
     quantity?: true
     slot?: true
   }
 
   export type InventoryItemSumAggregateInputType = {
+    id?: true
     inventoryId?: true
     quantity?: true
     slot?: true
   }
 
   export type InventoryItemMinAggregateInputType = {
+    id?: true
     inventoryId?: true
     type?: true
     name?: true
@@ -7558,6 +8435,7 @@ export namespace Prisma {
   }
 
   export type InventoryItemMaxAggregateInputType = {
+    id?: true
     inventoryId?: true
     type?: true
     name?: true
@@ -7570,6 +8448,7 @@ export namespace Prisma {
   }
 
   export type InventoryItemCountAggregateInputType = {
+    id?: true
     inventoryId?: true
     type?: true
     name?: true
@@ -7579,8 +8458,6 @@ export namespace Prisma {
     isEquippable?: true
     equipped?: true
     passive?: true
-    attacks?: true
-    modifiers?: true
     _all?: true
   }
 
@@ -7671,6 +8548,7 @@ export namespace Prisma {
   }
 
   export type InventoryItemGroupByOutputType = {
+    id: number
     inventoryId: number
     type: string
     name: string
@@ -7680,8 +8558,6 @@ export namespace Prisma {
     isEquippable: boolean
     equipped: boolean
     passive: boolean
-    attacks: JsonValue
-    modifiers: JsonValue
     _count: InventoryItemCountAggregateOutputType | null
     _avg: InventoryItemAvgAggregateOutputType | null
     _sum: InventoryItemSumAggregateOutputType | null
@@ -7704,6 +8580,7 @@ export namespace Prisma {
 
 
   export type InventoryItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     inventoryId?: boolean
     type?: boolean
     name?: boolean
@@ -7713,12 +8590,14 @@ export namespace Prisma {
     isEquippable?: boolean
     equipped?: boolean
     passive?: boolean
-    attacks?: boolean
-    modifiers?: boolean
+    modifiers?: boolean | InventoryItem$modifiersArgs<ExtArgs>
+    attacks?: boolean | InventoryItem$attacksArgs<ExtArgs>
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    _count?: boolean | InventoryItemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
 
   export type InventoryItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     inventoryId?: boolean
     type?: boolean
     name?: boolean
@@ -7728,12 +8607,11 @@ export namespace Prisma {
     isEquippable?: boolean
     equipped?: boolean
     passive?: boolean
-    attacks?: boolean
-    modifiers?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
 
   export type InventoryItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     inventoryId?: boolean
     type?: boolean
     name?: boolean
@@ -7743,12 +8621,11 @@ export namespace Prisma {
     isEquippable?: boolean
     equipped?: boolean
     passive?: boolean
-    attacks?: boolean
-    modifiers?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
 
   export type InventoryItemSelectScalar = {
+    id?: boolean
     inventoryId?: boolean
     type?: boolean
     name?: boolean
@@ -7758,13 +8635,14 @@ export namespace Prisma {
     isEquippable?: boolean
     equipped?: boolean
     passive?: boolean
-    attacks?: boolean
-    modifiers?: boolean
   }
 
-  export type InventoryItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"inventoryId" | "type" | "name" | "description" | "quantity" | "slot" | "isEquippable" | "equipped" | "passive" | "attacks" | "modifiers", ExtArgs["result"]["inventoryItem"]>
+  export type InventoryItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inventoryId" | "type" | "name" | "description" | "quantity" | "slot" | "isEquippable" | "equipped" | "passive", ExtArgs["result"]["inventoryItem"]>
   export type InventoryItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    modifiers?: boolean | InventoryItem$modifiersArgs<ExtArgs>
+    attacks?: boolean | InventoryItem$attacksArgs<ExtArgs>
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    _count?: boolean | InventoryItemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type InventoryItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
@@ -7776,9 +8654,12 @@ export namespace Prisma {
   export type $InventoryItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InventoryItem"
     objects: {
+      modifiers: Prisma.$ItemModifierPayload<ExtArgs>[]
+      attacks: Prisma.$ItemAttackPayload<ExtArgs>[]
       inventory: Prisma.$InventoryPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: number
       inventoryId: number
       type: string
       name: string
@@ -7788,8 +8669,6 @@ export namespace Prisma {
       isEquippable: boolean
       equipped: boolean
       passive: boolean
-      attacks: Prisma.JsonValue
-      modifiers: Prisma.JsonValue
     }, ExtArgs["result"]["inventoryItem"]>
     composites: {}
   }
@@ -7873,8 +8752,8 @@ export namespace Prisma {
      * // Get first 10 InventoryItems
      * const inventoryItems = await prisma.inventoryItem.findMany({ take: 10 })
      * 
-     * // Only select the `inventoryId`
-     * const inventoryItemWithInventoryIdOnly = await prisma.inventoryItem.findMany({ select: { inventoryId: true } })
+     * // Only select the `id`
+     * const inventoryItemWithIdOnly = await prisma.inventoryItem.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends InventoryItemFindManyArgs>(args?: SelectSubset<T, InventoryItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InventoryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -7918,9 +8797,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many InventoryItems and only return the `inventoryId`
-     * const inventoryItemWithInventoryIdOnly = await prisma.inventoryItem.createManyAndReturn({
-     *   select: { inventoryId: true },
+     * // Create many InventoryItems and only return the `id`
+     * const inventoryItemWithIdOnly = await prisma.inventoryItem.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -8009,9 +8888,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more InventoryItems and only return the `inventoryId`
-     * const inventoryItemWithInventoryIdOnly = await prisma.inventoryItem.updateManyAndReturn({
-     *   select: { inventoryId: true },
+     * // Update zero or more InventoryItems and only return the `id`
+     * const inventoryItemWithIdOnly = await prisma.inventoryItem.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8184,6 +9063,8 @@ export namespace Prisma {
    */
   export interface Prisma__InventoryItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    modifiers<T extends InventoryItem$modifiersArgs<ExtArgs> = {}>(args?: Subset<T, InventoryItem$modifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attacks<T extends InventoryItem$attacksArgs<ExtArgs> = {}>(args?: Subset<T, InventoryItem$attacksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     inventory<T extends InventoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InventoryDefaultArgs<ExtArgs>>): Prisma__InventoryClient<$Result.GetResult<Prisma.$InventoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -8214,6 +9095,7 @@ export namespace Prisma {
    * Fields of the InventoryItem model
    */
   interface InventoryItemFieldRefs {
+    readonly id: FieldRef<"InventoryItem", 'Int'>
     readonly inventoryId: FieldRef<"InventoryItem", 'Int'>
     readonly type: FieldRef<"InventoryItem", 'String'>
     readonly name: FieldRef<"InventoryItem", 'String'>
@@ -8223,8 +9105,6 @@ export namespace Prisma {
     readonly isEquippable: FieldRef<"InventoryItem", 'Boolean'>
     readonly equipped: FieldRef<"InventoryItem", 'Boolean'>
     readonly passive: FieldRef<"InventoryItem", 'Boolean'>
-    readonly attacks: FieldRef<"InventoryItem", 'Json'>
-    readonly modifiers: FieldRef<"InventoryItem", 'Json'>
   }
     
 
@@ -8619,6 +9499,54 @@ export namespace Prisma {
   }
 
   /**
+   * InventoryItem.modifiers
+   */
+  export type InventoryItem$modifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    where?: ItemModifierWhereInput
+    orderBy?: ItemModifierOrderByWithRelationInput | ItemModifierOrderByWithRelationInput[]
+    cursor?: ItemModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ItemModifierScalarFieldEnum | ItemModifierScalarFieldEnum[]
+  }
+
+  /**
+   * InventoryItem.attacks
+   */
+  export type InventoryItem$attacksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    where?: ItemAttackWhereInput
+    orderBy?: ItemAttackOrderByWithRelationInput | ItemAttackOrderByWithRelationInput[]
+    cursor?: ItemAttackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ItemAttackScalarFieldEnum | ItemAttackScalarFieldEnum[]
+  }
+
+  /**
    * InventoryItem without action
    */
   export type InventoryItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8638,6 +9566,2132 @@ export namespace Prisma {
 
 
   /**
+   * Model ItemModifier
+   */
+
+  export type AggregateItemModifier = {
+    _count: ItemModifierCountAggregateOutputType | null
+    _avg: ItemModifierAvgAggregateOutputType | null
+    _sum: ItemModifierSumAggregateOutputType | null
+    _min: ItemModifierMinAggregateOutputType | null
+    _max: ItemModifierMaxAggregateOutputType | null
+  }
+
+  export type ItemModifierAvgAggregateOutputType = {
+    itemId: number | null
+    modifierId: number | null
+  }
+
+  export type ItemModifierSumAggregateOutputType = {
+    itemId: number | null
+    modifierId: number | null
+  }
+
+  export type ItemModifierMinAggregateOutputType = {
+    itemId: number | null
+    modifierId: number | null
+  }
+
+  export type ItemModifierMaxAggregateOutputType = {
+    itemId: number | null
+    modifierId: number | null
+  }
+
+  export type ItemModifierCountAggregateOutputType = {
+    itemId: number
+    modifierId: number
+    _all: number
+  }
+
+
+  export type ItemModifierAvgAggregateInputType = {
+    itemId?: true
+    modifierId?: true
+  }
+
+  export type ItemModifierSumAggregateInputType = {
+    itemId?: true
+    modifierId?: true
+  }
+
+  export type ItemModifierMinAggregateInputType = {
+    itemId?: true
+    modifierId?: true
+  }
+
+  export type ItemModifierMaxAggregateInputType = {
+    itemId?: true
+    modifierId?: true
+  }
+
+  export type ItemModifierCountAggregateInputType = {
+    itemId?: true
+    modifierId?: true
+    _all?: true
+  }
+
+  export type ItemModifierAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ItemModifier to aggregate.
+     */
+    where?: ItemModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemModifiers to fetch.
+     */
+    orderBy?: ItemModifierOrderByWithRelationInput | ItemModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ItemModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ItemModifiers
+    **/
+    _count?: true | ItemModifierCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ItemModifierAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ItemModifierSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ItemModifierMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ItemModifierMaxAggregateInputType
+  }
+
+  export type GetItemModifierAggregateType<T extends ItemModifierAggregateArgs> = {
+        [P in keyof T & keyof AggregateItemModifier]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateItemModifier[P]>
+      : GetScalarType<T[P], AggregateItemModifier[P]>
+  }
+
+
+
+
+  export type ItemModifierGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemModifierWhereInput
+    orderBy?: ItemModifierOrderByWithAggregationInput | ItemModifierOrderByWithAggregationInput[]
+    by: ItemModifierScalarFieldEnum[] | ItemModifierScalarFieldEnum
+    having?: ItemModifierScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ItemModifierCountAggregateInputType | true
+    _avg?: ItemModifierAvgAggregateInputType
+    _sum?: ItemModifierSumAggregateInputType
+    _min?: ItemModifierMinAggregateInputType
+    _max?: ItemModifierMaxAggregateInputType
+  }
+
+  export type ItemModifierGroupByOutputType = {
+    itemId: number
+    modifierId: number
+    _count: ItemModifierCountAggregateOutputType | null
+    _avg: ItemModifierAvgAggregateOutputType | null
+    _sum: ItemModifierSumAggregateOutputType | null
+    _min: ItemModifierMinAggregateOutputType | null
+    _max: ItemModifierMaxAggregateOutputType | null
+  }
+
+  type GetItemModifierGroupByPayload<T extends ItemModifierGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ItemModifierGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ItemModifierGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ItemModifierGroupByOutputType[P]>
+            : GetScalarType<T[P], ItemModifierGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ItemModifierSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    itemId?: boolean
+    modifierId?: boolean
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["itemModifier"]>
+
+  export type ItemModifierSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    itemId?: boolean
+    modifierId?: boolean
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["itemModifier"]>
+
+  export type ItemModifierSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    itemId?: boolean
+    modifierId?: boolean
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["itemModifier"]>
+
+  export type ItemModifierSelectScalar = {
+    itemId?: boolean
+    modifierId?: boolean
+  }
+
+  export type ItemModifierOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"itemId" | "modifierId", ExtArgs["result"]["itemModifier"]>
+  export type ItemModifierInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+  export type ItemModifierIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+  export type ItemModifierIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+
+  export type $ItemModifierPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ItemModifier"
+    objects: {
+      item: Prisma.$InventoryItemPayload<ExtArgs>
+      modifier: Prisma.$ModifierPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      itemId: number
+      modifierId: number
+    }, ExtArgs["result"]["itemModifier"]>
+    composites: {}
+  }
+
+  type ItemModifierGetPayload<S extends boolean | null | undefined | ItemModifierDefaultArgs> = $Result.GetResult<Prisma.$ItemModifierPayload, S>
+
+  type ItemModifierCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ItemModifierFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ItemModifierCountAggregateInputType | true
+    }
+
+  export interface ItemModifierDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ItemModifier'], meta: { name: 'ItemModifier' } }
+    /**
+     * Find zero or one ItemModifier that matches the filter.
+     * @param {ItemModifierFindUniqueArgs} args - Arguments to find a ItemModifier
+     * @example
+     * // Get one ItemModifier
+     * const itemModifier = await prisma.itemModifier.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ItemModifierFindUniqueArgs>(args: SelectSubset<T, ItemModifierFindUniqueArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ItemModifier that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ItemModifierFindUniqueOrThrowArgs} args - Arguments to find a ItemModifier
+     * @example
+     * // Get one ItemModifier
+     * const itemModifier = await prisma.itemModifier.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ItemModifierFindUniqueOrThrowArgs>(args: SelectSubset<T, ItemModifierFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ItemModifier that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemModifierFindFirstArgs} args - Arguments to find a ItemModifier
+     * @example
+     * // Get one ItemModifier
+     * const itemModifier = await prisma.itemModifier.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ItemModifierFindFirstArgs>(args?: SelectSubset<T, ItemModifierFindFirstArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ItemModifier that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemModifierFindFirstOrThrowArgs} args - Arguments to find a ItemModifier
+     * @example
+     * // Get one ItemModifier
+     * const itemModifier = await prisma.itemModifier.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ItemModifierFindFirstOrThrowArgs>(args?: SelectSubset<T, ItemModifierFindFirstOrThrowArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ItemModifiers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemModifierFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ItemModifiers
+     * const itemModifiers = await prisma.itemModifier.findMany()
+     * 
+     * // Get first 10 ItemModifiers
+     * const itemModifiers = await prisma.itemModifier.findMany({ take: 10 })
+     * 
+     * // Only select the `itemId`
+     * const itemModifierWithItemIdOnly = await prisma.itemModifier.findMany({ select: { itemId: true } })
+     * 
+     */
+    findMany<T extends ItemModifierFindManyArgs>(args?: SelectSubset<T, ItemModifierFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ItemModifier.
+     * @param {ItemModifierCreateArgs} args - Arguments to create a ItemModifier.
+     * @example
+     * // Create one ItemModifier
+     * const ItemModifier = await prisma.itemModifier.create({
+     *   data: {
+     *     // ... data to create a ItemModifier
+     *   }
+     * })
+     * 
+     */
+    create<T extends ItemModifierCreateArgs>(args: SelectSubset<T, ItemModifierCreateArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ItemModifiers.
+     * @param {ItemModifierCreateManyArgs} args - Arguments to create many ItemModifiers.
+     * @example
+     * // Create many ItemModifiers
+     * const itemModifier = await prisma.itemModifier.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ItemModifierCreateManyArgs>(args?: SelectSubset<T, ItemModifierCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ItemModifiers and returns the data saved in the database.
+     * @param {ItemModifierCreateManyAndReturnArgs} args - Arguments to create many ItemModifiers.
+     * @example
+     * // Create many ItemModifiers
+     * const itemModifier = await prisma.itemModifier.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ItemModifiers and only return the `itemId`
+     * const itemModifierWithItemIdOnly = await prisma.itemModifier.createManyAndReturn({
+     *   select: { itemId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ItemModifierCreateManyAndReturnArgs>(args?: SelectSubset<T, ItemModifierCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ItemModifier.
+     * @param {ItemModifierDeleteArgs} args - Arguments to delete one ItemModifier.
+     * @example
+     * // Delete one ItemModifier
+     * const ItemModifier = await prisma.itemModifier.delete({
+     *   where: {
+     *     // ... filter to delete one ItemModifier
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ItemModifierDeleteArgs>(args: SelectSubset<T, ItemModifierDeleteArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ItemModifier.
+     * @param {ItemModifierUpdateArgs} args - Arguments to update one ItemModifier.
+     * @example
+     * // Update one ItemModifier
+     * const itemModifier = await prisma.itemModifier.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ItemModifierUpdateArgs>(args: SelectSubset<T, ItemModifierUpdateArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ItemModifiers.
+     * @param {ItemModifierDeleteManyArgs} args - Arguments to filter ItemModifiers to delete.
+     * @example
+     * // Delete a few ItemModifiers
+     * const { count } = await prisma.itemModifier.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ItemModifierDeleteManyArgs>(args?: SelectSubset<T, ItemModifierDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ItemModifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemModifierUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ItemModifiers
+     * const itemModifier = await prisma.itemModifier.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ItemModifierUpdateManyArgs>(args: SelectSubset<T, ItemModifierUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ItemModifiers and returns the data updated in the database.
+     * @param {ItemModifierUpdateManyAndReturnArgs} args - Arguments to update many ItemModifiers.
+     * @example
+     * // Update many ItemModifiers
+     * const itemModifier = await prisma.itemModifier.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ItemModifiers and only return the `itemId`
+     * const itemModifierWithItemIdOnly = await prisma.itemModifier.updateManyAndReturn({
+     *   select: { itemId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ItemModifierUpdateManyAndReturnArgs>(args: SelectSubset<T, ItemModifierUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ItemModifier.
+     * @param {ItemModifierUpsertArgs} args - Arguments to update or create a ItemModifier.
+     * @example
+     * // Update or create a ItemModifier
+     * const itemModifier = await prisma.itemModifier.upsert({
+     *   create: {
+     *     // ... data to create a ItemModifier
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ItemModifier we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ItemModifierUpsertArgs>(args: SelectSubset<T, ItemModifierUpsertArgs<ExtArgs>>): Prisma__ItemModifierClient<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ItemModifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemModifierCountArgs} args - Arguments to filter ItemModifiers to count.
+     * @example
+     * // Count the number of ItemModifiers
+     * const count = await prisma.itemModifier.count({
+     *   where: {
+     *     // ... the filter for the ItemModifiers we want to count
+     *   }
+     * })
+    **/
+    count<T extends ItemModifierCountArgs>(
+      args?: Subset<T, ItemModifierCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ItemModifierCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ItemModifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemModifierAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ItemModifierAggregateArgs>(args: Subset<T, ItemModifierAggregateArgs>): Prisma.PrismaPromise<GetItemModifierAggregateType<T>>
+
+    /**
+     * Group by ItemModifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemModifierGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ItemModifierGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ItemModifierGroupByArgs['orderBy'] }
+        : { orderBy?: ItemModifierGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ItemModifierGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetItemModifierGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ItemModifier model
+   */
+  readonly fields: ItemModifierFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ItemModifier.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ItemModifierClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    item<T extends InventoryItemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InventoryItemDefaultArgs<ExtArgs>>): Prisma__InventoryItemClient<$Result.GetResult<Prisma.$InventoryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    modifier<T extends ModifierDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ModifierDefaultArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ItemModifier model
+   */
+  interface ItemModifierFieldRefs {
+    readonly itemId: FieldRef<"ItemModifier", 'Int'>
+    readonly modifierId: FieldRef<"ItemModifier", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ItemModifier findUnique
+   */
+  export type ItemModifierFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemModifier to fetch.
+     */
+    where: ItemModifierWhereUniqueInput
+  }
+
+  /**
+   * ItemModifier findUniqueOrThrow
+   */
+  export type ItemModifierFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemModifier to fetch.
+     */
+    where: ItemModifierWhereUniqueInput
+  }
+
+  /**
+   * ItemModifier findFirst
+   */
+  export type ItemModifierFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemModifier to fetch.
+     */
+    where?: ItemModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemModifiers to fetch.
+     */
+    orderBy?: ItemModifierOrderByWithRelationInput | ItemModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ItemModifiers.
+     */
+    cursor?: ItemModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ItemModifiers.
+     */
+    distinct?: ItemModifierScalarFieldEnum | ItemModifierScalarFieldEnum[]
+  }
+
+  /**
+   * ItemModifier findFirstOrThrow
+   */
+  export type ItemModifierFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemModifier to fetch.
+     */
+    where?: ItemModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemModifiers to fetch.
+     */
+    orderBy?: ItemModifierOrderByWithRelationInput | ItemModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ItemModifiers.
+     */
+    cursor?: ItemModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ItemModifiers.
+     */
+    distinct?: ItemModifierScalarFieldEnum | ItemModifierScalarFieldEnum[]
+  }
+
+  /**
+   * ItemModifier findMany
+   */
+  export type ItemModifierFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemModifiers to fetch.
+     */
+    where?: ItemModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemModifiers to fetch.
+     */
+    orderBy?: ItemModifierOrderByWithRelationInput | ItemModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ItemModifiers.
+     */
+    cursor?: ItemModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemModifiers.
+     */
+    skip?: number
+    distinct?: ItemModifierScalarFieldEnum | ItemModifierScalarFieldEnum[]
+  }
+
+  /**
+   * ItemModifier create
+   */
+  export type ItemModifierCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ItemModifier.
+     */
+    data: XOR<ItemModifierCreateInput, ItemModifierUncheckedCreateInput>
+  }
+
+  /**
+   * ItemModifier createMany
+   */
+  export type ItemModifierCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ItemModifiers.
+     */
+    data: ItemModifierCreateManyInput | ItemModifierCreateManyInput[]
+  }
+
+  /**
+   * ItemModifier createManyAndReturn
+   */
+  export type ItemModifierCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * The data used to create many ItemModifiers.
+     */
+    data: ItemModifierCreateManyInput | ItemModifierCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ItemModifier update
+   */
+  export type ItemModifierUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ItemModifier.
+     */
+    data: XOR<ItemModifierUpdateInput, ItemModifierUncheckedUpdateInput>
+    /**
+     * Choose, which ItemModifier to update.
+     */
+    where: ItemModifierWhereUniqueInput
+  }
+
+  /**
+   * ItemModifier updateMany
+   */
+  export type ItemModifierUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ItemModifiers.
+     */
+    data: XOR<ItemModifierUpdateManyMutationInput, ItemModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which ItemModifiers to update
+     */
+    where?: ItemModifierWhereInput
+    /**
+     * Limit how many ItemModifiers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ItemModifier updateManyAndReturn
+   */
+  export type ItemModifierUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * The data used to update ItemModifiers.
+     */
+    data: XOR<ItemModifierUpdateManyMutationInput, ItemModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which ItemModifiers to update
+     */
+    where?: ItemModifierWhereInput
+    /**
+     * Limit how many ItemModifiers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ItemModifier upsert
+   */
+  export type ItemModifierUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ItemModifier to update in case it exists.
+     */
+    where: ItemModifierWhereUniqueInput
+    /**
+     * In case the ItemModifier found by the `where` argument doesn't exist, create a new ItemModifier with this data.
+     */
+    create: XOR<ItemModifierCreateInput, ItemModifierUncheckedCreateInput>
+    /**
+     * In case the ItemModifier was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ItemModifierUpdateInput, ItemModifierUncheckedUpdateInput>
+  }
+
+  /**
+   * ItemModifier delete
+   */
+  export type ItemModifierDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    /**
+     * Filter which ItemModifier to delete.
+     */
+    where: ItemModifierWhereUniqueInput
+  }
+
+  /**
+   * ItemModifier deleteMany
+   */
+  export type ItemModifierDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ItemModifiers to delete
+     */
+    where?: ItemModifierWhereInput
+    /**
+     * Limit how many ItemModifiers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ItemModifier without action
+   */
+  export type ItemModifierDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ItemAttack
+   */
+
+  export type AggregateItemAttack = {
+    _count: ItemAttackCountAggregateOutputType | null
+    _avg: ItemAttackAvgAggregateOutputType | null
+    _sum: ItemAttackSumAggregateOutputType | null
+    _min: ItemAttackMinAggregateOutputType | null
+    _max: ItemAttackMaxAggregateOutputType | null
+  }
+
+  export type ItemAttackAvgAggregateOutputType = {
+    itemId: number | null
+    attackId: number | null
+  }
+
+  export type ItemAttackSumAggregateOutputType = {
+    itemId: number | null
+    attackId: number | null
+  }
+
+  export type ItemAttackMinAggregateOutputType = {
+    itemId: number | null
+    attackId: number | null
+  }
+
+  export type ItemAttackMaxAggregateOutputType = {
+    itemId: number | null
+    attackId: number | null
+  }
+
+  export type ItemAttackCountAggregateOutputType = {
+    itemId: number
+    attackId: number
+    _all: number
+  }
+
+
+  export type ItemAttackAvgAggregateInputType = {
+    itemId?: true
+    attackId?: true
+  }
+
+  export type ItemAttackSumAggregateInputType = {
+    itemId?: true
+    attackId?: true
+  }
+
+  export type ItemAttackMinAggregateInputType = {
+    itemId?: true
+    attackId?: true
+  }
+
+  export type ItemAttackMaxAggregateInputType = {
+    itemId?: true
+    attackId?: true
+  }
+
+  export type ItemAttackCountAggregateInputType = {
+    itemId?: true
+    attackId?: true
+    _all?: true
+  }
+
+  export type ItemAttackAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ItemAttack to aggregate.
+     */
+    where?: ItemAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemAttacks to fetch.
+     */
+    orderBy?: ItemAttackOrderByWithRelationInput | ItemAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ItemAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemAttacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ItemAttacks
+    **/
+    _count?: true | ItemAttackCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ItemAttackAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ItemAttackSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ItemAttackMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ItemAttackMaxAggregateInputType
+  }
+
+  export type GetItemAttackAggregateType<T extends ItemAttackAggregateArgs> = {
+        [P in keyof T & keyof AggregateItemAttack]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateItemAttack[P]>
+      : GetScalarType<T[P], AggregateItemAttack[P]>
+  }
+
+
+
+
+  export type ItemAttackGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ItemAttackWhereInput
+    orderBy?: ItemAttackOrderByWithAggregationInput | ItemAttackOrderByWithAggregationInput[]
+    by: ItemAttackScalarFieldEnum[] | ItemAttackScalarFieldEnum
+    having?: ItemAttackScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ItemAttackCountAggregateInputType | true
+    _avg?: ItemAttackAvgAggregateInputType
+    _sum?: ItemAttackSumAggregateInputType
+    _min?: ItemAttackMinAggregateInputType
+    _max?: ItemAttackMaxAggregateInputType
+  }
+
+  export type ItemAttackGroupByOutputType = {
+    itemId: number
+    attackId: number
+    _count: ItemAttackCountAggregateOutputType | null
+    _avg: ItemAttackAvgAggregateOutputType | null
+    _sum: ItemAttackSumAggregateOutputType | null
+    _min: ItemAttackMinAggregateOutputType | null
+    _max: ItemAttackMaxAggregateOutputType | null
+  }
+
+  type GetItemAttackGroupByPayload<T extends ItemAttackGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ItemAttackGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ItemAttackGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ItemAttackGroupByOutputType[P]>
+            : GetScalarType<T[P], ItemAttackGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ItemAttackSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    itemId?: boolean
+    attackId?: boolean
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["itemAttack"]>
+
+  export type ItemAttackSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    itemId?: boolean
+    attackId?: boolean
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["itemAttack"]>
+
+  export type ItemAttackSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    itemId?: boolean
+    attackId?: boolean
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["itemAttack"]>
+
+  export type ItemAttackSelectScalar = {
+    itemId?: boolean
+    attackId?: boolean
+  }
+
+  export type ItemAttackOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"itemId" | "attackId", ExtArgs["result"]["itemAttack"]>
+  export type ItemAttackInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }
+  export type ItemAttackIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }
+  export type ItemAttackIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    item?: boolean | InventoryItemDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }
+
+  export type $ItemAttackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ItemAttack"
+    objects: {
+      item: Prisma.$InventoryItemPayload<ExtArgs>
+      attack: Prisma.$AttackPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      itemId: number
+      attackId: number
+    }, ExtArgs["result"]["itemAttack"]>
+    composites: {}
+  }
+
+  type ItemAttackGetPayload<S extends boolean | null | undefined | ItemAttackDefaultArgs> = $Result.GetResult<Prisma.$ItemAttackPayload, S>
+
+  type ItemAttackCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ItemAttackFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ItemAttackCountAggregateInputType | true
+    }
+
+  export interface ItemAttackDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ItemAttack'], meta: { name: 'ItemAttack' } }
+    /**
+     * Find zero or one ItemAttack that matches the filter.
+     * @param {ItemAttackFindUniqueArgs} args - Arguments to find a ItemAttack
+     * @example
+     * // Get one ItemAttack
+     * const itemAttack = await prisma.itemAttack.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ItemAttackFindUniqueArgs>(args: SelectSubset<T, ItemAttackFindUniqueArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ItemAttack that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ItemAttackFindUniqueOrThrowArgs} args - Arguments to find a ItemAttack
+     * @example
+     * // Get one ItemAttack
+     * const itemAttack = await prisma.itemAttack.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ItemAttackFindUniqueOrThrowArgs>(args: SelectSubset<T, ItemAttackFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ItemAttack that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemAttackFindFirstArgs} args - Arguments to find a ItemAttack
+     * @example
+     * // Get one ItemAttack
+     * const itemAttack = await prisma.itemAttack.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ItemAttackFindFirstArgs>(args?: SelectSubset<T, ItemAttackFindFirstArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ItemAttack that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemAttackFindFirstOrThrowArgs} args - Arguments to find a ItemAttack
+     * @example
+     * // Get one ItemAttack
+     * const itemAttack = await prisma.itemAttack.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ItemAttackFindFirstOrThrowArgs>(args?: SelectSubset<T, ItemAttackFindFirstOrThrowArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ItemAttacks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemAttackFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ItemAttacks
+     * const itemAttacks = await prisma.itemAttack.findMany()
+     * 
+     * // Get first 10 ItemAttacks
+     * const itemAttacks = await prisma.itemAttack.findMany({ take: 10 })
+     * 
+     * // Only select the `itemId`
+     * const itemAttackWithItemIdOnly = await prisma.itemAttack.findMany({ select: { itemId: true } })
+     * 
+     */
+    findMany<T extends ItemAttackFindManyArgs>(args?: SelectSubset<T, ItemAttackFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ItemAttack.
+     * @param {ItemAttackCreateArgs} args - Arguments to create a ItemAttack.
+     * @example
+     * // Create one ItemAttack
+     * const ItemAttack = await prisma.itemAttack.create({
+     *   data: {
+     *     // ... data to create a ItemAttack
+     *   }
+     * })
+     * 
+     */
+    create<T extends ItemAttackCreateArgs>(args: SelectSubset<T, ItemAttackCreateArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ItemAttacks.
+     * @param {ItemAttackCreateManyArgs} args - Arguments to create many ItemAttacks.
+     * @example
+     * // Create many ItemAttacks
+     * const itemAttack = await prisma.itemAttack.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ItemAttackCreateManyArgs>(args?: SelectSubset<T, ItemAttackCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ItemAttacks and returns the data saved in the database.
+     * @param {ItemAttackCreateManyAndReturnArgs} args - Arguments to create many ItemAttacks.
+     * @example
+     * // Create many ItemAttacks
+     * const itemAttack = await prisma.itemAttack.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ItemAttacks and only return the `itemId`
+     * const itemAttackWithItemIdOnly = await prisma.itemAttack.createManyAndReturn({
+     *   select: { itemId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ItemAttackCreateManyAndReturnArgs>(args?: SelectSubset<T, ItemAttackCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ItemAttack.
+     * @param {ItemAttackDeleteArgs} args - Arguments to delete one ItemAttack.
+     * @example
+     * // Delete one ItemAttack
+     * const ItemAttack = await prisma.itemAttack.delete({
+     *   where: {
+     *     // ... filter to delete one ItemAttack
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ItemAttackDeleteArgs>(args: SelectSubset<T, ItemAttackDeleteArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ItemAttack.
+     * @param {ItemAttackUpdateArgs} args - Arguments to update one ItemAttack.
+     * @example
+     * // Update one ItemAttack
+     * const itemAttack = await prisma.itemAttack.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ItemAttackUpdateArgs>(args: SelectSubset<T, ItemAttackUpdateArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ItemAttacks.
+     * @param {ItemAttackDeleteManyArgs} args - Arguments to filter ItemAttacks to delete.
+     * @example
+     * // Delete a few ItemAttacks
+     * const { count } = await prisma.itemAttack.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ItemAttackDeleteManyArgs>(args?: SelectSubset<T, ItemAttackDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ItemAttacks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemAttackUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ItemAttacks
+     * const itemAttack = await prisma.itemAttack.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ItemAttackUpdateManyArgs>(args: SelectSubset<T, ItemAttackUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ItemAttacks and returns the data updated in the database.
+     * @param {ItemAttackUpdateManyAndReturnArgs} args - Arguments to update many ItemAttacks.
+     * @example
+     * // Update many ItemAttacks
+     * const itemAttack = await prisma.itemAttack.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ItemAttacks and only return the `itemId`
+     * const itemAttackWithItemIdOnly = await prisma.itemAttack.updateManyAndReturn({
+     *   select: { itemId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ItemAttackUpdateManyAndReturnArgs>(args: SelectSubset<T, ItemAttackUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ItemAttack.
+     * @param {ItemAttackUpsertArgs} args - Arguments to update or create a ItemAttack.
+     * @example
+     * // Update or create a ItemAttack
+     * const itemAttack = await prisma.itemAttack.upsert({
+     *   create: {
+     *     // ... data to create a ItemAttack
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ItemAttack we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ItemAttackUpsertArgs>(args: SelectSubset<T, ItemAttackUpsertArgs<ExtArgs>>): Prisma__ItemAttackClient<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ItemAttacks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemAttackCountArgs} args - Arguments to filter ItemAttacks to count.
+     * @example
+     * // Count the number of ItemAttacks
+     * const count = await prisma.itemAttack.count({
+     *   where: {
+     *     // ... the filter for the ItemAttacks we want to count
+     *   }
+     * })
+    **/
+    count<T extends ItemAttackCountArgs>(
+      args?: Subset<T, ItemAttackCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ItemAttackCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ItemAttack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemAttackAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ItemAttackAggregateArgs>(args: Subset<T, ItemAttackAggregateArgs>): Prisma.PrismaPromise<GetItemAttackAggregateType<T>>
+
+    /**
+     * Group by ItemAttack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ItemAttackGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ItemAttackGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ItemAttackGroupByArgs['orderBy'] }
+        : { orderBy?: ItemAttackGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ItemAttackGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetItemAttackGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ItemAttack model
+   */
+  readonly fields: ItemAttackFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ItemAttack.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ItemAttackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    item<T extends InventoryItemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InventoryItemDefaultArgs<ExtArgs>>): Prisma__InventoryItemClient<$Result.GetResult<Prisma.$InventoryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    attack<T extends AttackDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AttackDefaultArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ItemAttack model
+   */
+  interface ItemAttackFieldRefs {
+    readonly itemId: FieldRef<"ItemAttack", 'Int'>
+    readonly attackId: FieldRef<"ItemAttack", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ItemAttack findUnique
+   */
+  export type ItemAttackFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemAttack to fetch.
+     */
+    where: ItemAttackWhereUniqueInput
+  }
+
+  /**
+   * ItemAttack findUniqueOrThrow
+   */
+  export type ItemAttackFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemAttack to fetch.
+     */
+    where: ItemAttackWhereUniqueInput
+  }
+
+  /**
+   * ItemAttack findFirst
+   */
+  export type ItemAttackFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemAttack to fetch.
+     */
+    where?: ItemAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemAttacks to fetch.
+     */
+    orderBy?: ItemAttackOrderByWithRelationInput | ItemAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ItemAttacks.
+     */
+    cursor?: ItemAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemAttacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ItemAttacks.
+     */
+    distinct?: ItemAttackScalarFieldEnum | ItemAttackScalarFieldEnum[]
+  }
+
+  /**
+   * ItemAttack findFirstOrThrow
+   */
+  export type ItemAttackFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemAttack to fetch.
+     */
+    where?: ItemAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemAttacks to fetch.
+     */
+    orderBy?: ItemAttackOrderByWithRelationInput | ItemAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ItemAttacks.
+     */
+    cursor?: ItemAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemAttacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ItemAttacks.
+     */
+    distinct?: ItemAttackScalarFieldEnum | ItemAttackScalarFieldEnum[]
+  }
+
+  /**
+   * ItemAttack findMany
+   */
+  export type ItemAttackFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which ItemAttacks to fetch.
+     */
+    where?: ItemAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ItemAttacks to fetch.
+     */
+    orderBy?: ItemAttackOrderByWithRelationInput | ItemAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ItemAttacks.
+     */
+    cursor?: ItemAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ItemAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ItemAttacks.
+     */
+    skip?: number
+    distinct?: ItemAttackScalarFieldEnum | ItemAttackScalarFieldEnum[]
+  }
+
+  /**
+   * ItemAttack create
+   */
+  export type ItemAttackCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ItemAttack.
+     */
+    data: XOR<ItemAttackCreateInput, ItemAttackUncheckedCreateInput>
+  }
+
+  /**
+   * ItemAttack createMany
+   */
+  export type ItemAttackCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ItemAttacks.
+     */
+    data: ItemAttackCreateManyInput | ItemAttackCreateManyInput[]
+  }
+
+  /**
+   * ItemAttack createManyAndReturn
+   */
+  export type ItemAttackCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * The data used to create many ItemAttacks.
+     */
+    data: ItemAttackCreateManyInput | ItemAttackCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ItemAttack update
+   */
+  export type ItemAttackUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ItemAttack.
+     */
+    data: XOR<ItemAttackUpdateInput, ItemAttackUncheckedUpdateInput>
+    /**
+     * Choose, which ItemAttack to update.
+     */
+    where: ItemAttackWhereUniqueInput
+  }
+
+  /**
+   * ItemAttack updateMany
+   */
+  export type ItemAttackUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ItemAttacks.
+     */
+    data: XOR<ItemAttackUpdateManyMutationInput, ItemAttackUncheckedUpdateManyInput>
+    /**
+     * Filter which ItemAttacks to update
+     */
+    where?: ItemAttackWhereInput
+    /**
+     * Limit how many ItemAttacks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ItemAttack updateManyAndReturn
+   */
+  export type ItemAttackUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * The data used to update ItemAttacks.
+     */
+    data: XOR<ItemAttackUpdateManyMutationInput, ItemAttackUncheckedUpdateManyInput>
+    /**
+     * Filter which ItemAttacks to update
+     */
+    where?: ItemAttackWhereInput
+    /**
+     * Limit how many ItemAttacks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ItemAttack upsert
+   */
+  export type ItemAttackUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ItemAttack to update in case it exists.
+     */
+    where: ItemAttackWhereUniqueInput
+    /**
+     * In case the ItemAttack found by the `where` argument doesn't exist, create a new ItemAttack with this data.
+     */
+    create: XOR<ItemAttackCreateInput, ItemAttackUncheckedCreateInput>
+    /**
+     * In case the ItemAttack was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ItemAttackUpdateInput, ItemAttackUncheckedUpdateInput>
+  }
+
+  /**
+   * ItemAttack delete
+   */
+  export type ItemAttackDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    /**
+     * Filter which ItemAttack to delete.
+     */
+    where: ItemAttackWhereUniqueInput
+  }
+
+  /**
+   * ItemAttack deleteMany
+   */
+  export type ItemAttackDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ItemAttacks to delete
+     */
+    where?: ItemAttackWhereInput
+    /**
+     * Limit how many ItemAttacks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ItemAttack without action
+   */
+  export type ItemAttackDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Ability
    */
 
@@ -8650,16 +11704,19 @@ export namespace Prisma {
   }
 
   export type AbilityAvgAggregateOutputType = {
+    id: number | null
     characterId: number | null
     manaCost: number | null
   }
 
   export type AbilitySumAggregateOutputType = {
+    id: number | null
     characterId: number | null
     manaCost: number | null
   }
 
   export type AbilityMinAggregateOutputType = {
+    id: number | null
     characterId: number | null
     type: string | null
     name: string | null
@@ -8669,6 +11726,7 @@ export namespace Prisma {
   }
 
   export type AbilityMaxAggregateOutputType = {
+    id: number | null
     characterId: number | null
     type: string | null
     name: string | null
@@ -8678,29 +11736,31 @@ export namespace Prisma {
   }
 
   export type AbilityCountAggregateOutputType = {
+    id: number
     characterId: number
     type: number
     name: number
     description: number
     passive: number
     manaCost: number
-    attacks: number
-    modifiers: number
     _all: number
   }
 
 
   export type AbilityAvgAggregateInputType = {
+    id?: true
     characterId?: true
     manaCost?: true
   }
 
   export type AbilitySumAggregateInputType = {
+    id?: true
     characterId?: true
     manaCost?: true
   }
 
   export type AbilityMinAggregateInputType = {
+    id?: true
     characterId?: true
     type?: true
     name?: true
@@ -8710,6 +11770,7 @@ export namespace Prisma {
   }
 
   export type AbilityMaxAggregateInputType = {
+    id?: true
     characterId?: true
     type?: true
     name?: true
@@ -8719,14 +11780,13 @@ export namespace Prisma {
   }
 
   export type AbilityCountAggregateInputType = {
+    id?: true
     characterId?: true
     type?: true
     name?: true
     description?: true
     passive?: true
     manaCost?: true
-    attacks?: true
-    modifiers?: true
     _all?: true
   }
 
@@ -8817,14 +11877,13 @@ export namespace Prisma {
   }
 
   export type AbilityGroupByOutputType = {
+    id: number
     characterId: number
     type: string
     name: string
     description: string
     passive: boolean
     manaCost: number
-    attacks: JsonValue
-    modifiers: JsonValue
     _count: AbilityCountAggregateOutputType | null
     _avg: AbilityAvgAggregateOutputType | null
     _sum: AbilitySumAggregateOutputType | null
@@ -8847,55 +11906,57 @@ export namespace Prisma {
 
 
   export type AbilitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     characterId?: boolean
     type?: boolean
     name?: boolean
     description?: boolean
     passive?: boolean
     manaCost?: boolean
-    attacks?: boolean
-    modifiers?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
+    modifiers?: boolean | Ability$modifiersArgs<ExtArgs>
+    attacks?: boolean | Ability$attacksArgs<ExtArgs>
+    _count?: boolean | AbilityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ability"]>
 
   export type AbilitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     characterId?: boolean
     type?: boolean
     name?: boolean
     description?: boolean
     passive?: boolean
     manaCost?: boolean
-    attacks?: boolean
-    modifiers?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ability"]>
 
   export type AbilitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     characterId?: boolean
     type?: boolean
     name?: boolean
     description?: boolean
     passive?: boolean
     manaCost?: boolean
-    attacks?: boolean
-    modifiers?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ability"]>
 
   export type AbilitySelectScalar = {
+    id?: boolean
     characterId?: boolean
     type?: boolean
     name?: boolean
     description?: boolean
     passive?: boolean
     manaCost?: boolean
-    attacks?: boolean
-    modifiers?: boolean
   }
 
-  export type AbilityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"characterId" | "type" | "name" | "description" | "passive" | "manaCost" | "attacks" | "modifiers", ExtArgs["result"]["ability"]>
+  export type AbilityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "characterId" | "type" | "name" | "description" | "passive" | "manaCost", ExtArgs["result"]["ability"]>
   export type AbilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     character?: boolean | CharacterDefaultArgs<ExtArgs>
+    modifiers?: boolean | Ability$modifiersArgs<ExtArgs>
+    attacks?: boolean | Ability$attacksArgs<ExtArgs>
+    _count?: boolean | AbilityCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AbilityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     character?: boolean | CharacterDefaultArgs<ExtArgs>
@@ -8908,16 +11969,17 @@ export namespace Prisma {
     name: "Ability"
     objects: {
       character: Prisma.$CharacterPayload<ExtArgs>
+      modifiers: Prisma.$AbilityModifierPayload<ExtArgs>[]
+      attacks: Prisma.$AbilityAttackPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: number
       characterId: number
       type: string
       name: string
       description: string
       passive: boolean
       manaCost: number
-      attacks: Prisma.JsonValue
-      modifiers: Prisma.JsonValue
     }, ExtArgs["result"]["ability"]>
     composites: {}
   }
@@ -9001,8 +12063,8 @@ export namespace Prisma {
      * // Get first 10 Abilities
      * const abilities = await prisma.ability.findMany({ take: 10 })
      * 
-     * // Only select the `characterId`
-     * const abilityWithCharacterIdOnly = await prisma.ability.findMany({ select: { characterId: true } })
+     * // Only select the `id`
+     * const abilityWithIdOnly = await prisma.ability.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends AbilityFindManyArgs>(args?: SelectSubset<T, AbilityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -9046,9 +12108,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Abilities and only return the `characterId`
-     * const abilityWithCharacterIdOnly = await prisma.ability.createManyAndReturn({
-     *   select: { characterId: true },
+     * // Create many Abilities and only return the `id`
+     * const abilityWithIdOnly = await prisma.ability.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -9137,9 +12199,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Abilities and only return the `characterId`
-     * const abilityWithCharacterIdOnly = await prisma.ability.updateManyAndReturn({
-     *   select: { characterId: true },
+     * // Update zero or more Abilities and only return the `id`
+     * const abilityWithIdOnly = await prisma.ability.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9313,6 +12375,8 @@ export namespace Prisma {
   export interface Prisma__AbilityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     character<T extends CharacterDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CharacterDefaultArgs<ExtArgs>>): Prisma__CharacterClient<$Result.GetResult<Prisma.$CharacterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    modifiers<T extends Ability$modifiersArgs<ExtArgs> = {}>(args?: Subset<T, Ability$modifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attacks<T extends Ability$attacksArgs<ExtArgs> = {}>(args?: Subset<T, Ability$attacksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9342,14 +12406,13 @@ export namespace Prisma {
    * Fields of the Ability model
    */
   interface AbilityFieldRefs {
+    readonly id: FieldRef<"Ability", 'Int'>
     readonly characterId: FieldRef<"Ability", 'Int'>
     readonly type: FieldRef<"Ability", 'String'>
     readonly name: FieldRef<"Ability", 'String'>
     readonly description: FieldRef<"Ability", 'String'>
     readonly passive: FieldRef<"Ability", 'Boolean'>
     readonly manaCost: FieldRef<"Ability", 'Int'>
-    readonly attacks: FieldRef<"Ability", 'Json'>
-    readonly modifiers: FieldRef<"Ability", 'Json'>
   }
     
 
@@ -9744,6 +12807,54 @@ export namespace Prisma {
   }
 
   /**
+   * Ability.modifiers
+   */
+  export type Ability$modifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    where?: AbilityModifierWhereInput
+    orderBy?: AbilityModifierOrderByWithRelationInput | AbilityModifierOrderByWithRelationInput[]
+    cursor?: AbilityModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AbilityModifierScalarFieldEnum | AbilityModifierScalarFieldEnum[]
+  }
+
+  /**
+   * Ability.attacks
+   */
+  export type Ability$attacksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    where?: AbilityAttackWhereInput
+    orderBy?: AbilityAttackOrderByWithRelationInput | AbilityAttackOrderByWithRelationInput[]
+    cursor?: AbilityAttackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AbilityAttackScalarFieldEnum | AbilityAttackScalarFieldEnum[]
+  }
+
+  /**
    * Ability without action
    */
   export type AbilityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9763,6 +12874,2132 @@ export namespace Prisma {
 
 
   /**
+   * Model AbilityModifier
+   */
+
+  export type AggregateAbilityModifier = {
+    _count: AbilityModifierCountAggregateOutputType | null
+    _avg: AbilityModifierAvgAggregateOutputType | null
+    _sum: AbilityModifierSumAggregateOutputType | null
+    _min: AbilityModifierMinAggregateOutputType | null
+    _max: AbilityModifierMaxAggregateOutputType | null
+  }
+
+  export type AbilityModifierAvgAggregateOutputType = {
+    abilityId: number | null
+    modifierId: number | null
+  }
+
+  export type AbilityModifierSumAggregateOutputType = {
+    abilityId: number | null
+    modifierId: number | null
+  }
+
+  export type AbilityModifierMinAggregateOutputType = {
+    abilityId: number | null
+    modifierId: number | null
+  }
+
+  export type AbilityModifierMaxAggregateOutputType = {
+    abilityId: number | null
+    modifierId: number | null
+  }
+
+  export type AbilityModifierCountAggregateOutputType = {
+    abilityId: number
+    modifierId: number
+    _all: number
+  }
+
+
+  export type AbilityModifierAvgAggregateInputType = {
+    abilityId?: true
+    modifierId?: true
+  }
+
+  export type AbilityModifierSumAggregateInputType = {
+    abilityId?: true
+    modifierId?: true
+  }
+
+  export type AbilityModifierMinAggregateInputType = {
+    abilityId?: true
+    modifierId?: true
+  }
+
+  export type AbilityModifierMaxAggregateInputType = {
+    abilityId?: true
+    modifierId?: true
+  }
+
+  export type AbilityModifierCountAggregateInputType = {
+    abilityId?: true
+    modifierId?: true
+    _all?: true
+  }
+
+  export type AbilityModifierAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AbilityModifier to aggregate.
+     */
+    where?: AbilityModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityModifiers to fetch.
+     */
+    orderBy?: AbilityModifierOrderByWithRelationInput | AbilityModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AbilityModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AbilityModifiers
+    **/
+    _count?: true | AbilityModifierCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AbilityModifierAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AbilityModifierSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AbilityModifierMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AbilityModifierMaxAggregateInputType
+  }
+
+  export type GetAbilityModifierAggregateType<T extends AbilityModifierAggregateArgs> = {
+        [P in keyof T & keyof AggregateAbilityModifier]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAbilityModifier[P]>
+      : GetScalarType<T[P], AggregateAbilityModifier[P]>
+  }
+
+
+
+
+  export type AbilityModifierGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AbilityModifierWhereInput
+    orderBy?: AbilityModifierOrderByWithAggregationInput | AbilityModifierOrderByWithAggregationInput[]
+    by: AbilityModifierScalarFieldEnum[] | AbilityModifierScalarFieldEnum
+    having?: AbilityModifierScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AbilityModifierCountAggregateInputType | true
+    _avg?: AbilityModifierAvgAggregateInputType
+    _sum?: AbilityModifierSumAggregateInputType
+    _min?: AbilityModifierMinAggregateInputType
+    _max?: AbilityModifierMaxAggregateInputType
+  }
+
+  export type AbilityModifierGroupByOutputType = {
+    abilityId: number
+    modifierId: number
+    _count: AbilityModifierCountAggregateOutputType | null
+    _avg: AbilityModifierAvgAggregateOutputType | null
+    _sum: AbilityModifierSumAggregateOutputType | null
+    _min: AbilityModifierMinAggregateOutputType | null
+    _max: AbilityModifierMaxAggregateOutputType | null
+  }
+
+  type GetAbilityModifierGroupByPayload<T extends AbilityModifierGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AbilityModifierGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AbilityModifierGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AbilityModifierGroupByOutputType[P]>
+            : GetScalarType<T[P], AbilityModifierGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AbilityModifierSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    abilityId?: boolean
+    modifierId?: boolean
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["abilityModifier"]>
+
+  export type AbilityModifierSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    abilityId?: boolean
+    modifierId?: boolean
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["abilityModifier"]>
+
+  export type AbilityModifierSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    abilityId?: boolean
+    modifierId?: boolean
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["abilityModifier"]>
+
+  export type AbilityModifierSelectScalar = {
+    abilityId?: boolean
+    modifierId?: boolean
+  }
+
+  export type AbilityModifierOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"abilityId" | "modifierId", ExtArgs["result"]["abilityModifier"]>
+  export type AbilityModifierInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+  export type AbilityModifierIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+  export type AbilityModifierIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+
+  export type $AbilityModifierPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AbilityModifier"
+    objects: {
+      ability: Prisma.$AbilityPayload<ExtArgs>
+      modifier: Prisma.$ModifierPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      abilityId: number
+      modifierId: number
+    }, ExtArgs["result"]["abilityModifier"]>
+    composites: {}
+  }
+
+  type AbilityModifierGetPayload<S extends boolean | null | undefined | AbilityModifierDefaultArgs> = $Result.GetResult<Prisma.$AbilityModifierPayload, S>
+
+  type AbilityModifierCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AbilityModifierFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AbilityModifierCountAggregateInputType | true
+    }
+
+  export interface AbilityModifierDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AbilityModifier'], meta: { name: 'AbilityModifier' } }
+    /**
+     * Find zero or one AbilityModifier that matches the filter.
+     * @param {AbilityModifierFindUniqueArgs} args - Arguments to find a AbilityModifier
+     * @example
+     * // Get one AbilityModifier
+     * const abilityModifier = await prisma.abilityModifier.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AbilityModifierFindUniqueArgs>(args: SelectSubset<T, AbilityModifierFindUniqueArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AbilityModifier that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AbilityModifierFindUniqueOrThrowArgs} args - Arguments to find a AbilityModifier
+     * @example
+     * // Get one AbilityModifier
+     * const abilityModifier = await prisma.abilityModifier.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AbilityModifierFindUniqueOrThrowArgs>(args: SelectSubset<T, AbilityModifierFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AbilityModifier that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityModifierFindFirstArgs} args - Arguments to find a AbilityModifier
+     * @example
+     * // Get one AbilityModifier
+     * const abilityModifier = await prisma.abilityModifier.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AbilityModifierFindFirstArgs>(args?: SelectSubset<T, AbilityModifierFindFirstArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AbilityModifier that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityModifierFindFirstOrThrowArgs} args - Arguments to find a AbilityModifier
+     * @example
+     * // Get one AbilityModifier
+     * const abilityModifier = await prisma.abilityModifier.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AbilityModifierFindFirstOrThrowArgs>(args?: SelectSubset<T, AbilityModifierFindFirstOrThrowArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AbilityModifiers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityModifierFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AbilityModifiers
+     * const abilityModifiers = await prisma.abilityModifier.findMany()
+     * 
+     * // Get first 10 AbilityModifiers
+     * const abilityModifiers = await prisma.abilityModifier.findMany({ take: 10 })
+     * 
+     * // Only select the `abilityId`
+     * const abilityModifierWithAbilityIdOnly = await prisma.abilityModifier.findMany({ select: { abilityId: true } })
+     * 
+     */
+    findMany<T extends AbilityModifierFindManyArgs>(args?: SelectSubset<T, AbilityModifierFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AbilityModifier.
+     * @param {AbilityModifierCreateArgs} args - Arguments to create a AbilityModifier.
+     * @example
+     * // Create one AbilityModifier
+     * const AbilityModifier = await prisma.abilityModifier.create({
+     *   data: {
+     *     // ... data to create a AbilityModifier
+     *   }
+     * })
+     * 
+     */
+    create<T extends AbilityModifierCreateArgs>(args: SelectSubset<T, AbilityModifierCreateArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AbilityModifiers.
+     * @param {AbilityModifierCreateManyArgs} args - Arguments to create many AbilityModifiers.
+     * @example
+     * // Create many AbilityModifiers
+     * const abilityModifier = await prisma.abilityModifier.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AbilityModifierCreateManyArgs>(args?: SelectSubset<T, AbilityModifierCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AbilityModifiers and returns the data saved in the database.
+     * @param {AbilityModifierCreateManyAndReturnArgs} args - Arguments to create many AbilityModifiers.
+     * @example
+     * // Create many AbilityModifiers
+     * const abilityModifier = await prisma.abilityModifier.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AbilityModifiers and only return the `abilityId`
+     * const abilityModifierWithAbilityIdOnly = await prisma.abilityModifier.createManyAndReturn({
+     *   select: { abilityId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AbilityModifierCreateManyAndReturnArgs>(args?: SelectSubset<T, AbilityModifierCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AbilityModifier.
+     * @param {AbilityModifierDeleteArgs} args - Arguments to delete one AbilityModifier.
+     * @example
+     * // Delete one AbilityModifier
+     * const AbilityModifier = await prisma.abilityModifier.delete({
+     *   where: {
+     *     // ... filter to delete one AbilityModifier
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AbilityModifierDeleteArgs>(args: SelectSubset<T, AbilityModifierDeleteArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AbilityModifier.
+     * @param {AbilityModifierUpdateArgs} args - Arguments to update one AbilityModifier.
+     * @example
+     * // Update one AbilityModifier
+     * const abilityModifier = await prisma.abilityModifier.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AbilityModifierUpdateArgs>(args: SelectSubset<T, AbilityModifierUpdateArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AbilityModifiers.
+     * @param {AbilityModifierDeleteManyArgs} args - Arguments to filter AbilityModifiers to delete.
+     * @example
+     * // Delete a few AbilityModifiers
+     * const { count } = await prisma.abilityModifier.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AbilityModifierDeleteManyArgs>(args?: SelectSubset<T, AbilityModifierDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AbilityModifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityModifierUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AbilityModifiers
+     * const abilityModifier = await prisma.abilityModifier.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AbilityModifierUpdateManyArgs>(args: SelectSubset<T, AbilityModifierUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AbilityModifiers and returns the data updated in the database.
+     * @param {AbilityModifierUpdateManyAndReturnArgs} args - Arguments to update many AbilityModifiers.
+     * @example
+     * // Update many AbilityModifiers
+     * const abilityModifier = await prisma.abilityModifier.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AbilityModifiers and only return the `abilityId`
+     * const abilityModifierWithAbilityIdOnly = await prisma.abilityModifier.updateManyAndReturn({
+     *   select: { abilityId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AbilityModifierUpdateManyAndReturnArgs>(args: SelectSubset<T, AbilityModifierUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AbilityModifier.
+     * @param {AbilityModifierUpsertArgs} args - Arguments to update or create a AbilityModifier.
+     * @example
+     * // Update or create a AbilityModifier
+     * const abilityModifier = await prisma.abilityModifier.upsert({
+     *   create: {
+     *     // ... data to create a AbilityModifier
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AbilityModifier we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AbilityModifierUpsertArgs>(args: SelectSubset<T, AbilityModifierUpsertArgs<ExtArgs>>): Prisma__AbilityModifierClient<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AbilityModifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityModifierCountArgs} args - Arguments to filter AbilityModifiers to count.
+     * @example
+     * // Count the number of AbilityModifiers
+     * const count = await prisma.abilityModifier.count({
+     *   where: {
+     *     // ... the filter for the AbilityModifiers we want to count
+     *   }
+     * })
+    **/
+    count<T extends AbilityModifierCountArgs>(
+      args?: Subset<T, AbilityModifierCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AbilityModifierCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AbilityModifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityModifierAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AbilityModifierAggregateArgs>(args: Subset<T, AbilityModifierAggregateArgs>): Prisma.PrismaPromise<GetAbilityModifierAggregateType<T>>
+
+    /**
+     * Group by AbilityModifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityModifierGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AbilityModifierGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AbilityModifierGroupByArgs['orderBy'] }
+        : { orderBy?: AbilityModifierGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AbilityModifierGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAbilityModifierGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AbilityModifier model
+   */
+  readonly fields: AbilityModifierFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AbilityModifier.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AbilityModifierClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ability<T extends AbilityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AbilityDefaultArgs<ExtArgs>>): Prisma__AbilityClient<$Result.GetResult<Prisma.$AbilityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    modifier<T extends ModifierDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ModifierDefaultArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AbilityModifier model
+   */
+  interface AbilityModifierFieldRefs {
+    readonly abilityId: FieldRef<"AbilityModifier", 'Int'>
+    readonly modifierId: FieldRef<"AbilityModifier", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AbilityModifier findUnique
+   */
+  export type AbilityModifierFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityModifier to fetch.
+     */
+    where: AbilityModifierWhereUniqueInput
+  }
+
+  /**
+   * AbilityModifier findUniqueOrThrow
+   */
+  export type AbilityModifierFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityModifier to fetch.
+     */
+    where: AbilityModifierWhereUniqueInput
+  }
+
+  /**
+   * AbilityModifier findFirst
+   */
+  export type AbilityModifierFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityModifier to fetch.
+     */
+    where?: AbilityModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityModifiers to fetch.
+     */
+    orderBy?: AbilityModifierOrderByWithRelationInput | AbilityModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AbilityModifiers.
+     */
+    cursor?: AbilityModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AbilityModifiers.
+     */
+    distinct?: AbilityModifierScalarFieldEnum | AbilityModifierScalarFieldEnum[]
+  }
+
+  /**
+   * AbilityModifier findFirstOrThrow
+   */
+  export type AbilityModifierFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityModifier to fetch.
+     */
+    where?: AbilityModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityModifiers to fetch.
+     */
+    orderBy?: AbilityModifierOrderByWithRelationInput | AbilityModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AbilityModifiers.
+     */
+    cursor?: AbilityModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AbilityModifiers.
+     */
+    distinct?: AbilityModifierScalarFieldEnum | AbilityModifierScalarFieldEnum[]
+  }
+
+  /**
+   * AbilityModifier findMany
+   */
+  export type AbilityModifierFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityModifiers to fetch.
+     */
+    where?: AbilityModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityModifiers to fetch.
+     */
+    orderBy?: AbilityModifierOrderByWithRelationInput | AbilityModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AbilityModifiers.
+     */
+    cursor?: AbilityModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityModifiers.
+     */
+    skip?: number
+    distinct?: AbilityModifierScalarFieldEnum | AbilityModifierScalarFieldEnum[]
+  }
+
+  /**
+   * AbilityModifier create
+   */
+  export type AbilityModifierCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AbilityModifier.
+     */
+    data: XOR<AbilityModifierCreateInput, AbilityModifierUncheckedCreateInput>
+  }
+
+  /**
+   * AbilityModifier createMany
+   */
+  export type AbilityModifierCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AbilityModifiers.
+     */
+    data: AbilityModifierCreateManyInput | AbilityModifierCreateManyInput[]
+  }
+
+  /**
+   * AbilityModifier createManyAndReturn
+   */
+  export type AbilityModifierCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * The data used to create many AbilityModifiers.
+     */
+    data: AbilityModifierCreateManyInput | AbilityModifierCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AbilityModifier update
+   */
+  export type AbilityModifierUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AbilityModifier.
+     */
+    data: XOR<AbilityModifierUpdateInput, AbilityModifierUncheckedUpdateInput>
+    /**
+     * Choose, which AbilityModifier to update.
+     */
+    where: AbilityModifierWhereUniqueInput
+  }
+
+  /**
+   * AbilityModifier updateMany
+   */
+  export type AbilityModifierUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AbilityModifiers.
+     */
+    data: XOR<AbilityModifierUpdateManyMutationInput, AbilityModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which AbilityModifiers to update
+     */
+    where?: AbilityModifierWhereInput
+    /**
+     * Limit how many AbilityModifiers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AbilityModifier updateManyAndReturn
+   */
+  export type AbilityModifierUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * The data used to update AbilityModifiers.
+     */
+    data: XOR<AbilityModifierUpdateManyMutationInput, AbilityModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which AbilityModifiers to update
+     */
+    where?: AbilityModifierWhereInput
+    /**
+     * Limit how many AbilityModifiers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AbilityModifier upsert
+   */
+  export type AbilityModifierUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AbilityModifier to update in case it exists.
+     */
+    where: AbilityModifierWhereUniqueInput
+    /**
+     * In case the AbilityModifier found by the `where` argument doesn't exist, create a new AbilityModifier with this data.
+     */
+    create: XOR<AbilityModifierCreateInput, AbilityModifierUncheckedCreateInput>
+    /**
+     * In case the AbilityModifier was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AbilityModifierUpdateInput, AbilityModifierUncheckedUpdateInput>
+  }
+
+  /**
+   * AbilityModifier delete
+   */
+  export type AbilityModifierDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    /**
+     * Filter which AbilityModifier to delete.
+     */
+    where: AbilityModifierWhereUniqueInput
+  }
+
+  /**
+   * AbilityModifier deleteMany
+   */
+  export type AbilityModifierDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AbilityModifiers to delete
+     */
+    where?: AbilityModifierWhereInput
+    /**
+     * Limit how many AbilityModifiers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AbilityModifier without action
+   */
+  export type AbilityModifierDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AbilityAttack
+   */
+
+  export type AggregateAbilityAttack = {
+    _count: AbilityAttackCountAggregateOutputType | null
+    _avg: AbilityAttackAvgAggregateOutputType | null
+    _sum: AbilityAttackSumAggregateOutputType | null
+    _min: AbilityAttackMinAggregateOutputType | null
+    _max: AbilityAttackMaxAggregateOutputType | null
+  }
+
+  export type AbilityAttackAvgAggregateOutputType = {
+    abilityId: number | null
+    attackId: number | null
+  }
+
+  export type AbilityAttackSumAggregateOutputType = {
+    abilityId: number | null
+    attackId: number | null
+  }
+
+  export type AbilityAttackMinAggregateOutputType = {
+    abilityId: number | null
+    attackId: number | null
+  }
+
+  export type AbilityAttackMaxAggregateOutputType = {
+    abilityId: number | null
+    attackId: number | null
+  }
+
+  export type AbilityAttackCountAggregateOutputType = {
+    abilityId: number
+    attackId: number
+    _all: number
+  }
+
+
+  export type AbilityAttackAvgAggregateInputType = {
+    abilityId?: true
+    attackId?: true
+  }
+
+  export type AbilityAttackSumAggregateInputType = {
+    abilityId?: true
+    attackId?: true
+  }
+
+  export type AbilityAttackMinAggregateInputType = {
+    abilityId?: true
+    attackId?: true
+  }
+
+  export type AbilityAttackMaxAggregateInputType = {
+    abilityId?: true
+    attackId?: true
+  }
+
+  export type AbilityAttackCountAggregateInputType = {
+    abilityId?: true
+    attackId?: true
+    _all?: true
+  }
+
+  export type AbilityAttackAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AbilityAttack to aggregate.
+     */
+    where?: AbilityAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityAttacks to fetch.
+     */
+    orderBy?: AbilityAttackOrderByWithRelationInput | AbilityAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AbilityAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityAttacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AbilityAttacks
+    **/
+    _count?: true | AbilityAttackCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AbilityAttackAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AbilityAttackSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AbilityAttackMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AbilityAttackMaxAggregateInputType
+  }
+
+  export type GetAbilityAttackAggregateType<T extends AbilityAttackAggregateArgs> = {
+        [P in keyof T & keyof AggregateAbilityAttack]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAbilityAttack[P]>
+      : GetScalarType<T[P], AggregateAbilityAttack[P]>
+  }
+
+
+
+
+  export type AbilityAttackGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AbilityAttackWhereInput
+    orderBy?: AbilityAttackOrderByWithAggregationInput | AbilityAttackOrderByWithAggregationInput[]
+    by: AbilityAttackScalarFieldEnum[] | AbilityAttackScalarFieldEnum
+    having?: AbilityAttackScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AbilityAttackCountAggregateInputType | true
+    _avg?: AbilityAttackAvgAggregateInputType
+    _sum?: AbilityAttackSumAggregateInputType
+    _min?: AbilityAttackMinAggregateInputType
+    _max?: AbilityAttackMaxAggregateInputType
+  }
+
+  export type AbilityAttackGroupByOutputType = {
+    abilityId: number
+    attackId: number
+    _count: AbilityAttackCountAggregateOutputType | null
+    _avg: AbilityAttackAvgAggregateOutputType | null
+    _sum: AbilityAttackSumAggregateOutputType | null
+    _min: AbilityAttackMinAggregateOutputType | null
+    _max: AbilityAttackMaxAggregateOutputType | null
+  }
+
+  type GetAbilityAttackGroupByPayload<T extends AbilityAttackGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AbilityAttackGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AbilityAttackGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AbilityAttackGroupByOutputType[P]>
+            : GetScalarType<T[P], AbilityAttackGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AbilityAttackSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    abilityId?: boolean
+    attackId?: boolean
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["abilityAttack"]>
+
+  export type AbilityAttackSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    abilityId?: boolean
+    attackId?: boolean
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["abilityAttack"]>
+
+  export type AbilityAttackSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    abilityId?: boolean
+    attackId?: boolean
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["abilityAttack"]>
+
+  export type AbilityAttackSelectScalar = {
+    abilityId?: boolean
+    attackId?: boolean
+  }
+
+  export type AbilityAttackOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"abilityId" | "attackId", ExtArgs["result"]["abilityAttack"]>
+  export type AbilityAttackInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }
+  export type AbilityAttackIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }
+  export type AbilityAttackIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ability?: boolean | AbilityDefaultArgs<ExtArgs>
+    attack?: boolean | AttackDefaultArgs<ExtArgs>
+  }
+
+  export type $AbilityAttackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AbilityAttack"
+    objects: {
+      ability: Prisma.$AbilityPayload<ExtArgs>
+      attack: Prisma.$AttackPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      abilityId: number
+      attackId: number
+    }, ExtArgs["result"]["abilityAttack"]>
+    composites: {}
+  }
+
+  type AbilityAttackGetPayload<S extends boolean | null | undefined | AbilityAttackDefaultArgs> = $Result.GetResult<Prisma.$AbilityAttackPayload, S>
+
+  type AbilityAttackCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AbilityAttackFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AbilityAttackCountAggregateInputType | true
+    }
+
+  export interface AbilityAttackDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AbilityAttack'], meta: { name: 'AbilityAttack' } }
+    /**
+     * Find zero or one AbilityAttack that matches the filter.
+     * @param {AbilityAttackFindUniqueArgs} args - Arguments to find a AbilityAttack
+     * @example
+     * // Get one AbilityAttack
+     * const abilityAttack = await prisma.abilityAttack.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AbilityAttackFindUniqueArgs>(args: SelectSubset<T, AbilityAttackFindUniqueArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AbilityAttack that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AbilityAttackFindUniqueOrThrowArgs} args - Arguments to find a AbilityAttack
+     * @example
+     * // Get one AbilityAttack
+     * const abilityAttack = await prisma.abilityAttack.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AbilityAttackFindUniqueOrThrowArgs>(args: SelectSubset<T, AbilityAttackFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AbilityAttack that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityAttackFindFirstArgs} args - Arguments to find a AbilityAttack
+     * @example
+     * // Get one AbilityAttack
+     * const abilityAttack = await prisma.abilityAttack.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AbilityAttackFindFirstArgs>(args?: SelectSubset<T, AbilityAttackFindFirstArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AbilityAttack that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityAttackFindFirstOrThrowArgs} args - Arguments to find a AbilityAttack
+     * @example
+     * // Get one AbilityAttack
+     * const abilityAttack = await prisma.abilityAttack.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AbilityAttackFindFirstOrThrowArgs>(args?: SelectSubset<T, AbilityAttackFindFirstOrThrowArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AbilityAttacks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityAttackFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AbilityAttacks
+     * const abilityAttacks = await prisma.abilityAttack.findMany()
+     * 
+     * // Get first 10 AbilityAttacks
+     * const abilityAttacks = await prisma.abilityAttack.findMany({ take: 10 })
+     * 
+     * // Only select the `abilityId`
+     * const abilityAttackWithAbilityIdOnly = await prisma.abilityAttack.findMany({ select: { abilityId: true } })
+     * 
+     */
+    findMany<T extends AbilityAttackFindManyArgs>(args?: SelectSubset<T, AbilityAttackFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AbilityAttack.
+     * @param {AbilityAttackCreateArgs} args - Arguments to create a AbilityAttack.
+     * @example
+     * // Create one AbilityAttack
+     * const AbilityAttack = await prisma.abilityAttack.create({
+     *   data: {
+     *     // ... data to create a AbilityAttack
+     *   }
+     * })
+     * 
+     */
+    create<T extends AbilityAttackCreateArgs>(args: SelectSubset<T, AbilityAttackCreateArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AbilityAttacks.
+     * @param {AbilityAttackCreateManyArgs} args - Arguments to create many AbilityAttacks.
+     * @example
+     * // Create many AbilityAttacks
+     * const abilityAttack = await prisma.abilityAttack.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AbilityAttackCreateManyArgs>(args?: SelectSubset<T, AbilityAttackCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AbilityAttacks and returns the data saved in the database.
+     * @param {AbilityAttackCreateManyAndReturnArgs} args - Arguments to create many AbilityAttacks.
+     * @example
+     * // Create many AbilityAttacks
+     * const abilityAttack = await prisma.abilityAttack.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AbilityAttacks and only return the `abilityId`
+     * const abilityAttackWithAbilityIdOnly = await prisma.abilityAttack.createManyAndReturn({
+     *   select: { abilityId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AbilityAttackCreateManyAndReturnArgs>(args?: SelectSubset<T, AbilityAttackCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AbilityAttack.
+     * @param {AbilityAttackDeleteArgs} args - Arguments to delete one AbilityAttack.
+     * @example
+     * // Delete one AbilityAttack
+     * const AbilityAttack = await prisma.abilityAttack.delete({
+     *   where: {
+     *     // ... filter to delete one AbilityAttack
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AbilityAttackDeleteArgs>(args: SelectSubset<T, AbilityAttackDeleteArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AbilityAttack.
+     * @param {AbilityAttackUpdateArgs} args - Arguments to update one AbilityAttack.
+     * @example
+     * // Update one AbilityAttack
+     * const abilityAttack = await prisma.abilityAttack.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AbilityAttackUpdateArgs>(args: SelectSubset<T, AbilityAttackUpdateArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AbilityAttacks.
+     * @param {AbilityAttackDeleteManyArgs} args - Arguments to filter AbilityAttacks to delete.
+     * @example
+     * // Delete a few AbilityAttacks
+     * const { count } = await prisma.abilityAttack.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AbilityAttackDeleteManyArgs>(args?: SelectSubset<T, AbilityAttackDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AbilityAttacks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityAttackUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AbilityAttacks
+     * const abilityAttack = await prisma.abilityAttack.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AbilityAttackUpdateManyArgs>(args: SelectSubset<T, AbilityAttackUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AbilityAttacks and returns the data updated in the database.
+     * @param {AbilityAttackUpdateManyAndReturnArgs} args - Arguments to update many AbilityAttacks.
+     * @example
+     * // Update many AbilityAttacks
+     * const abilityAttack = await prisma.abilityAttack.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AbilityAttacks and only return the `abilityId`
+     * const abilityAttackWithAbilityIdOnly = await prisma.abilityAttack.updateManyAndReturn({
+     *   select: { abilityId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AbilityAttackUpdateManyAndReturnArgs>(args: SelectSubset<T, AbilityAttackUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AbilityAttack.
+     * @param {AbilityAttackUpsertArgs} args - Arguments to update or create a AbilityAttack.
+     * @example
+     * // Update or create a AbilityAttack
+     * const abilityAttack = await prisma.abilityAttack.upsert({
+     *   create: {
+     *     // ... data to create a AbilityAttack
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AbilityAttack we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AbilityAttackUpsertArgs>(args: SelectSubset<T, AbilityAttackUpsertArgs<ExtArgs>>): Prisma__AbilityAttackClient<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AbilityAttacks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityAttackCountArgs} args - Arguments to filter AbilityAttacks to count.
+     * @example
+     * // Count the number of AbilityAttacks
+     * const count = await prisma.abilityAttack.count({
+     *   where: {
+     *     // ... the filter for the AbilityAttacks we want to count
+     *   }
+     * })
+    **/
+    count<T extends AbilityAttackCountArgs>(
+      args?: Subset<T, AbilityAttackCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AbilityAttackCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AbilityAttack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityAttackAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AbilityAttackAggregateArgs>(args: Subset<T, AbilityAttackAggregateArgs>): Prisma.PrismaPromise<GetAbilityAttackAggregateType<T>>
+
+    /**
+     * Group by AbilityAttack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AbilityAttackGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AbilityAttackGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AbilityAttackGroupByArgs['orderBy'] }
+        : { orderBy?: AbilityAttackGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AbilityAttackGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAbilityAttackGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AbilityAttack model
+   */
+  readonly fields: AbilityAttackFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AbilityAttack.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AbilityAttackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ability<T extends AbilityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AbilityDefaultArgs<ExtArgs>>): Prisma__AbilityClient<$Result.GetResult<Prisma.$AbilityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    attack<T extends AttackDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AttackDefaultArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AbilityAttack model
+   */
+  interface AbilityAttackFieldRefs {
+    readonly abilityId: FieldRef<"AbilityAttack", 'Int'>
+    readonly attackId: FieldRef<"AbilityAttack", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AbilityAttack findUnique
+   */
+  export type AbilityAttackFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityAttack to fetch.
+     */
+    where: AbilityAttackWhereUniqueInput
+  }
+
+  /**
+   * AbilityAttack findUniqueOrThrow
+   */
+  export type AbilityAttackFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityAttack to fetch.
+     */
+    where: AbilityAttackWhereUniqueInput
+  }
+
+  /**
+   * AbilityAttack findFirst
+   */
+  export type AbilityAttackFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityAttack to fetch.
+     */
+    where?: AbilityAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityAttacks to fetch.
+     */
+    orderBy?: AbilityAttackOrderByWithRelationInput | AbilityAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AbilityAttacks.
+     */
+    cursor?: AbilityAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityAttacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AbilityAttacks.
+     */
+    distinct?: AbilityAttackScalarFieldEnum | AbilityAttackScalarFieldEnum[]
+  }
+
+  /**
+   * AbilityAttack findFirstOrThrow
+   */
+  export type AbilityAttackFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityAttack to fetch.
+     */
+    where?: AbilityAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityAttacks to fetch.
+     */
+    orderBy?: AbilityAttackOrderByWithRelationInput | AbilityAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AbilityAttacks.
+     */
+    cursor?: AbilityAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityAttacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AbilityAttacks.
+     */
+    distinct?: AbilityAttackScalarFieldEnum | AbilityAttackScalarFieldEnum[]
+  }
+
+  /**
+   * AbilityAttack findMany
+   */
+  export type AbilityAttackFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * Filter, which AbilityAttacks to fetch.
+     */
+    where?: AbilityAttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AbilityAttacks to fetch.
+     */
+    orderBy?: AbilityAttackOrderByWithRelationInput | AbilityAttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AbilityAttacks.
+     */
+    cursor?: AbilityAttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AbilityAttacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AbilityAttacks.
+     */
+    skip?: number
+    distinct?: AbilityAttackScalarFieldEnum | AbilityAttackScalarFieldEnum[]
+  }
+
+  /**
+   * AbilityAttack create
+   */
+  export type AbilityAttackCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AbilityAttack.
+     */
+    data: XOR<AbilityAttackCreateInput, AbilityAttackUncheckedCreateInput>
+  }
+
+  /**
+   * AbilityAttack createMany
+   */
+  export type AbilityAttackCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AbilityAttacks.
+     */
+    data: AbilityAttackCreateManyInput | AbilityAttackCreateManyInput[]
+  }
+
+  /**
+   * AbilityAttack createManyAndReturn
+   */
+  export type AbilityAttackCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * The data used to create many AbilityAttacks.
+     */
+    data: AbilityAttackCreateManyInput | AbilityAttackCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AbilityAttack update
+   */
+  export type AbilityAttackUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AbilityAttack.
+     */
+    data: XOR<AbilityAttackUpdateInput, AbilityAttackUncheckedUpdateInput>
+    /**
+     * Choose, which AbilityAttack to update.
+     */
+    where: AbilityAttackWhereUniqueInput
+  }
+
+  /**
+   * AbilityAttack updateMany
+   */
+  export type AbilityAttackUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AbilityAttacks.
+     */
+    data: XOR<AbilityAttackUpdateManyMutationInput, AbilityAttackUncheckedUpdateManyInput>
+    /**
+     * Filter which AbilityAttacks to update
+     */
+    where?: AbilityAttackWhereInput
+    /**
+     * Limit how many AbilityAttacks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AbilityAttack updateManyAndReturn
+   */
+  export type AbilityAttackUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * The data used to update AbilityAttacks.
+     */
+    data: XOR<AbilityAttackUpdateManyMutationInput, AbilityAttackUncheckedUpdateManyInput>
+    /**
+     * Filter which AbilityAttacks to update
+     */
+    where?: AbilityAttackWhereInput
+    /**
+     * Limit how many AbilityAttacks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AbilityAttack upsert
+   */
+  export type AbilityAttackUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AbilityAttack to update in case it exists.
+     */
+    where: AbilityAttackWhereUniqueInput
+    /**
+     * In case the AbilityAttack found by the `where` argument doesn't exist, create a new AbilityAttack with this data.
+     */
+    create: XOR<AbilityAttackCreateInput, AbilityAttackUncheckedCreateInput>
+    /**
+     * In case the AbilityAttack was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AbilityAttackUpdateInput, AbilityAttackUncheckedUpdateInput>
+  }
+
+  /**
+   * AbilityAttack delete
+   */
+  export type AbilityAttackDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    /**
+     * Filter which AbilityAttack to delete.
+     */
+    where: AbilityAttackWhereUniqueInput
+  }
+
+  /**
+   * AbilityAttack deleteMany
+   */
+  export type AbilityAttackDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AbilityAttacks to delete
+     */
+    where?: AbilityAttackWhereInput
+    /**
+     * Limit how many AbilityAttacks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AbilityAttack without action
+   */
+  export type AbilityAttackDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Effect
    */
 
@@ -9775,18 +15012,21 @@ export namespace Prisma {
   }
 
   export type EffectAvgAggregateOutputType = {
+    id: number | null
     characterId: number | null
     sourceId: number | null
     stacks: number | null
   }
 
   export type EffectSumAggregateOutputType = {
+    id: number | null
     characterId: number | null
     sourceId: number | null
     stacks: number | null
   }
 
   export type EffectMinAggregateOutputType = {
+    id: number | null
     characterId: number | null
     sourceType: string | null
     sourceId: number | null
@@ -9797,6 +15037,7 @@ export namespace Prisma {
   }
 
   export type EffectMaxAggregateOutputType = {
+    id: number | null
     characterId: number | null
     sourceType: string | null
     sourceId: number | null
@@ -9807,6 +15048,7 @@ export namespace Prisma {
   }
 
   export type EffectCountAggregateOutputType = {
+    id: number
     characterId: number
     sourceType: number
     sourceId: number
@@ -9814,25 +15056,27 @@ export namespace Prisma {
     active: number
     duration: number
     stacks: number
-    modifiers: number
     startedAt: number
     _all: number
   }
 
 
   export type EffectAvgAggregateInputType = {
+    id?: true
     characterId?: true
     sourceId?: true
     stacks?: true
   }
 
   export type EffectSumAggregateInputType = {
+    id?: true
     characterId?: true
     sourceId?: true
     stacks?: true
   }
 
   export type EffectMinAggregateInputType = {
+    id?: true
     characterId?: true
     sourceType?: true
     sourceId?: true
@@ -9843,6 +15087,7 @@ export namespace Prisma {
   }
 
   export type EffectMaxAggregateInputType = {
+    id?: true
     characterId?: true
     sourceType?: true
     sourceId?: true
@@ -9853,6 +15098,7 @@ export namespace Prisma {
   }
 
   export type EffectCountAggregateInputType = {
+    id?: true
     characterId?: true
     sourceType?: true
     sourceId?: true
@@ -9860,7 +15106,6 @@ export namespace Prisma {
     active?: true
     duration?: true
     stacks?: true
-    modifiers?: true
     startedAt?: true
     _all?: true
   }
@@ -9952,6 +15197,7 @@ export namespace Prisma {
   }
 
   export type EffectGroupByOutputType = {
+    id: number
     characterId: number
     sourceType: string
     sourceId: number | null
@@ -9959,7 +15205,6 @@ export namespace Prisma {
     active: boolean
     duration: JsonValue
     stacks: number
-    modifiers: JsonValue
     startedAt: Date
     _count: EffectCountAggregateOutputType | null
     _avg: EffectAvgAggregateOutputType | null
@@ -9983,6 +15228,7 @@ export namespace Prisma {
 
 
   export type EffectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     characterId?: boolean
     sourceType?: boolean
     sourceId?: boolean
@@ -9990,12 +15236,14 @@ export namespace Prisma {
     active?: boolean
     duration?: boolean
     stacks?: boolean
-    modifiers?: boolean
     startedAt?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
+    modifiers?: boolean | Effect$modifiersArgs<ExtArgs>
+    _count?: boolean | EffectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["effect"]>
 
   export type EffectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     characterId?: boolean
     sourceType?: boolean
     sourceId?: boolean
@@ -10003,12 +15251,12 @@ export namespace Prisma {
     active?: boolean
     duration?: boolean
     stacks?: boolean
-    modifiers?: boolean
     startedAt?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["effect"]>
 
   export type EffectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     characterId?: boolean
     sourceType?: boolean
     sourceId?: boolean
@@ -10016,12 +15264,12 @@ export namespace Prisma {
     active?: boolean
     duration?: boolean
     stacks?: boolean
-    modifiers?: boolean
     startedAt?: boolean
     character?: boolean | CharacterDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["effect"]>
 
   export type EffectSelectScalar = {
+    id?: boolean
     characterId?: boolean
     sourceType?: boolean
     sourceId?: boolean
@@ -10029,13 +15277,14 @@ export namespace Prisma {
     active?: boolean
     duration?: boolean
     stacks?: boolean
-    modifiers?: boolean
     startedAt?: boolean
   }
 
-  export type EffectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"characterId" | "sourceType" | "sourceId" | "sourceName" | "active" | "duration" | "stacks" | "modifiers" | "startedAt", ExtArgs["result"]["effect"]>
+  export type EffectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "characterId" | "sourceType" | "sourceId" | "sourceName" | "active" | "duration" | "stacks" | "startedAt", ExtArgs["result"]["effect"]>
   export type EffectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     character?: boolean | CharacterDefaultArgs<ExtArgs>
+    modifiers?: boolean | Effect$modifiersArgs<ExtArgs>
+    _count?: boolean | EffectCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type EffectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     character?: boolean | CharacterDefaultArgs<ExtArgs>
@@ -10048,8 +15297,10 @@ export namespace Prisma {
     name: "Effect"
     objects: {
       character: Prisma.$CharacterPayload<ExtArgs>
+      modifiers: Prisma.$EffectModifierPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: number
       characterId: number
       sourceType: string
       sourceId: number | null
@@ -10057,7 +15308,6 @@ export namespace Prisma {
       active: boolean
       duration: Prisma.JsonValue
       stacks: number
-      modifiers: Prisma.JsonValue
       startedAt: Date
     }, ExtArgs["result"]["effect"]>
     composites: {}
@@ -10142,8 +15392,8 @@ export namespace Prisma {
      * // Get first 10 Effects
      * const effects = await prisma.effect.findMany({ take: 10 })
      * 
-     * // Only select the `characterId`
-     * const effectWithCharacterIdOnly = await prisma.effect.findMany({ select: { characterId: true } })
+     * // Only select the `id`
+     * const effectWithIdOnly = await prisma.effect.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends EffectFindManyArgs>(args?: SelectSubset<T, EffectFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EffectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -10187,9 +15437,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Effects and only return the `characterId`
-     * const effectWithCharacterIdOnly = await prisma.effect.createManyAndReturn({
-     *   select: { characterId: true },
+     * // Create many Effects and only return the `id`
+     * const effectWithIdOnly = await prisma.effect.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -10278,9 +15528,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Effects and only return the `characterId`
-     * const effectWithCharacterIdOnly = await prisma.effect.updateManyAndReturn({
-     *   select: { characterId: true },
+     * // Update zero or more Effects and only return the `id`
+     * const effectWithIdOnly = await prisma.effect.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10454,6 +15704,7 @@ export namespace Prisma {
   export interface Prisma__EffectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     character<T extends CharacterDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CharacterDefaultArgs<ExtArgs>>): Prisma__CharacterClient<$Result.GetResult<Prisma.$CharacterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    modifiers<T extends Effect$modifiersArgs<ExtArgs> = {}>(args?: Subset<T, Effect$modifiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10483,6 +15734,7 @@ export namespace Prisma {
    * Fields of the Effect model
    */
   interface EffectFieldRefs {
+    readonly id: FieldRef<"Effect", 'Int'>
     readonly characterId: FieldRef<"Effect", 'Int'>
     readonly sourceType: FieldRef<"Effect", 'String'>
     readonly sourceId: FieldRef<"Effect", 'Int'>
@@ -10490,7 +15742,6 @@ export namespace Prisma {
     readonly active: FieldRef<"Effect", 'Boolean'>
     readonly duration: FieldRef<"Effect", 'Json'>
     readonly stacks: FieldRef<"Effect", 'Int'>
-    readonly modifiers: FieldRef<"Effect", 'Json'>
     readonly startedAt: FieldRef<"Effect", 'DateTime'>
   }
     
@@ -10886,6 +16137,30 @@ export namespace Prisma {
   }
 
   /**
+   * Effect.modifiers
+   */
+  export type Effect$modifiersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    where?: EffectModifierWhereInput
+    orderBy?: EffectModifierOrderByWithRelationInput | EffectModifierOrderByWithRelationInput[]
+    cursor?: EffectModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EffectModifierScalarFieldEnum | EffectModifierScalarFieldEnum[]
+  }
+
+  /**
    * Effect without action
    */
   export type EffectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10901,6 +16176,3332 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: EffectInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EffectModifier
+   */
+
+  export type AggregateEffectModifier = {
+    _count: EffectModifierCountAggregateOutputType | null
+    _avg: EffectModifierAvgAggregateOutputType | null
+    _sum: EffectModifierSumAggregateOutputType | null
+    _min: EffectModifierMinAggregateOutputType | null
+    _max: EffectModifierMaxAggregateOutputType | null
+  }
+
+  export type EffectModifierAvgAggregateOutputType = {
+    effectId: number | null
+    modifierId: number | null
+  }
+
+  export type EffectModifierSumAggregateOutputType = {
+    effectId: number | null
+    modifierId: number | null
+  }
+
+  export type EffectModifierMinAggregateOutputType = {
+    effectId: number | null
+    modifierId: number | null
+  }
+
+  export type EffectModifierMaxAggregateOutputType = {
+    effectId: number | null
+    modifierId: number | null
+  }
+
+  export type EffectModifierCountAggregateOutputType = {
+    effectId: number
+    modifierId: number
+    _all: number
+  }
+
+
+  export type EffectModifierAvgAggregateInputType = {
+    effectId?: true
+    modifierId?: true
+  }
+
+  export type EffectModifierSumAggregateInputType = {
+    effectId?: true
+    modifierId?: true
+  }
+
+  export type EffectModifierMinAggregateInputType = {
+    effectId?: true
+    modifierId?: true
+  }
+
+  export type EffectModifierMaxAggregateInputType = {
+    effectId?: true
+    modifierId?: true
+  }
+
+  export type EffectModifierCountAggregateInputType = {
+    effectId?: true
+    modifierId?: true
+    _all?: true
+  }
+
+  export type EffectModifierAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EffectModifier to aggregate.
+     */
+    where?: EffectModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EffectModifiers to fetch.
+     */
+    orderBy?: EffectModifierOrderByWithRelationInput | EffectModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EffectModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EffectModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EffectModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EffectModifiers
+    **/
+    _count?: true | EffectModifierCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EffectModifierAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EffectModifierSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EffectModifierMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EffectModifierMaxAggregateInputType
+  }
+
+  export type GetEffectModifierAggregateType<T extends EffectModifierAggregateArgs> = {
+        [P in keyof T & keyof AggregateEffectModifier]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEffectModifier[P]>
+      : GetScalarType<T[P], AggregateEffectModifier[P]>
+  }
+
+
+
+
+  export type EffectModifierGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EffectModifierWhereInput
+    orderBy?: EffectModifierOrderByWithAggregationInput | EffectModifierOrderByWithAggregationInput[]
+    by: EffectModifierScalarFieldEnum[] | EffectModifierScalarFieldEnum
+    having?: EffectModifierScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EffectModifierCountAggregateInputType | true
+    _avg?: EffectModifierAvgAggregateInputType
+    _sum?: EffectModifierSumAggregateInputType
+    _min?: EffectModifierMinAggregateInputType
+    _max?: EffectModifierMaxAggregateInputType
+  }
+
+  export type EffectModifierGroupByOutputType = {
+    effectId: number
+    modifierId: number
+    _count: EffectModifierCountAggregateOutputType | null
+    _avg: EffectModifierAvgAggregateOutputType | null
+    _sum: EffectModifierSumAggregateOutputType | null
+    _min: EffectModifierMinAggregateOutputType | null
+    _max: EffectModifierMaxAggregateOutputType | null
+  }
+
+  type GetEffectModifierGroupByPayload<T extends EffectModifierGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EffectModifierGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EffectModifierGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EffectModifierGroupByOutputType[P]>
+            : GetScalarType<T[P], EffectModifierGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EffectModifierSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    effectId?: boolean
+    modifierId?: boolean
+    effect?: boolean | EffectDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["effectModifier"]>
+
+  export type EffectModifierSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    effectId?: boolean
+    modifierId?: boolean
+    effect?: boolean | EffectDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["effectModifier"]>
+
+  export type EffectModifierSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    effectId?: boolean
+    modifierId?: boolean
+    effect?: boolean | EffectDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["effectModifier"]>
+
+  export type EffectModifierSelectScalar = {
+    effectId?: boolean
+    modifierId?: boolean
+  }
+
+  export type EffectModifierOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"effectId" | "modifierId", ExtArgs["result"]["effectModifier"]>
+  export type EffectModifierInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    effect?: boolean | EffectDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+  export type EffectModifierIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    effect?: boolean | EffectDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+  export type EffectModifierIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    effect?: boolean | EffectDefaultArgs<ExtArgs>
+    modifier?: boolean | ModifierDefaultArgs<ExtArgs>
+  }
+
+  export type $EffectModifierPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EffectModifier"
+    objects: {
+      effect: Prisma.$EffectPayload<ExtArgs>
+      modifier: Prisma.$ModifierPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      effectId: number
+      modifierId: number
+    }, ExtArgs["result"]["effectModifier"]>
+    composites: {}
+  }
+
+  type EffectModifierGetPayload<S extends boolean | null | undefined | EffectModifierDefaultArgs> = $Result.GetResult<Prisma.$EffectModifierPayload, S>
+
+  type EffectModifierCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EffectModifierFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EffectModifierCountAggregateInputType | true
+    }
+
+  export interface EffectModifierDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EffectModifier'], meta: { name: 'EffectModifier' } }
+    /**
+     * Find zero or one EffectModifier that matches the filter.
+     * @param {EffectModifierFindUniqueArgs} args - Arguments to find a EffectModifier
+     * @example
+     * // Get one EffectModifier
+     * const effectModifier = await prisma.effectModifier.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EffectModifierFindUniqueArgs>(args: SelectSubset<T, EffectModifierFindUniqueArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EffectModifier that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EffectModifierFindUniqueOrThrowArgs} args - Arguments to find a EffectModifier
+     * @example
+     * // Get one EffectModifier
+     * const effectModifier = await prisma.effectModifier.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EffectModifierFindUniqueOrThrowArgs>(args: SelectSubset<T, EffectModifierFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EffectModifier that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EffectModifierFindFirstArgs} args - Arguments to find a EffectModifier
+     * @example
+     * // Get one EffectModifier
+     * const effectModifier = await prisma.effectModifier.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EffectModifierFindFirstArgs>(args?: SelectSubset<T, EffectModifierFindFirstArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EffectModifier that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EffectModifierFindFirstOrThrowArgs} args - Arguments to find a EffectModifier
+     * @example
+     * // Get one EffectModifier
+     * const effectModifier = await prisma.effectModifier.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EffectModifierFindFirstOrThrowArgs>(args?: SelectSubset<T, EffectModifierFindFirstOrThrowArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EffectModifiers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EffectModifierFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EffectModifiers
+     * const effectModifiers = await prisma.effectModifier.findMany()
+     * 
+     * // Get first 10 EffectModifiers
+     * const effectModifiers = await prisma.effectModifier.findMany({ take: 10 })
+     * 
+     * // Only select the `effectId`
+     * const effectModifierWithEffectIdOnly = await prisma.effectModifier.findMany({ select: { effectId: true } })
+     * 
+     */
+    findMany<T extends EffectModifierFindManyArgs>(args?: SelectSubset<T, EffectModifierFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EffectModifier.
+     * @param {EffectModifierCreateArgs} args - Arguments to create a EffectModifier.
+     * @example
+     * // Create one EffectModifier
+     * const EffectModifier = await prisma.effectModifier.create({
+     *   data: {
+     *     // ... data to create a EffectModifier
+     *   }
+     * })
+     * 
+     */
+    create<T extends EffectModifierCreateArgs>(args: SelectSubset<T, EffectModifierCreateArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EffectModifiers.
+     * @param {EffectModifierCreateManyArgs} args - Arguments to create many EffectModifiers.
+     * @example
+     * // Create many EffectModifiers
+     * const effectModifier = await prisma.effectModifier.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EffectModifierCreateManyArgs>(args?: SelectSubset<T, EffectModifierCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EffectModifiers and returns the data saved in the database.
+     * @param {EffectModifierCreateManyAndReturnArgs} args - Arguments to create many EffectModifiers.
+     * @example
+     * // Create many EffectModifiers
+     * const effectModifier = await prisma.effectModifier.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EffectModifiers and only return the `effectId`
+     * const effectModifierWithEffectIdOnly = await prisma.effectModifier.createManyAndReturn({
+     *   select: { effectId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EffectModifierCreateManyAndReturnArgs>(args?: SelectSubset<T, EffectModifierCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EffectModifier.
+     * @param {EffectModifierDeleteArgs} args - Arguments to delete one EffectModifier.
+     * @example
+     * // Delete one EffectModifier
+     * const EffectModifier = await prisma.effectModifier.delete({
+     *   where: {
+     *     // ... filter to delete one EffectModifier
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EffectModifierDeleteArgs>(args: SelectSubset<T, EffectModifierDeleteArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EffectModifier.
+     * @param {EffectModifierUpdateArgs} args - Arguments to update one EffectModifier.
+     * @example
+     * // Update one EffectModifier
+     * const effectModifier = await prisma.effectModifier.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EffectModifierUpdateArgs>(args: SelectSubset<T, EffectModifierUpdateArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EffectModifiers.
+     * @param {EffectModifierDeleteManyArgs} args - Arguments to filter EffectModifiers to delete.
+     * @example
+     * // Delete a few EffectModifiers
+     * const { count } = await prisma.effectModifier.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EffectModifierDeleteManyArgs>(args?: SelectSubset<T, EffectModifierDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EffectModifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EffectModifierUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EffectModifiers
+     * const effectModifier = await prisma.effectModifier.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EffectModifierUpdateManyArgs>(args: SelectSubset<T, EffectModifierUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EffectModifiers and returns the data updated in the database.
+     * @param {EffectModifierUpdateManyAndReturnArgs} args - Arguments to update many EffectModifiers.
+     * @example
+     * // Update many EffectModifiers
+     * const effectModifier = await prisma.effectModifier.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EffectModifiers and only return the `effectId`
+     * const effectModifierWithEffectIdOnly = await prisma.effectModifier.updateManyAndReturn({
+     *   select: { effectId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EffectModifierUpdateManyAndReturnArgs>(args: SelectSubset<T, EffectModifierUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EffectModifier.
+     * @param {EffectModifierUpsertArgs} args - Arguments to update or create a EffectModifier.
+     * @example
+     * // Update or create a EffectModifier
+     * const effectModifier = await prisma.effectModifier.upsert({
+     *   create: {
+     *     // ... data to create a EffectModifier
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EffectModifier we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EffectModifierUpsertArgs>(args: SelectSubset<T, EffectModifierUpsertArgs<ExtArgs>>): Prisma__EffectModifierClient<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EffectModifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EffectModifierCountArgs} args - Arguments to filter EffectModifiers to count.
+     * @example
+     * // Count the number of EffectModifiers
+     * const count = await prisma.effectModifier.count({
+     *   where: {
+     *     // ... the filter for the EffectModifiers we want to count
+     *   }
+     * })
+    **/
+    count<T extends EffectModifierCountArgs>(
+      args?: Subset<T, EffectModifierCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EffectModifierCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EffectModifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EffectModifierAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EffectModifierAggregateArgs>(args: Subset<T, EffectModifierAggregateArgs>): Prisma.PrismaPromise<GetEffectModifierAggregateType<T>>
+
+    /**
+     * Group by EffectModifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EffectModifierGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EffectModifierGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EffectModifierGroupByArgs['orderBy'] }
+        : { orderBy?: EffectModifierGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EffectModifierGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEffectModifierGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EffectModifier model
+   */
+  readonly fields: EffectModifierFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EffectModifier.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EffectModifierClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    effect<T extends EffectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EffectDefaultArgs<ExtArgs>>): Prisma__EffectClient<$Result.GetResult<Prisma.$EffectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    modifier<T extends ModifierDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ModifierDefaultArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EffectModifier model
+   */
+  interface EffectModifierFieldRefs {
+    readonly effectId: FieldRef<"EffectModifier", 'Int'>
+    readonly modifierId: FieldRef<"EffectModifier", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EffectModifier findUnique
+   */
+  export type EffectModifierFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which EffectModifier to fetch.
+     */
+    where: EffectModifierWhereUniqueInput
+  }
+
+  /**
+   * EffectModifier findUniqueOrThrow
+   */
+  export type EffectModifierFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which EffectModifier to fetch.
+     */
+    where: EffectModifierWhereUniqueInput
+  }
+
+  /**
+   * EffectModifier findFirst
+   */
+  export type EffectModifierFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which EffectModifier to fetch.
+     */
+    where?: EffectModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EffectModifiers to fetch.
+     */
+    orderBy?: EffectModifierOrderByWithRelationInput | EffectModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EffectModifiers.
+     */
+    cursor?: EffectModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EffectModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EffectModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EffectModifiers.
+     */
+    distinct?: EffectModifierScalarFieldEnum | EffectModifierScalarFieldEnum[]
+  }
+
+  /**
+   * EffectModifier findFirstOrThrow
+   */
+  export type EffectModifierFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which EffectModifier to fetch.
+     */
+    where?: EffectModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EffectModifiers to fetch.
+     */
+    orderBy?: EffectModifierOrderByWithRelationInput | EffectModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EffectModifiers.
+     */
+    cursor?: EffectModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EffectModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EffectModifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EffectModifiers.
+     */
+    distinct?: EffectModifierScalarFieldEnum | EffectModifierScalarFieldEnum[]
+  }
+
+  /**
+   * EffectModifier findMany
+   */
+  export type EffectModifierFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which EffectModifiers to fetch.
+     */
+    where?: EffectModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EffectModifiers to fetch.
+     */
+    orderBy?: EffectModifierOrderByWithRelationInput | EffectModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EffectModifiers.
+     */
+    cursor?: EffectModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EffectModifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EffectModifiers.
+     */
+    skip?: number
+    distinct?: EffectModifierScalarFieldEnum | EffectModifierScalarFieldEnum[]
+  }
+
+  /**
+   * EffectModifier create
+   */
+  export type EffectModifierCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EffectModifier.
+     */
+    data: XOR<EffectModifierCreateInput, EffectModifierUncheckedCreateInput>
+  }
+
+  /**
+   * EffectModifier createMany
+   */
+  export type EffectModifierCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EffectModifiers.
+     */
+    data: EffectModifierCreateManyInput | EffectModifierCreateManyInput[]
+  }
+
+  /**
+   * EffectModifier createManyAndReturn
+   */
+  export type EffectModifierCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * The data used to create many EffectModifiers.
+     */
+    data: EffectModifierCreateManyInput | EffectModifierCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EffectModifier update
+   */
+  export type EffectModifierUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EffectModifier.
+     */
+    data: XOR<EffectModifierUpdateInput, EffectModifierUncheckedUpdateInput>
+    /**
+     * Choose, which EffectModifier to update.
+     */
+    where: EffectModifierWhereUniqueInput
+  }
+
+  /**
+   * EffectModifier updateMany
+   */
+  export type EffectModifierUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EffectModifiers.
+     */
+    data: XOR<EffectModifierUpdateManyMutationInput, EffectModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which EffectModifiers to update
+     */
+    where?: EffectModifierWhereInput
+    /**
+     * Limit how many EffectModifiers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EffectModifier updateManyAndReturn
+   */
+  export type EffectModifierUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * The data used to update EffectModifiers.
+     */
+    data: XOR<EffectModifierUpdateManyMutationInput, EffectModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which EffectModifiers to update
+     */
+    where?: EffectModifierWhereInput
+    /**
+     * Limit how many EffectModifiers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EffectModifier upsert
+   */
+  export type EffectModifierUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EffectModifier to update in case it exists.
+     */
+    where: EffectModifierWhereUniqueInput
+    /**
+     * In case the EffectModifier found by the `where` argument doesn't exist, create a new EffectModifier with this data.
+     */
+    create: XOR<EffectModifierCreateInput, EffectModifierUncheckedCreateInput>
+    /**
+     * In case the EffectModifier was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EffectModifierUpdateInput, EffectModifierUncheckedUpdateInput>
+  }
+
+  /**
+   * EffectModifier delete
+   */
+  export type EffectModifierDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    /**
+     * Filter which EffectModifier to delete.
+     */
+    where: EffectModifierWhereUniqueInput
+  }
+
+  /**
+   * EffectModifier deleteMany
+   */
+  export type EffectModifierDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EffectModifiers to delete
+     */
+    where?: EffectModifierWhereInput
+    /**
+     * Limit how many EffectModifiers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EffectModifier without action
+   */
+  export type EffectModifierDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Modifier
+   */
+
+  export type AggregateModifier = {
+    _count: ModifierCountAggregateOutputType | null
+    _avg: ModifierAvgAggregateOutputType | null
+    _sum: ModifierSumAggregateOutputType | null
+    _min: ModifierMinAggregateOutputType | null
+    _max: ModifierMaxAggregateOutputType | null
+  }
+
+  export type ModifierAvgAggregateOutputType = {
+    id: number | null
+    value: number | null
+  }
+
+  export type ModifierSumAggregateOutputType = {
+    id: number | null
+    value: number | null
+  }
+
+  export type ModifierMinAggregateOutputType = {
+    id: number | null
+    value: number | null
+    type: string | null
+  }
+
+  export type ModifierMaxAggregateOutputType = {
+    id: number | null
+    value: number | null
+    type: string | null
+  }
+
+  export type ModifierCountAggregateOutputType = {
+    id: number
+    target: number
+    value: number
+    type: number
+    _all: number
+  }
+
+
+  export type ModifierAvgAggregateInputType = {
+    id?: true
+    value?: true
+  }
+
+  export type ModifierSumAggregateInputType = {
+    id?: true
+    value?: true
+  }
+
+  export type ModifierMinAggregateInputType = {
+    id?: true
+    value?: true
+    type?: true
+  }
+
+  export type ModifierMaxAggregateInputType = {
+    id?: true
+    value?: true
+    type?: true
+  }
+
+  export type ModifierCountAggregateInputType = {
+    id?: true
+    target?: true
+    value?: true
+    type?: true
+    _all?: true
+  }
+
+  export type ModifierAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Modifier to aggregate.
+     */
+    where?: ModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Modifiers to fetch.
+     */
+    orderBy?: ModifierOrderByWithRelationInput | ModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Modifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Modifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Modifiers
+    **/
+    _count?: true | ModifierCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ModifierAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ModifierSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ModifierMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ModifierMaxAggregateInputType
+  }
+
+  export type GetModifierAggregateType<T extends ModifierAggregateArgs> = {
+        [P in keyof T & keyof AggregateModifier]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateModifier[P]>
+      : GetScalarType<T[P], AggregateModifier[P]>
+  }
+
+
+
+
+  export type ModifierGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModifierWhereInput
+    orderBy?: ModifierOrderByWithAggregationInput | ModifierOrderByWithAggregationInput[]
+    by: ModifierScalarFieldEnum[] | ModifierScalarFieldEnum
+    having?: ModifierScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ModifierCountAggregateInputType | true
+    _avg?: ModifierAvgAggregateInputType
+    _sum?: ModifierSumAggregateInputType
+    _min?: ModifierMinAggregateInputType
+    _max?: ModifierMaxAggregateInputType
+  }
+
+  export type ModifierGroupByOutputType = {
+    id: number
+    target: JsonValue
+    value: number
+    type: string
+    _count: ModifierCountAggregateOutputType | null
+    _avg: ModifierAvgAggregateOutputType | null
+    _sum: ModifierSumAggregateOutputType | null
+    _min: ModifierMinAggregateOutputType | null
+    _max: ModifierMaxAggregateOutputType | null
+  }
+
+  type GetModifierGroupByPayload<T extends ModifierGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ModifierGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ModifierGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ModifierGroupByOutputType[P]>
+            : GetScalarType<T[P], ModifierGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ModifierSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    target?: boolean
+    value?: boolean
+    type?: boolean
+    effects?: boolean | Modifier$effectsArgs<ExtArgs>
+    abilities?: boolean | Modifier$abilitiesArgs<ExtArgs>
+    items?: boolean | Modifier$itemsArgs<ExtArgs>
+    _count?: boolean | ModifierCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["modifier"]>
+
+  export type ModifierSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    target?: boolean
+    value?: boolean
+    type?: boolean
+  }, ExtArgs["result"]["modifier"]>
+
+  export type ModifierSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    target?: boolean
+    value?: boolean
+    type?: boolean
+  }, ExtArgs["result"]["modifier"]>
+
+  export type ModifierSelectScalar = {
+    id?: boolean
+    target?: boolean
+    value?: boolean
+    type?: boolean
+  }
+
+  export type ModifierOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "target" | "value" | "type", ExtArgs["result"]["modifier"]>
+  export type ModifierInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    effects?: boolean | Modifier$effectsArgs<ExtArgs>
+    abilities?: boolean | Modifier$abilitiesArgs<ExtArgs>
+    items?: boolean | Modifier$itemsArgs<ExtArgs>
+    _count?: boolean | ModifierCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ModifierIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ModifierIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ModifierPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Modifier"
+    objects: {
+      effects: Prisma.$EffectModifierPayload<ExtArgs>[]
+      abilities: Prisma.$AbilityModifierPayload<ExtArgs>[]
+      items: Prisma.$ItemModifierPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      target: Prisma.JsonValue
+      value: number
+      type: string
+    }, ExtArgs["result"]["modifier"]>
+    composites: {}
+  }
+
+  type ModifierGetPayload<S extends boolean | null | undefined | ModifierDefaultArgs> = $Result.GetResult<Prisma.$ModifierPayload, S>
+
+  type ModifierCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ModifierFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ModifierCountAggregateInputType | true
+    }
+
+  export interface ModifierDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Modifier'], meta: { name: 'Modifier' } }
+    /**
+     * Find zero or one Modifier that matches the filter.
+     * @param {ModifierFindUniqueArgs} args - Arguments to find a Modifier
+     * @example
+     * // Get one Modifier
+     * const modifier = await prisma.modifier.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ModifierFindUniqueArgs>(args: SelectSubset<T, ModifierFindUniqueArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Modifier that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ModifierFindUniqueOrThrowArgs} args - Arguments to find a Modifier
+     * @example
+     * // Get one Modifier
+     * const modifier = await prisma.modifier.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ModifierFindUniqueOrThrowArgs>(args: SelectSubset<T, ModifierFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Modifier that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierFindFirstArgs} args - Arguments to find a Modifier
+     * @example
+     * // Get one Modifier
+     * const modifier = await prisma.modifier.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ModifierFindFirstArgs>(args?: SelectSubset<T, ModifierFindFirstArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Modifier that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierFindFirstOrThrowArgs} args - Arguments to find a Modifier
+     * @example
+     * // Get one Modifier
+     * const modifier = await prisma.modifier.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ModifierFindFirstOrThrowArgs>(args?: SelectSubset<T, ModifierFindFirstOrThrowArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Modifiers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Modifiers
+     * const modifiers = await prisma.modifier.findMany()
+     * 
+     * // Get first 10 Modifiers
+     * const modifiers = await prisma.modifier.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const modifierWithIdOnly = await prisma.modifier.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ModifierFindManyArgs>(args?: SelectSubset<T, ModifierFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Modifier.
+     * @param {ModifierCreateArgs} args - Arguments to create a Modifier.
+     * @example
+     * // Create one Modifier
+     * const Modifier = await prisma.modifier.create({
+     *   data: {
+     *     // ... data to create a Modifier
+     *   }
+     * })
+     * 
+     */
+    create<T extends ModifierCreateArgs>(args: SelectSubset<T, ModifierCreateArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Modifiers.
+     * @param {ModifierCreateManyArgs} args - Arguments to create many Modifiers.
+     * @example
+     * // Create many Modifiers
+     * const modifier = await prisma.modifier.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ModifierCreateManyArgs>(args?: SelectSubset<T, ModifierCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Modifiers and returns the data saved in the database.
+     * @param {ModifierCreateManyAndReturnArgs} args - Arguments to create many Modifiers.
+     * @example
+     * // Create many Modifiers
+     * const modifier = await prisma.modifier.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Modifiers and only return the `id`
+     * const modifierWithIdOnly = await prisma.modifier.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ModifierCreateManyAndReturnArgs>(args?: SelectSubset<T, ModifierCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Modifier.
+     * @param {ModifierDeleteArgs} args - Arguments to delete one Modifier.
+     * @example
+     * // Delete one Modifier
+     * const Modifier = await prisma.modifier.delete({
+     *   where: {
+     *     // ... filter to delete one Modifier
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ModifierDeleteArgs>(args: SelectSubset<T, ModifierDeleteArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Modifier.
+     * @param {ModifierUpdateArgs} args - Arguments to update one Modifier.
+     * @example
+     * // Update one Modifier
+     * const modifier = await prisma.modifier.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ModifierUpdateArgs>(args: SelectSubset<T, ModifierUpdateArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Modifiers.
+     * @param {ModifierDeleteManyArgs} args - Arguments to filter Modifiers to delete.
+     * @example
+     * // Delete a few Modifiers
+     * const { count } = await prisma.modifier.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ModifierDeleteManyArgs>(args?: SelectSubset<T, ModifierDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Modifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Modifiers
+     * const modifier = await prisma.modifier.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ModifierUpdateManyArgs>(args: SelectSubset<T, ModifierUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Modifiers and returns the data updated in the database.
+     * @param {ModifierUpdateManyAndReturnArgs} args - Arguments to update many Modifiers.
+     * @example
+     * // Update many Modifiers
+     * const modifier = await prisma.modifier.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Modifiers and only return the `id`
+     * const modifierWithIdOnly = await prisma.modifier.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ModifierUpdateManyAndReturnArgs>(args: SelectSubset<T, ModifierUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Modifier.
+     * @param {ModifierUpsertArgs} args - Arguments to update or create a Modifier.
+     * @example
+     * // Update or create a Modifier
+     * const modifier = await prisma.modifier.upsert({
+     *   create: {
+     *     // ... data to create a Modifier
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Modifier we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ModifierUpsertArgs>(args: SelectSubset<T, ModifierUpsertArgs<ExtArgs>>): Prisma__ModifierClient<$Result.GetResult<Prisma.$ModifierPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Modifiers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierCountArgs} args - Arguments to filter Modifiers to count.
+     * @example
+     * // Count the number of Modifiers
+     * const count = await prisma.modifier.count({
+     *   where: {
+     *     // ... the filter for the Modifiers we want to count
+     *   }
+     * })
+    **/
+    count<T extends ModifierCountArgs>(
+      args?: Subset<T, ModifierCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ModifierCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Modifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ModifierAggregateArgs>(args: Subset<T, ModifierAggregateArgs>): Prisma.PrismaPromise<GetModifierAggregateType<T>>
+
+    /**
+     * Group by Modifier.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModifierGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ModifierGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ModifierGroupByArgs['orderBy'] }
+        : { orderBy?: ModifierGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ModifierGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetModifierGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Modifier model
+   */
+  readonly fields: ModifierFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Modifier.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ModifierClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    effects<T extends Modifier$effectsArgs<ExtArgs> = {}>(args?: Subset<T, Modifier$effectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EffectModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    abilities<T extends Modifier$abilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Modifier$abilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    items<T extends Modifier$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Modifier$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemModifierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Modifier model
+   */
+  interface ModifierFieldRefs {
+    readonly id: FieldRef<"Modifier", 'Int'>
+    readonly target: FieldRef<"Modifier", 'Json'>
+    readonly value: FieldRef<"Modifier", 'Int'>
+    readonly type: FieldRef<"Modifier", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Modifier findUnique
+   */
+  export type ModifierFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which Modifier to fetch.
+     */
+    where: ModifierWhereUniqueInput
+  }
+
+  /**
+   * Modifier findUniqueOrThrow
+   */
+  export type ModifierFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which Modifier to fetch.
+     */
+    where: ModifierWhereUniqueInput
+  }
+
+  /**
+   * Modifier findFirst
+   */
+  export type ModifierFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which Modifier to fetch.
+     */
+    where?: ModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Modifiers to fetch.
+     */
+    orderBy?: ModifierOrderByWithRelationInput | ModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Modifiers.
+     */
+    cursor?: ModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Modifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Modifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Modifiers.
+     */
+    distinct?: ModifierScalarFieldEnum | ModifierScalarFieldEnum[]
+  }
+
+  /**
+   * Modifier findFirstOrThrow
+   */
+  export type ModifierFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which Modifier to fetch.
+     */
+    where?: ModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Modifiers to fetch.
+     */
+    orderBy?: ModifierOrderByWithRelationInput | ModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Modifiers.
+     */
+    cursor?: ModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Modifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Modifiers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Modifiers.
+     */
+    distinct?: ModifierScalarFieldEnum | ModifierScalarFieldEnum[]
+  }
+
+  /**
+   * Modifier findMany
+   */
+  export type ModifierFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * Filter, which Modifiers to fetch.
+     */
+    where?: ModifierWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Modifiers to fetch.
+     */
+    orderBy?: ModifierOrderByWithRelationInput | ModifierOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Modifiers.
+     */
+    cursor?: ModifierWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Modifiers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Modifiers.
+     */
+    skip?: number
+    distinct?: ModifierScalarFieldEnum | ModifierScalarFieldEnum[]
+  }
+
+  /**
+   * Modifier create
+   */
+  export type ModifierCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Modifier.
+     */
+    data: XOR<ModifierCreateInput, ModifierUncheckedCreateInput>
+  }
+
+  /**
+   * Modifier createMany
+   */
+  export type ModifierCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Modifiers.
+     */
+    data: ModifierCreateManyInput | ModifierCreateManyInput[]
+  }
+
+  /**
+   * Modifier createManyAndReturn
+   */
+  export type ModifierCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * The data used to create many Modifiers.
+     */
+    data: ModifierCreateManyInput | ModifierCreateManyInput[]
+  }
+
+  /**
+   * Modifier update
+   */
+  export type ModifierUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Modifier.
+     */
+    data: XOR<ModifierUpdateInput, ModifierUncheckedUpdateInput>
+    /**
+     * Choose, which Modifier to update.
+     */
+    where: ModifierWhereUniqueInput
+  }
+
+  /**
+   * Modifier updateMany
+   */
+  export type ModifierUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Modifiers.
+     */
+    data: XOR<ModifierUpdateManyMutationInput, ModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which Modifiers to update
+     */
+    where?: ModifierWhereInput
+    /**
+     * Limit how many Modifiers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Modifier updateManyAndReturn
+   */
+  export type ModifierUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * The data used to update Modifiers.
+     */
+    data: XOR<ModifierUpdateManyMutationInput, ModifierUncheckedUpdateManyInput>
+    /**
+     * Filter which Modifiers to update
+     */
+    where?: ModifierWhereInput
+    /**
+     * Limit how many Modifiers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Modifier upsert
+   */
+  export type ModifierUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Modifier to update in case it exists.
+     */
+    where: ModifierWhereUniqueInput
+    /**
+     * In case the Modifier found by the `where` argument doesn't exist, create a new Modifier with this data.
+     */
+    create: XOR<ModifierCreateInput, ModifierUncheckedCreateInput>
+    /**
+     * In case the Modifier was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ModifierUpdateInput, ModifierUncheckedUpdateInput>
+  }
+
+  /**
+   * Modifier delete
+   */
+  export type ModifierDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+    /**
+     * Filter which Modifier to delete.
+     */
+    where: ModifierWhereUniqueInput
+  }
+
+  /**
+   * Modifier deleteMany
+   */
+  export type ModifierDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Modifiers to delete
+     */
+    where?: ModifierWhereInput
+    /**
+     * Limit how many Modifiers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Modifier.effects
+   */
+  export type Modifier$effectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EffectModifier
+     */
+    select?: EffectModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EffectModifier
+     */
+    omit?: EffectModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EffectModifierInclude<ExtArgs> | null
+    where?: EffectModifierWhereInput
+    orderBy?: EffectModifierOrderByWithRelationInput | EffectModifierOrderByWithRelationInput[]
+    cursor?: EffectModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EffectModifierScalarFieldEnum | EffectModifierScalarFieldEnum[]
+  }
+
+  /**
+   * Modifier.abilities
+   */
+  export type Modifier$abilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityModifier
+     */
+    select?: AbilityModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityModifier
+     */
+    omit?: AbilityModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityModifierInclude<ExtArgs> | null
+    where?: AbilityModifierWhereInput
+    orderBy?: AbilityModifierOrderByWithRelationInput | AbilityModifierOrderByWithRelationInput[]
+    cursor?: AbilityModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AbilityModifierScalarFieldEnum | AbilityModifierScalarFieldEnum[]
+  }
+
+  /**
+   * Modifier.items
+   */
+  export type Modifier$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemModifier
+     */
+    select?: ItemModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemModifier
+     */
+    omit?: ItemModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemModifierInclude<ExtArgs> | null
+    where?: ItemModifierWhereInput
+    orderBy?: ItemModifierOrderByWithRelationInput | ItemModifierOrderByWithRelationInput[]
+    cursor?: ItemModifierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ItemModifierScalarFieldEnum | ItemModifierScalarFieldEnum[]
+  }
+
+  /**
+   * Modifier without action
+   */
+  export type ModifierDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Modifier
+     */
+    select?: ModifierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Modifier
+     */
+    omit?: ModifierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModifierInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Attack
+   */
+
+  export type AggregateAttack = {
+    _count: AttackCountAggregateOutputType | null
+    _avg: AttackAvgAggregateOutputType | null
+    _sum: AttackSumAggregateOutputType | null
+    _min: AttackMinAggregateOutputType | null
+    _max: AttackMaxAggregateOutputType | null
+  }
+
+  export type AttackAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type AttackSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type AttackMinAggregateOutputType = {
+    id: number | null
+    category: string | null
+  }
+
+  export type AttackMaxAggregateOutputType = {
+    id: number | null
+    category: string | null
+  }
+
+  export type AttackCountAggregateOutputType = {
+    id: number
+    category: number
+    attackRoll: number
+    damage: number
+    critical: number
+    _all: number
+  }
+
+
+  export type AttackAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type AttackSumAggregateInputType = {
+    id?: true
+  }
+
+  export type AttackMinAggregateInputType = {
+    id?: true
+    category?: true
+  }
+
+  export type AttackMaxAggregateInputType = {
+    id?: true
+    category?: true
+  }
+
+  export type AttackCountAggregateInputType = {
+    id?: true
+    category?: true
+    attackRoll?: true
+    damage?: true
+    critical?: true
+    _all?: true
+  }
+
+  export type AttackAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Attack to aggregate.
+     */
+    where?: AttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attacks to fetch.
+     */
+    orderBy?: AttackOrderByWithRelationInput | AttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Attacks
+    **/
+    _count?: true | AttackCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AttackAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AttackSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AttackMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AttackMaxAggregateInputType
+  }
+
+  export type GetAttackAggregateType<T extends AttackAggregateArgs> = {
+        [P in keyof T & keyof AggregateAttack]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAttack[P]>
+      : GetScalarType<T[P], AggregateAttack[P]>
+  }
+
+
+
+
+  export type AttackGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttackWhereInput
+    orderBy?: AttackOrderByWithAggregationInput | AttackOrderByWithAggregationInput[]
+    by: AttackScalarFieldEnum[] | AttackScalarFieldEnum
+    having?: AttackScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AttackCountAggregateInputType | true
+    _avg?: AttackAvgAggregateInputType
+    _sum?: AttackSumAggregateInputType
+    _min?: AttackMinAggregateInputType
+    _max?: AttackMaxAggregateInputType
+  }
+
+  export type AttackGroupByOutputType = {
+    id: number
+    category: string
+    attackRoll: JsonValue
+    damage: JsonValue
+    critical: JsonValue
+    _count: AttackCountAggregateOutputType | null
+    _avg: AttackAvgAggregateOutputType | null
+    _sum: AttackSumAggregateOutputType | null
+    _min: AttackMinAggregateOutputType | null
+    _max: AttackMaxAggregateOutputType | null
+  }
+
+  type GetAttackGroupByPayload<T extends AttackGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AttackGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AttackGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AttackGroupByOutputType[P]>
+            : GetScalarType<T[P], AttackGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AttackSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    category?: boolean
+    attackRoll?: boolean
+    damage?: boolean
+    critical?: boolean
+    items?: boolean | Attack$itemsArgs<ExtArgs>
+    ability?: boolean | Attack$abilityArgs<ExtArgs>
+    _count?: boolean | AttackCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["attack"]>
+
+  export type AttackSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    category?: boolean
+    attackRoll?: boolean
+    damage?: boolean
+    critical?: boolean
+  }, ExtArgs["result"]["attack"]>
+
+  export type AttackSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    category?: boolean
+    attackRoll?: boolean
+    damage?: boolean
+    critical?: boolean
+  }, ExtArgs["result"]["attack"]>
+
+  export type AttackSelectScalar = {
+    id?: boolean
+    category?: boolean
+    attackRoll?: boolean
+    damage?: boolean
+    critical?: boolean
+  }
+
+  export type AttackOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "category" | "attackRoll" | "damage" | "critical", ExtArgs["result"]["attack"]>
+  export type AttackInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | Attack$itemsArgs<ExtArgs>
+    ability?: boolean | Attack$abilityArgs<ExtArgs>
+    _count?: boolean | AttackCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AttackIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AttackIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $AttackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Attack"
+    objects: {
+      items: Prisma.$ItemAttackPayload<ExtArgs>[]
+      ability: Prisma.$AbilityAttackPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      category: string
+      attackRoll: Prisma.JsonValue
+      damage: Prisma.JsonValue
+      critical: Prisma.JsonValue
+    }, ExtArgs["result"]["attack"]>
+    composites: {}
+  }
+
+  type AttackGetPayload<S extends boolean | null | undefined | AttackDefaultArgs> = $Result.GetResult<Prisma.$AttackPayload, S>
+
+  type AttackCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AttackFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AttackCountAggregateInputType | true
+    }
+
+  export interface AttackDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Attack'], meta: { name: 'Attack' } }
+    /**
+     * Find zero or one Attack that matches the filter.
+     * @param {AttackFindUniqueArgs} args - Arguments to find a Attack
+     * @example
+     * // Get one Attack
+     * const attack = await prisma.attack.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AttackFindUniqueArgs>(args: SelectSubset<T, AttackFindUniqueArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Attack that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AttackFindUniqueOrThrowArgs} args - Arguments to find a Attack
+     * @example
+     * // Get one Attack
+     * const attack = await prisma.attack.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AttackFindUniqueOrThrowArgs>(args: SelectSubset<T, AttackFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Attack that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttackFindFirstArgs} args - Arguments to find a Attack
+     * @example
+     * // Get one Attack
+     * const attack = await prisma.attack.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AttackFindFirstArgs>(args?: SelectSubset<T, AttackFindFirstArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Attack that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttackFindFirstOrThrowArgs} args - Arguments to find a Attack
+     * @example
+     * // Get one Attack
+     * const attack = await prisma.attack.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AttackFindFirstOrThrowArgs>(args?: SelectSubset<T, AttackFindFirstOrThrowArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Attacks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttackFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Attacks
+     * const attacks = await prisma.attack.findMany()
+     * 
+     * // Get first 10 Attacks
+     * const attacks = await prisma.attack.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const attackWithIdOnly = await prisma.attack.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AttackFindManyArgs>(args?: SelectSubset<T, AttackFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Attack.
+     * @param {AttackCreateArgs} args - Arguments to create a Attack.
+     * @example
+     * // Create one Attack
+     * const Attack = await prisma.attack.create({
+     *   data: {
+     *     // ... data to create a Attack
+     *   }
+     * })
+     * 
+     */
+    create<T extends AttackCreateArgs>(args: SelectSubset<T, AttackCreateArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Attacks.
+     * @param {AttackCreateManyArgs} args - Arguments to create many Attacks.
+     * @example
+     * // Create many Attacks
+     * const attack = await prisma.attack.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AttackCreateManyArgs>(args?: SelectSubset<T, AttackCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Attacks and returns the data saved in the database.
+     * @param {AttackCreateManyAndReturnArgs} args - Arguments to create many Attacks.
+     * @example
+     * // Create many Attacks
+     * const attack = await prisma.attack.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Attacks and only return the `id`
+     * const attackWithIdOnly = await prisma.attack.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AttackCreateManyAndReturnArgs>(args?: SelectSubset<T, AttackCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Attack.
+     * @param {AttackDeleteArgs} args - Arguments to delete one Attack.
+     * @example
+     * // Delete one Attack
+     * const Attack = await prisma.attack.delete({
+     *   where: {
+     *     // ... filter to delete one Attack
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AttackDeleteArgs>(args: SelectSubset<T, AttackDeleteArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Attack.
+     * @param {AttackUpdateArgs} args - Arguments to update one Attack.
+     * @example
+     * // Update one Attack
+     * const attack = await prisma.attack.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AttackUpdateArgs>(args: SelectSubset<T, AttackUpdateArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Attacks.
+     * @param {AttackDeleteManyArgs} args - Arguments to filter Attacks to delete.
+     * @example
+     * // Delete a few Attacks
+     * const { count } = await prisma.attack.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AttackDeleteManyArgs>(args?: SelectSubset<T, AttackDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Attacks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttackUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Attacks
+     * const attack = await prisma.attack.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AttackUpdateManyArgs>(args: SelectSubset<T, AttackUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Attacks and returns the data updated in the database.
+     * @param {AttackUpdateManyAndReturnArgs} args - Arguments to update many Attacks.
+     * @example
+     * // Update many Attacks
+     * const attack = await prisma.attack.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Attacks and only return the `id`
+     * const attackWithIdOnly = await prisma.attack.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AttackUpdateManyAndReturnArgs>(args: SelectSubset<T, AttackUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Attack.
+     * @param {AttackUpsertArgs} args - Arguments to update or create a Attack.
+     * @example
+     * // Update or create a Attack
+     * const attack = await prisma.attack.upsert({
+     *   create: {
+     *     // ... data to create a Attack
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Attack we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AttackUpsertArgs>(args: SelectSubset<T, AttackUpsertArgs<ExtArgs>>): Prisma__AttackClient<$Result.GetResult<Prisma.$AttackPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Attacks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttackCountArgs} args - Arguments to filter Attacks to count.
+     * @example
+     * // Count the number of Attacks
+     * const count = await prisma.attack.count({
+     *   where: {
+     *     // ... the filter for the Attacks we want to count
+     *   }
+     * })
+    **/
+    count<T extends AttackCountArgs>(
+      args?: Subset<T, AttackCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AttackCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Attack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttackAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AttackAggregateArgs>(args: Subset<T, AttackAggregateArgs>): Prisma.PrismaPromise<GetAttackAggregateType<T>>
+
+    /**
+     * Group by Attack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttackGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AttackGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AttackGroupByArgs['orderBy'] }
+        : { orderBy?: AttackGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AttackGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAttackGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Attack model
+   */
+  readonly fields: AttackFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Attack.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AttackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    items<T extends Attack$itemsArgs<ExtArgs> = {}>(args?: Subset<T, Attack$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemAttackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ability<T extends Attack$abilityArgs<ExtArgs> = {}>(args?: Subset<T, Attack$abilityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AbilityAttackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Attack model
+   */
+  interface AttackFieldRefs {
+    readonly id: FieldRef<"Attack", 'Int'>
+    readonly category: FieldRef<"Attack", 'String'>
+    readonly attackRoll: FieldRef<"Attack", 'Json'>
+    readonly damage: FieldRef<"Attack", 'Json'>
+    readonly critical: FieldRef<"Attack", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Attack findUnique
+   */
+  export type AttackFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * Filter, which Attack to fetch.
+     */
+    where: AttackWhereUniqueInput
+  }
+
+  /**
+   * Attack findUniqueOrThrow
+   */
+  export type AttackFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * Filter, which Attack to fetch.
+     */
+    where: AttackWhereUniqueInput
+  }
+
+  /**
+   * Attack findFirst
+   */
+  export type AttackFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * Filter, which Attack to fetch.
+     */
+    where?: AttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attacks to fetch.
+     */
+    orderBy?: AttackOrderByWithRelationInput | AttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Attacks.
+     */
+    cursor?: AttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Attacks.
+     */
+    distinct?: AttackScalarFieldEnum | AttackScalarFieldEnum[]
+  }
+
+  /**
+   * Attack findFirstOrThrow
+   */
+  export type AttackFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * Filter, which Attack to fetch.
+     */
+    where?: AttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attacks to fetch.
+     */
+    orderBy?: AttackOrderByWithRelationInput | AttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Attacks.
+     */
+    cursor?: AttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attacks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Attacks.
+     */
+    distinct?: AttackScalarFieldEnum | AttackScalarFieldEnum[]
+  }
+
+  /**
+   * Attack findMany
+   */
+  export type AttackFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * Filter, which Attacks to fetch.
+     */
+    where?: AttackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attacks to fetch.
+     */
+    orderBy?: AttackOrderByWithRelationInput | AttackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Attacks.
+     */
+    cursor?: AttackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attacks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attacks.
+     */
+    skip?: number
+    distinct?: AttackScalarFieldEnum | AttackScalarFieldEnum[]
+  }
+
+  /**
+   * Attack create
+   */
+  export type AttackCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Attack.
+     */
+    data: XOR<AttackCreateInput, AttackUncheckedCreateInput>
+  }
+
+  /**
+   * Attack createMany
+   */
+  export type AttackCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Attacks.
+     */
+    data: AttackCreateManyInput | AttackCreateManyInput[]
+  }
+
+  /**
+   * Attack createManyAndReturn
+   */
+  export type AttackCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * The data used to create many Attacks.
+     */
+    data: AttackCreateManyInput | AttackCreateManyInput[]
+  }
+
+  /**
+   * Attack update
+   */
+  export type AttackUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Attack.
+     */
+    data: XOR<AttackUpdateInput, AttackUncheckedUpdateInput>
+    /**
+     * Choose, which Attack to update.
+     */
+    where: AttackWhereUniqueInput
+  }
+
+  /**
+   * Attack updateMany
+   */
+  export type AttackUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Attacks.
+     */
+    data: XOR<AttackUpdateManyMutationInput, AttackUncheckedUpdateManyInput>
+    /**
+     * Filter which Attacks to update
+     */
+    where?: AttackWhereInput
+    /**
+     * Limit how many Attacks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Attack updateManyAndReturn
+   */
+  export type AttackUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * The data used to update Attacks.
+     */
+    data: XOR<AttackUpdateManyMutationInput, AttackUncheckedUpdateManyInput>
+    /**
+     * Filter which Attacks to update
+     */
+    where?: AttackWhereInput
+    /**
+     * Limit how many Attacks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Attack upsert
+   */
+  export type AttackUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Attack to update in case it exists.
+     */
+    where: AttackWhereUniqueInput
+    /**
+     * In case the Attack found by the `where` argument doesn't exist, create a new Attack with this data.
+     */
+    create: XOR<AttackCreateInput, AttackUncheckedCreateInput>
+    /**
+     * In case the Attack was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AttackUpdateInput, AttackUncheckedUpdateInput>
+  }
+
+  /**
+   * Attack delete
+   */
+  export type AttackDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
+    /**
+     * Filter which Attack to delete.
+     */
+    where: AttackWhereUniqueInput
+  }
+
+  /**
+   * Attack deleteMany
+   */
+  export type AttackDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Attacks to delete
+     */
+    where?: AttackWhereInput
+    /**
+     * Limit how many Attacks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Attack.items
+   */
+  export type Attack$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ItemAttack
+     */
+    select?: ItemAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ItemAttack
+     */
+    omit?: ItemAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ItemAttackInclude<ExtArgs> | null
+    where?: ItemAttackWhereInput
+    orderBy?: ItemAttackOrderByWithRelationInput | ItemAttackOrderByWithRelationInput[]
+    cursor?: ItemAttackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ItemAttackScalarFieldEnum | ItemAttackScalarFieldEnum[]
+  }
+
+  /**
+   * Attack.ability
+   */
+  export type Attack$abilityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AbilityAttack
+     */
+    select?: AbilityAttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AbilityAttack
+     */
+    omit?: AbilityAttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AbilityAttackInclude<ExtArgs> | null
+    where?: AbilityAttackWhereInput
+    orderBy?: AbilityAttackOrderByWithRelationInput | AbilityAttackOrderByWithRelationInput[]
+    cursor?: AbilityAttackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AbilityAttackScalarFieldEnum | AbilityAttackScalarFieldEnum[]
+  }
+
+  /**
+   * Attack without action
+   */
+  export type AttackDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attack
+     */
+    select?: AttackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attack
+     */
+    omit?: AttackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttackInclude<ExtArgs> | null
   }
 
 
@@ -10935,6 +19536,8 @@ export namespace Prisma {
     hpMax: 'hpMax',
     mp: 'mp',
     mpMax: 'mpMax',
+    condition: 'condition',
+    disable: 'disable',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -10965,9 +19568,9 @@ export namespace Prisma {
 
 
   export const ExpertiseCharacterScalarFieldEnum: {
-    id: 'id',
     characterId: 'characterId',
     expertiseId: 'expertiseId',
+    value: 'value',
     trained: 'trained',
     trainBonus: 'trainBonus'
   };
@@ -10977,7 +19580,7 @@ export namespace Prisma {
 
   export const InventoryScalarFieldEnum: {
     characterId: 'characterId',
-    load: 'load',
+    limit: 'limit',
     tibares: 'tibares'
   };
 
@@ -10985,6 +19588,7 @@ export namespace Prisma {
 
 
   export const InventoryItemScalarFieldEnum: {
+    id: 'id',
     inventoryId: 'inventoryId',
     type: 'type',
     name: 'name',
@@ -10993,29 +19597,59 @@ export namespace Prisma {
     slot: 'slot',
     isEquippable: 'isEquippable',
     equipped: 'equipped',
-    passive: 'passive',
-    attacks: 'attacks',
-    modifiers: 'modifiers'
+    passive: 'passive'
   };
 
   export type InventoryItemScalarFieldEnum = (typeof InventoryItemScalarFieldEnum)[keyof typeof InventoryItemScalarFieldEnum]
 
 
+  export const ItemModifierScalarFieldEnum: {
+    itemId: 'itemId',
+    modifierId: 'modifierId'
+  };
+
+  export type ItemModifierScalarFieldEnum = (typeof ItemModifierScalarFieldEnum)[keyof typeof ItemModifierScalarFieldEnum]
+
+
+  export const ItemAttackScalarFieldEnum: {
+    itemId: 'itemId',
+    attackId: 'attackId'
+  };
+
+  export type ItemAttackScalarFieldEnum = (typeof ItemAttackScalarFieldEnum)[keyof typeof ItemAttackScalarFieldEnum]
+
+
   export const AbilityScalarFieldEnum: {
+    id: 'id',
     characterId: 'characterId',
     type: 'type',
     name: 'name',
     description: 'description',
     passive: 'passive',
-    manaCost: 'manaCost',
-    attacks: 'attacks',
-    modifiers: 'modifiers'
+    manaCost: 'manaCost'
   };
 
   export type AbilityScalarFieldEnum = (typeof AbilityScalarFieldEnum)[keyof typeof AbilityScalarFieldEnum]
 
 
+  export const AbilityModifierScalarFieldEnum: {
+    abilityId: 'abilityId',
+    modifierId: 'modifierId'
+  };
+
+  export type AbilityModifierScalarFieldEnum = (typeof AbilityModifierScalarFieldEnum)[keyof typeof AbilityModifierScalarFieldEnum]
+
+
+  export const AbilityAttackScalarFieldEnum: {
+    abilityId: 'abilityId',
+    attackId: 'attackId'
+  };
+
+  export type AbilityAttackScalarFieldEnum = (typeof AbilityAttackScalarFieldEnum)[keyof typeof AbilityAttackScalarFieldEnum]
+
+
   export const EffectScalarFieldEnum: {
+    id: 'id',
     characterId: 'characterId',
     sourceType: 'sourceType',
     sourceId: 'sourceId',
@@ -11023,11 +19657,39 @@ export namespace Prisma {
     active: 'active',
     duration: 'duration',
     stacks: 'stacks',
-    modifiers: 'modifiers',
     startedAt: 'startedAt'
   };
 
   export type EffectScalarFieldEnum = (typeof EffectScalarFieldEnum)[keyof typeof EffectScalarFieldEnum]
+
+
+  export const EffectModifierScalarFieldEnum: {
+    effectId: 'effectId',
+    modifierId: 'modifierId'
+  };
+
+  export type EffectModifierScalarFieldEnum = (typeof EffectModifierScalarFieldEnum)[keyof typeof EffectModifierScalarFieldEnum]
+
+
+  export const ModifierScalarFieldEnum: {
+    id: 'id',
+    target: 'target',
+    value: 'value',
+    type: 'type'
+  };
+
+  export type ModifierScalarFieldEnum = (typeof ModifierScalarFieldEnum)[keyof typeof ModifierScalarFieldEnum]
+
+
+  export const AttackScalarFieldEnum: {
+    id: 'id',
+    category: 'category',
+    attackRoll: 'attackRoll',
+    damage: 'damage',
+    critical: 'critical'
+  };
+
+  export type AttackScalarFieldEnum = (typeof AttackScalarFieldEnum)[keyof typeof AttackScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11104,16 +19766,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
+   * Reference to a field of type 'Boolean'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
   /**
-   * Reference to a field of type 'Boolean'
+   * Reference to a field of type 'DateTime'
    */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
@@ -11150,6 +19812,8 @@ export namespace Prisma {
     hpMax?: IntFilter<"Character"> | number
     mp?: IntFilter<"Character"> | number
     mpMax?: IntFilter<"Character"> | number
+    condition?: StringFilter<"Character"> | string
+    disable?: BoolFilter<"Character"> | boolean
     createdAt?: DateTimeFilter<"Character"> | Date | string
     updatedAt?: DateTimeFilter<"Character"> | Date | string
     attributes?: XOR<AttributesNullableScalarRelationFilter, AttributesWhereInput> | null
@@ -11179,6 +19843,8 @@ export namespace Prisma {
     hpMax?: SortOrder
     mp?: SortOrder
     mpMax?: SortOrder
+    condition?: SortOrder
+    disable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     attributes?: AttributesOrderByWithRelationInput
@@ -11211,6 +19877,8 @@ export namespace Prisma {
     hpMax?: IntFilter<"Character"> | number
     mp?: IntFilter<"Character"> | number
     mpMax?: IntFilter<"Character"> | number
+    condition?: StringFilter<"Character"> | string
+    disable?: BoolFilter<"Character"> | boolean
     createdAt?: DateTimeFilter<"Character"> | Date | string
     updatedAt?: DateTimeFilter<"Character"> | Date | string
     attributes?: XOR<AttributesNullableScalarRelationFilter, AttributesWhereInput> | null
@@ -11240,6 +19908,8 @@ export namespace Prisma {
     hpMax?: SortOrder
     mp?: SortOrder
     mpMax?: SortOrder
+    condition?: SortOrder
+    disable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CharacterCountOrderByAggregateInput
@@ -11272,6 +19942,8 @@ export namespace Prisma {
     hpMax?: IntWithAggregatesFilter<"Character"> | number
     mp?: IntWithAggregatesFilter<"Character"> | number
     mpMax?: IntWithAggregatesFilter<"Character"> | number
+    condition?: StringWithAggregatesFilter<"Character"> | string
+    disable?: BoolWithAggregatesFilter<"Character"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Character"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Character"> | Date | string
   }
@@ -11394,9 +20066,9 @@ export namespace Prisma {
     AND?: ExpertiseCharacterWhereInput | ExpertiseCharacterWhereInput[]
     OR?: ExpertiseCharacterWhereInput[]
     NOT?: ExpertiseCharacterWhereInput | ExpertiseCharacterWhereInput[]
-    id?: IntFilter<"ExpertiseCharacter"> | number
     characterId?: IntFilter<"ExpertiseCharacter"> | number
     expertiseId?: IntFilter<"ExpertiseCharacter"> | number
+    value?: IntFilter<"ExpertiseCharacter"> | number
     trained?: BoolFilter<"ExpertiseCharacter"> | boolean
     trainBonus?: IntFilter<"ExpertiseCharacter"> | number
     character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
@@ -11404,9 +20076,9 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterOrderByWithRelationInput = {
-    id?: SortOrder
     characterId?: SortOrder
     expertiseId?: SortOrder
+    value?: SortOrder
     trained?: SortOrder
     trainBonus?: SortOrder
     character?: CharacterOrderByWithRelationInput
@@ -11414,22 +20086,23 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    characterId_expertiseId?: ExpertiseCharacterCharacterIdExpertiseIdCompoundUniqueInput
     AND?: ExpertiseCharacterWhereInput | ExpertiseCharacterWhereInput[]
     OR?: ExpertiseCharacterWhereInput[]
     NOT?: ExpertiseCharacterWhereInput | ExpertiseCharacterWhereInput[]
     characterId?: IntFilter<"ExpertiseCharacter"> | number
     expertiseId?: IntFilter<"ExpertiseCharacter"> | number
+    value?: IntFilter<"ExpertiseCharacter"> | number
     trained?: BoolFilter<"ExpertiseCharacter"> | boolean
     trainBonus?: IntFilter<"ExpertiseCharacter"> | number
     character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
     expertise?: XOR<ExpertiseScalarRelationFilter, ExpertiseWhereInput>
-  }, "id">
+  }, "characterId_expertiseId">
 
   export type ExpertiseCharacterOrderByWithAggregationInput = {
-    id?: SortOrder
     characterId?: SortOrder
     expertiseId?: SortOrder
+    value?: SortOrder
     trained?: SortOrder
     trainBonus?: SortOrder
     _count?: ExpertiseCharacterCountOrderByAggregateInput
@@ -11443,9 +20116,9 @@ export namespace Prisma {
     AND?: ExpertiseCharacterScalarWhereWithAggregatesInput | ExpertiseCharacterScalarWhereWithAggregatesInput[]
     OR?: ExpertiseCharacterScalarWhereWithAggregatesInput[]
     NOT?: ExpertiseCharacterScalarWhereWithAggregatesInput | ExpertiseCharacterScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"ExpertiseCharacter"> | number
     characterId?: IntWithAggregatesFilter<"ExpertiseCharacter"> | number
     expertiseId?: IntWithAggregatesFilter<"ExpertiseCharacter"> | number
+    value?: IntWithAggregatesFilter<"ExpertiseCharacter"> | number
     trained?: BoolWithAggregatesFilter<"ExpertiseCharacter"> | boolean
     trainBonus?: IntWithAggregatesFilter<"ExpertiseCharacter"> | number
   }
@@ -11455,7 +20128,7 @@ export namespace Prisma {
     OR?: InventoryWhereInput[]
     NOT?: InventoryWhereInput | InventoryWhereInput[]
     characterId?: IntFilter<"Inventory"> | number
-    load?: JsonFilter<"Inventory">
+    limit?: IntFilter<"Inventory"> | number
     tibares?: IntFilter<"Inventory"> | number
     items?: InventoryItemListRelationFilter
     character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
@@ -11463,7 +20136,7 @@ export namespace Prisma {
 
   export type InventoryOrderByWithRelationInput = {
     characterId?: SortOrder
-    load?: SortOrder
+    limit?: SortOrder
     tibares?: SortOrder
     items?: InventoryItemOrderByRelationAggregateInput
     character?: CharacterOrderByWithRelationInput
@@ -11474,7 +20147,7 @@ export namespace Prisma {
     AND?: InventoryWhereInput | InventoryWhereInput[]
     OR?: InventoryWhereInput[]
     NOT?: InventoryWhereInput | InventoryWhereInput[]
-    load?: JsonFilter<"Inventory">
+    limit?: IntFilter<"Inventory"> | number
     tibares?: IntFilter<"Inventory"> | number
     items?: InventoryItemListRelationFilter
     character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
@@ -11482,7 +20155,7 @@ export namespace Prisma {
 
   export type InventoryOrderByWithAggregationInput = {
     characterId?: SortOrder
-    load?: SortOrder
+    limit?: SortOrder
     tibares?: SortOrder
     _count?: InventoryCountOrderByAggregateInput
     _avg?: InventoryAvgOrderByAggregateInput
@@ -11496,11 +20169,47 @@ export namespace Prisma {
     OR?: InventoryScalarWhereWithAggregatesInput[]
     NOT?: InventoryScalarWhereWithAggregatesInput | InventoryScalarWhereWithAggregatesInput[]
     characterId?: IntWithAggregatesFilter<"Inventory"> | number
-    load?: JsonWithAggregatesFilter<"Inventory">
+    limit?: IntWithAggregatesFilter<"Inventory"> | number
     tibares?: IntWithAggregatesFilter<"Inventory"> | number
   }
 
   export type InventoryItemWhereInput = {
+    AND?: InventoryItemWhereInput | InventoryItemWhereInput[]
+    OR?: InventoryItemWhereInput[]
+    NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
+    id?: IntFilter<"InventoryItem"> | number
+    inventoryId?: IntFilter<"InventoryItem"> | number
+    type?: StringFilter<"InventoryItem"> | string
+    name?: StringFilter<"InventoryItem"> | string
+    description?: StringFilter<"InventoryItem"> | string
+    quantity?: IntFilter<"InventoryItem"> | number
+    slot?: IntFilter<"InventoryItem"> | number
+    isEquippable?: BoolFilter<"InventoryItem"> | boolean
+    equipped?: BoolFilter<"InventoryItem"> | boolean
+    passive?: BoolFilter<"InventoryItem"> | boolean
+    modifiers?: ItemModifierListRelationFilter
+    attacks?: ItemAttackListRelationFilter
+    inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
+  }
+
+  export type InventoryItemOrderByWithRelationInput = {
+    id?: SortOrder
+    inventoryId?: SortOrder
+    type?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    quantity?: SortOrder
+    slot?: SortOrder
+    isEquippable?: SortOrder
+    equipped?: SortOrder
+    passive?: SortOrder
+    modifiers?: ItemModifierOrderByRelationAggregateInput
+    attacks?: ItemAttackOrderByRelationAggregateInput
+    inventory?: InventoryOrderByWithRelationInput
+  }
+
+  export type InventoryItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
     AND?: InventoryItemWhereInput | InventoryItemWhereInput[]
     OR?: InventoryItemWhereInput[]
     NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
@@ -11513,45 +20222,13 @@ export namespace Prisma {
     isEquippable?: BoolFilter<"InventoryItem"> | boolean
     equipped?: BoolFilter<"InventoryItem"> | boolean
     passive?: BoolFilter<"InventoryItem"> | boolean
-    attacks?: JsonFilter<"InventoryItem">
-    modifiers?: JsonFilter<"InventoryItem">
+    modifiers?: ItemModifierListRelationFilter
+    attacks?: ItemAttackListRelationFilter
     inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
-  }
-
-  export type InventoryItemOrderByWithRelationInput = {
-    inventoryId?: SortOrder
-    type?: SortOrder
-    name?: SortOrder
-    description?: SortOrder
-    quantity?: SortOrder
-    slot?: SortOrder
-    isEquippable?: SortOrder
-    equipped?: SortOrder
-    passive?: SortOrder
-    attacks?: SortOrder
-    modifiers?: SortOrder
-    inventory?: InventoryOrderByWithRelationInput
-  }
-
-  export type InventoryItemWhereUniqueInput = Prisma.AtLeast<{
-    inventoryId?: number
-    AND?: InventoryItemWhereInput | InventoryItemWhereInput[]
-    OR?: InventoryItemWhereInput[]
-    NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
-    type?: StringFilter<"InventoryItem"> | string
-    name?: StringFilter<"InventoryItem"> | string
-    description?: StringFilter<"InventoryItem"> | string
-    quantity?: IntFilter<"InventoryItem"> | number
-    slot?: IntFilter<"InventoryItem"> | number
-    isEquippable?: BoolFilter<"InventoryItem"> | boolean
-    equipped?: BoolFilter<"InventoryItem"> | boolean
-    passive?: BoolFilter<"InventoryItem"> | boolean
-    attacks?: JsonFilter<"InventoryItem">
-    modifiers?: JsonFilter<"InventoryItem">
-    inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
-  }, "inventoryId">
+  }, "id">
 
   export type InventoryItemOrderByWithAggregationInput = {
+    id?: SortOrder
     inventoryId?: SortOrder
     type?: SortOrder
     name?: SortOrder
@@ -11561,8 +20238,6 @@ export namespace Prisma {
     isEquippable?: SortOrder
     equipped?: SortOrder
     passive?: SortOrder
-    attacks?: SortOrder
-    modifiers?: SortOrder
     _count?: InventoryItemCountOrderByAggregateInput
     _avg?: InventoryItemAvgOrderByAggregateInput
     _max?: InventoryItemMaxOrderByAggregateInput
@@ -11574,6 +20249,7 @@ export namespace Prisma {
     AND?: InventoryItemScalarWhereWithAggregatesInput | InventoryItemScalarWhereWithAggregatesInput[]
     OR?: InventoryItemScalarWhereWithAggregatesInput[]
     NOT?: InventoryItemScalarWhereWithAggregatesInput | InventoryItemScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"InventoryItem"> | number
     inventoryId?: IntWithAggregatesFilter<"InventoryItem"> | number
     type?: StringWithAggregatesFilter<"InventoryItem"> | string
     name?: StringWithAggregatesFilter<"InventoryItem"> | string
@@ -11583,11 +20259,131 @@ export namespace Prisma {
     isEquippable?: BoolWithAggregatesFilter<"InventoryItem"> | boolean
     equipped?: BoolWithAggregatesFilter<"InventoryItem"> | boolean
     passive?: BoolWithAggregatesFilter<"InventoryItem"> | boolean
-    attacks?: JsonWithAggregatesFilter<"InventoryItem">
-    modifiers?: JsonWithAggregatesFilter<"InventoryItem">
+  }
+
+  export type ItemModifierWhereInput = {
+    AND?: ItemModifierWhereInput | ItemModifierWhereInput[]
+    OR?: ItemModifierWhereInput[]
+    NOT?: ItemModifierWhereInput | ItemModifierWhereInput[]
+    itemId?: IntFilter<"ItemModifier"> | number
+    modifierId?: IntFilter<"ItemModifier"> | number
+    item?: XOR<InventoryItemScalarRelationFilter, InventoryItemWhereInput>
+    modifier?: XOR<ModifierScalarRelationFilter, ModifierWhereInput>
+  }
+
+  export type ItemModifierOrderByWithRelationInput = {
+    itemId?: SortOrder
+    modifierId?: SortOrder
+    item?: InventoryItemOrderByWithRelationInput
+    modifier?: ModifierOrderByWithRelationInput
+  }
+
+  export type ItemModifierWhereUniqueInput = Prisma.AtLeast<{
+    itemId_modifierId?: ItemModifierItemIdModifierIdCompoundUniqueInput
+    AND?: ItemModifierWhereInput | ItemModifierWhereInput[]
+    OR?: ItemModifierWhereInput[]
+    NOT?: ItemModifierWhereInput | ItemModifierWhereInput[]
+    itemId?: IntFilter<"ItemModifier"> | number
+    modifierId?: IntFilter<"ItemModifier"> | number
+    item?: XOR<InventoryItemScalarRelationFilter, InventoryItemWhereInput>
+    modifier?: XOR<ModifierScalarRelationFilter, ModifierWhereInput>
+  }, "itemId_modifierId">
+
+  export type ItemModifierOrderByWithAggregationInput = {
+    itemId?: SortOrder
+    modifierId?: SortOrder
+    _count?: ItemModifierCountOrderByAggregateInput
+    _avg?: ItemModifierAvgOrderByAggregateInput
+    _max?: ItemModifierMaxOrderByAggregateInput
+    _min?: ItemModifierMinOrderByAggregateInput
+    _sum?: ItemModifierSumOrderByAggregateInput
+  }
+
+  export type ItemModifierScalarWhereWithAggregatesInput = {
+    AND?: ItemModifierScalarWhereWithAggregatesInput | ItemModifierScalarWhereWithAggregatesInput[]
+    OR?: ItemModifierScalarWhereWithAggregatesInput[]
+    NOT?: ItemModifierScalarWhereWithAggregatesInput | ItemModifierScalarWhereWithAggregatesInput[]
+    itemId?: IntWithAggregatesFilter<"ItemModifier"> | number
+    modifierId?: IntWithAggregatesFilter<"ItemModifier"> | number
+  }
+
+  export type ItemAttackWhereInput = {
+    AND?: ItemAttackWhereInput | ItemAttackWhereInput[]
+    OR?: ItemAttackWhereInput[]
+    NOT?: ItemAttackWhereInput | ItemAttackWhereInput[]
+    itemId?: IntFilter<"ItemAttack"> | number
+    attackId?: IntFilter<"ItemAttack"> | number
+    item?: XOR<InventoryItemScalarRelationFilter, InventoryItemWhereInput>
+    attack?: XOR<AttackScalarRelationFilter, AttackWhereInput>
+  }
+
+  export type ItemAttackOrderByWithRelationInput = {
+    itemId?: SortOrder
+    attackId?: SortOrder
+    item?: InventoryItemOrderByWithRelationInput
+    attack?: AttackOrderByWithRelationInput
+  }
+
+  export type ItemAttackWhereUniqueInput = Prisma.AtLeast<{
+    itemId_attackId?: ItemAttackItemIdAttackIdCompoundUniqueInput
+    AND?: ItemAttackWhereInput | ItemAttackWhereInput[]
+    OR?: ItemAttackWhereInput[]
+    NOT?: ItemAttackWhereInput | ItemAttackWhereInput[]
+    itemId?: IntFilter<"ItemAttack"> | number
+    attackId?: IntFilter<"ItemAttack"> | number
+    item?: XOR<InventoryItemScalarRelationFilter, InventoryItemWhereInput>
+    attack?: XOR<AttackScalarRelationFilter, AttackWhereInput>
+  }, "itemId_attackId">
+
+  export type ItemAttackOrderByWithAggregationInput = {
+    itemId?: SortOrder
+    attackId?: SortOrder
+    _count?: ItemAttackCountOrderByAggregateInput
+    _avg?: ItemAttackAvgOrderByAggregateInput
+    _max?: ItemAttackMaxOrderByAggregateInput
+    _min?: ItemAttackMinOrderByAggregateInput
+    _sum?: ItemAttackSumOrderByAggregateInput
+  }
+
+  export type ItemAttackScalarWhereWithAggregatesInput = {
+    AND?: ItemAttackScalarWhereWithAggregatesInput | ItemAttackScalarWhereWithAggregatesInput[]
+    OR?: ItemAttackScalarWhereWithAggregatesInput[]
+    NOT?: ItemAttackScalarWhereWithAggregatesInput | ItemAttackScalarWhereWithAggregatesInput[]
+    itemId?: IntWithAggregatesFilter<"ItemAttack"> | number
+    attackId?: IntWithAggregatesFilter<"ItemAttack"> | number
   }
 
   export type AbilityWhereInput = {
+    AND?: AbilityWhereInput | AbilityWhereInput[]
+    OR?: AbilityWhereInput[]
+    NOT?: AbilityWhereInput | AbilityWhereInput[]
+    id?: IntFilter<"Ability"> | number
+    characterId?: IntFilter<"Ability"> | number
+    type?: StringFilter<"Ability"> | string
+    name?: StringFilter<"Ability"> | string
+    description?: StringFilter<"Ability"> | string
+    passive?: BoolFilter<"Ability"> | boolean
+    manaCost?: IntFilter<"Ability"> | number
+    character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
+    modifiers?: AbilityModifierListRelationFilter
+    attacks?: AbilityAttackListRelationFilter
+  }
+
+  export type AbilityOrderByWithRelationInput = {
+    id?: SortOrder
+    characterId?: SortOrder
+    type?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    passive?: SortOrder
+    manaCost?: SortOrder
+    character?: CharacterOrderByWithRelationInput
+    modifiers?: AbilityModifierOrderByRelationAggregateInput
+    attacks?: AbilityAttackOrderByRelationAggregateInput
+  }
+
+  export type AbilityWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
     AND?: AbilityWhereInput | AbilityWhereInput[]
     OR?: AbilityWhereInput[]
     NOT?: AbilityWhereInput | AbilityWhereInput[]
@@ -11597,47 +20393,19 @@ export namespace Prisma {
     description?: StringFilter<"Ability"> | string
     passive?: BoolFilter<"Ability"> | boolean
     manaCost?: IntFilter<"Ability"> | number
-    attacks?: JsonFilter<"Ability">
-    modifiers?: JsonFilter<"Ability">
     character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
-  }
-
-  export type AbilityOrderByWithRelationInput = {
-    characterId?: SortOrder
-    type?: SortOrder
-    name?: SortOrder
-    description?: SortOrder
-    passive?: SortOrder
-    manaCost?: SortOrder
-    attacks?: SortOrder
-    modifiers?: SortOrder
-    character?: CharacterOrderByWithRelationInput
-  }
-
-  export type AbilityWhereUniqueInput = Prisma.AtLeast<{
-    characterId?: number
-    AND?: AbilityWhereInput | AbilityWhereInput[]
-    OR?: AbilityWhereInput[]
-    NOT?: AbilityWhereInput | AbilityWhereInput[]
-    type?: StringFilter<"Ability"> | string
-    name?: StringFilter<"Ability"> | string
-    description?: StringFilter<"Ability"> | string
-    passive?: BoolFilter<"Ability"> | boolean
-    manaCost?: IntFilter<"Ability"> | number
-    attacks?: JsonFilter<"Ability">
-    modifiers?: JsonFilter<"Ability">
-    character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
-  }, "characterId">
+    modifiers?: AbilityModifierListRelationFilter
+    attacks?: AbilityAttackListRelationFilter
+  }, "id">
 
   export type AbilityOrderByWithAggregationInput = {
+    id?: SortOrder
     characterId?: SortOrder
     type?: SortOrder
     name?: SortOrder
     description?: SortOrder
     passive?: SortOrder
     manaCost?: SortOrder
-    attacks?: SortOrder
-    modifiers?: SortOrder
     _count?: AbilityCountOrderByAggregateInput
     _avg?: AbilityAvgOrderByAggregateInput
     _max?: AbilityMaxOrderByAggregateInput
@@ -11649,17 +20417,140 @@ export namespace Prisma {
     AND?: AbilityScalarWhereWithAggregatesInput | AbilityScalarWhereWithAggregatesInput[]
     OR?: AbilityScalarWhereWithAggregatesInput[]
     NOT?: AbilityScalarWhereWithAggregatesInput | AbilityScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Ability"> | number
     characterId?: IntWithAggregatesFilter<"Ability"> | number
     type?: StringWithAggregatesFilter<"Ability"> | string
     name?: StringWithAggregatesFilter<"Ability"> | string
     description?: StringWithAggregatesFilter<"Ability"> | string
     passive?: BoolWithAggregatesFilter<"Ability"> | boolean
     manaCost?: IntWithAggregatesFilter<"Ability"> | number
-    attacks?: JsonWithAggregatesFilter<"Ability">
-    modifiers?: JsonWithAggregatesFilter<"Ability">
+  }
+
+  export type AbilityModifierWhereInput = {
+    AND?: AbilityModifierWhereInput | AbilityModifierWhereInput[]
+    OR?: AbilityModifierWhereInput[]
+    NOT?: AbilityModifierWhereInput | AbilityModifierWhereInput[]
+    abilityId?: IntFilter<"AbilityModifier"> | number
+    modifierId?: IntFilter<"AbilityModifier"> | number
+    ability?: XOR<AbilityScalarRelationFilter, AbilityWhereInput>
+    modifier?: XOR<ModifierScalarRelationFilter, ModifierWhereInput>
+  }
+
+  export type AbilityModifierOrderByWithRelationInput = {
+    abilityId?: SortOrder
+    modifierId?: SortOrder
+    ability?: AbilityOrderByWithRelationInput
+    modifier?: ModifierOrderByWithRelationInput
+  }
+
+  export type AbilityModifierWhereUniqueInput = Prisma.AtLeast<{
+    abilityId_modifierId?: AbilityModifierAbilityIdModifierIdCompoundUniqueInput
+    AND?: AbilityModifierWhereInput | AbilityModifierWhereInput[]
+    OR?: AbilityModifierWhereInput[]
+    NOT?: AbilityModifierWhereInput | AbilityModifierWhereInput[]
+    abilityId?: IntFilter<"AbilityModifier"> | number
+    modifierId?: IntFilter<"AbilityModifier"> | number
+    ability?: XOR<AbilityScalarRelationFilter, AbilityWhereInput>
+    modifier?: XOR<ModifierScalarRelationFilter, ModifierWhereInput>
+  }, "abilityId_modifierId">
+
+  export type AbilityModifierOrderByWithAggregationInput = {
+    abilityId?: SortOrder
+    modifierId?: SortOrder
+    _count?: AbilityModifierCountOrderByAggregateInput
+    _avg?: AbilityModifierAvgOrderByAggregateInput
+    _max?: AbilityModifierMaxOrderByAggregateInput
+    _min?: AbilityModifierMinOrderByAggregateInput
+    _sum?: AbilityModifierSumOrderByAggregateInput
+  }
+
+  export type AbilityModifierScalarWhereWithAggregatesInput = {
+    AND?: AbilityModifierScalarWhereWithAggregatesInput | AbilityModifierScalarWhereWithAggregatesInput[]
+    OR?: AbilityModifierScalarWhereWithAggregatesInput[]
+    NOT?: AbilityModifierScalarWhereWithAggregatesInput | AbilityModifierScalarWhereWithAggregatesInput[]
+    abilityId?: IntWithAggregatesFilter<"AbilityModifier"> | number
+    modifierId?: IntWithAggregatesFilter<"AbilityModifier"> | number
+  }
+
+  export type AbilityAttackWhereInput = {
+    AND?: AbilityAttackWhereInput | AbilityAttackWhereInput[]
+    OR?: AbilityAttackWhereInput[]
+    NOT?: AbilityAttackWhereInput | AbilityAttackWhereInput[]
+    abilityId?: IntFilter<"AbilityAttack"> | number
+    attackId?: IntFilter<"AbilityAttack"> | number
+    ability?: XOR<AbilityScalarRelationFilter, AbilityWhereInput>
+    attack?: XOR<AttackScalarRelationFilter, AttackWhereInput>
+  }
+
+  export type AbilityAttackOrderByWithRelationInput = {
+    abilityId?: SortOrder
+    attackId?: SortOrder
+    ability?: AbilityOrderByWithRelationInput
+    attack?: AttackOrderByWithRelationInput
+  }
+
+  export type AbilityAttackWhereUniqueInput = Prisma.AtLeast<{
+    abilityId_attackId?: AbilityAttackAbilityIdAttackIdCompoundUniqueInput
+    AND?: AbilityAttackWhereInput | AbilityAttackWhereInput[]
+    OR?: AbilityAttackWhereInput[]
+    NOT?: AbilityAttackWhereInput | AbilityAttackWhereInput[]
+    abilityId?: IntFilter<"AbilityAttack"> | number
+    attackId?: IntFilter<"AbilityAttack"> | number
+    ability?: XOR<AbilityScalarRelationFilter, AbilityWhereInput>
+    attack?: XOR<AttackScalarRelationFilter, AttackWhereInput>
+  }, "abilityId_attackId">
+
+  export type AbilityAttackOrderByWithAggregationInput = {
+    abilityId?: SortOrder
+    attackId?: SortOrder
+    _count?: AbilityAttackCountOrderByAggregateInput
+    _avg?: AbilityAttackAvgOrderByAggregateInput
+    _max?: AbilityAttackMaxOrderByAggregateInput
+    _min?: AbilityAttackMinOrderByAggregateInput
+    _sum?: AbilityAttackSumOrderByAggregateInput
+  }
+
+  export type AbilityAttackScalarWhereWithAggregatesInput = {
+    AND?: AbilityAttackScalarWhereWithAggregatesInput | AbilityAttackScalarWhereWithAggregatesInput[]
+    OR?: AbilityAttackScalarWhereWithAggregatesInput[]
+    NOT?: AbilityAttackScalarWhereWithAggregatesInput | AbilityAttackScalarWhereWithAggregatesInput[]
+    abilityId?: IntWithAggregatesFilter<"AbilityAttack"> | number
+    attackId?: IntWithAggregatesFilter<"AbilityAttack"> | number
   }
 
   export type EffectWhereInput = {
+    AND?: EffectWhereInput | EffectWhereInput[]
+    OR?: EffectWhereInput[]
+    NOT?: EffectWhereInput | EffectWhereInput[]
+    id?: IntFilter<"Effect"> | number
+    characterId?: IntFilter<"Effect"> | number
+    sourceType?: StringFilter<"Effect"> | string
+    sourceId?: IntNullableFilter<"Effect"> | number | null
+    sourceName?: StringFilter<"Effect"> | string
+    active?: BoolFilter<"Effect"> | boolean
+    duration?: JsonFilter<"Effect">
+    stacks?: IntFilter<"Effect"> | number
+    startedAt?: DateTimeFilter<"Effect"> | Date | string
+    character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
+    modifiers?: EffectModifierListRelationFilter
+  }
+
+  export type EffectOrderByWithRelationInput = {
+    id?: SortOrder
+    characterId?: SortOrder
+    sourceType?: SortOrder
+    sourceId?: SortOrderInput | SortOrder
+    sourceName?: SortOrder
+    active?: SortOrder
+    duration?: SortOrder
+    stacks?: SortOrder
+    startedAt?: SortOrder
+    character?: CharacterOrderByWithRelationInput
+    modifiers?: EffectModifierOrderByRelationAggregateInput
+  }
+
+  export type EffectWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
     AND?: EffectWhereInput | EffectWhereInput[]
     OR?: EffectWhereInput[]
     NOT?: EffectWhereInput | EffectWhereInput[]
@@ -11670,41 +20561,13 @@ export namespace Prisma {
     active?: BoolFilter<"Effect"> | boolean
     duration?: JsonFilter<"Effect">
     stacks?: IntFilter<"Effect"> | number
-    modifiers?: JsonFilter<"Effect">
     startedAt?: DateTimeFilter<"Effect"> | Date | string
     character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
-  }
-
-  export type EffectOrderByWithRelationInput = {
-    characterId?: SortOrder
-    sourceType?: SortOrder
-    sourceId?: SortOrderInput | SortOrder
-    sourceName?: SortOrder
-    active?: SortOrder
-    duration?: SortOrder
-    stacks?: SortOrder
-    modifiers?: SortOrder
-    startedAt?: SortOrder
-    character?: CharacterOrderByWithRelationInput
-  }
-
-  export type EffectWhereUniqueInput = Prisma.AtLeast<{
-    characterId?: number
-    AND?: EffectWhereInput | EffectWhereInput[]
-    OR?: EffectWhereInput[]
-    NOT?: EffectWhereInput | EffectWhereInput[]
-    sourceType?: StringFilter<"Effect"> | string
-    sourceId?: IntNullableFilter<"Effect"> | number | null
-    sourceName?: StringFilter<"Effect"> | string
-    active?: BoolFilter<"Effect"> | boolean
-    duration?: JsonFilter<"Effect">
-    stacks?: IntFilter<"Effect"> | number
-    modifiers?: JsonFilter<"Effect">
-    startedAt?: DateTimeFilter<"Effect"> | Date | string
-    character?: XOR<CharacterScalarRelationFilter, CharacterWhereInput>
-  }, "characterId">
+    modifiers?: EffectModifierListRelationFilter
+  }, "id">
 
   export type EffectOrderByWithAggregationInput = {
+    id?: SortOrder
     characterId?: SortOrder
     sourceType?: SortOrder
     sourceId?: SortOrderInput | SortOrder
@@ -11712,7 +20575,6 @@ export namespace Prisma {
     active?: SortOrder
     duration?: SortOrder
     stacks?: SortOrder
-    modifiers?: SortOrder
     startedAt?: SortOrder
     _count?: EffectCountOrderByAggregateInput
     _avg?: EffectAvgOrderByAggregateInput
@@ -11725,6 +20587,7 @@ export namespace Prisma {
     AND?: EffectScalarWhereWithAggregatesInput | EffectScalarWhereWithAggregatesInput[]
     OR?: EffectScalarWhereWithAggregatesInput[]
     NOT?: EffectScalarWhereWithAggregatesInput | EffectScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Effect"> | number
     characterId?: IntWithAggregatesFilter<"Effect"> | number
     sourceType?: StringWithAggregatesFilter<"Effect"> | string
     sourceId?: IntNullableWithAggregatesFilter<"Effect"> | number | null
@@ -11732,8 +20595,171 @@ export namespace Prisma {
     active?: BoolWithAggregatesFilter<"Effect"> | boolean
     duration?: JsonWithAggregatesFilter<"Effect">
     stacks?: IntWithAggregatesFilter<"Effect"> | number
-    modifiers?: JsonWithAggregatesFilter<"Effect">
     startedAt?: DateTimeWithAggregatesFilter<"Effect"> | Date | string
+  }
+
+  export type EffectModifierWhereInput = {
+    AND?: EffectModifierWhereInput | EffectModifierWhereInput[]
+    OR?: EffectModifierWhereInput[]
+    NOT?: EffectModifierWhereInput | EffectModifierWhereInput[]
+    effectId?: IntFilter<"EffectModifier"> | number
+    modifierId?: IntFilter<"EffectModifier"> | number
+    effect?: XOR<EffectScalarRelationFilter, EffectWhereInput>
+    modifier?: XOR<ModifierScalarRelationFilter, ModifierWhereInput>
+  }
+
+  export type EffectModifierOrderByWithRelationInput = {
+    effectId?: SortOrder
+    modifierId?: SortOrder
+    effect?: EffectOrderByWithRelationInput
+    modifier?: ModifierOrderByWithRelationInput
+  }
+
+  export type EffectModifierWhereUniqueInput = Prisma.AtLeast<{
+    effectId_modifierId?: EffectModifierEffectIdModifierIdCompoundUniqueInput
+    AND?: EffectModifierWhereInput | EffectModifierWhereInput[]
+    OR?: EffectModifierWhereInput[]
+    NOT?: EffectModifierWhereInput | EffectModifierWhereInput[]
+    effectId?: IntFilter<"EffectModifier"> | number
+    modifierId?: IntFilter<"EffectModifier"> | number
+    effect?: XOR<EffectScalarRelationFilter, EffectWhereInput>
+    modifier?: XOR<ModifierScalarRelationFilter, ModifierWhereInput>
+  }, "effectId_modifierId">
+
+  export type EffectModifierOrderByWithAggregationInput = {
+    effectId?: SortOrder
+    modifierId?: SortOrder
+    _count?: EffectModifierCountOrderByAggregateInput
+    _avg?: EffectModifierAvgOrderByAggregateInput
+    _max?: EffectModifierMaxOrderByAggregateInput
+    _min?: EffectModifierMinOrderByAggregateInput
+    _sum?: EffectModifierSumOrderByAggregateInput
+  }
+
+  export type EffectModifierScalarWhereWithAggregatesInput = {
+    AND?: EffectModifierScalarWhereWithAggregatesInput | EffectModifierScalarWhereWithAggregatesInput[]
+    OR?: EffectModifierScalarWhereWithAggregatesInput[]
+    NOT?: EffectModifierScalarWhereWithAggregatesInput | EffectModifierScalarWhereWithAggregatesInput[]
+    effectId?: IntWithAggregatesFilter<"EffectModifier"> | number
+    modifierId?: IntWithAggregatesFilter<"EffectModifier"> | number
+  }
+
+  export type ModifierWhereInput = {
+    AND?: ModifierWhereInput | ModifierWhereInput[]
+    OR?: ModifierWhereInput[]
+    NOT?: ModifierWhereInput | ModifierWhereInput[]
+    id?: IntFilter<"Modifier"> | number
+    target?: JsonFilter<"Modifier">
+    value?: IntFilter<"Modifier"> | number
+    type?: StringFilter<"Modifier"> | string
+    effects?: EffectModifierListRelationFilter
+    abilities?: AbilityModifierListRelationFilter
+    items?: ItemModifierListRelationFilter
+  }
+
+  export type ModifierOrderByWithRelationInput = {
+    id?: SortOrder
+    target?: SortOrder
+    value?: SortOrder
+    type?: SortOrder
+    effects?: EffectModifierOrderByRelationAggregateInput
+    abilities?: AbilityModifierOrderByRelationAggregateInput
+    items?: ItemModifierOrderByRelationAggregateInput
+  }
+
+  export type ModifierWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ModifierWhereInput | ModifierWhereInput[]
+    OR?: ModifierWhereInput[]
+    NOT?: ModifierWhereInput | ModifierWhereInput[]
+    target?: JsonFilter<"Modifier">
+    value?: IntFilter<"Modifier"> | number
+    type?: StringFilter<"Modifier"> | string
+    effects?: EffectModifierListRelationFilter
+    abilities?: AbilityModifierListRelationFilter
+    items?: ItemModifierListRelationFilter
+  }, "id">
+
+  export type ModifierOrderByWithAggregationInput = {
+    id?: SortOrder
+    target?: SortOrder
+    value?: SortOrder
+    type?: SortOrder
+    _count?: ModifierCountOrderByAggregateInput
+    _avg?: ModifierAvgOrderByAggregateInput
+    _max?: ModifierMaxOrderByAggregateInput
+    _min?: ModifierMinOrderByAggregateInput
+    _sum?: ModifierSumOrderByAggregateInput
+  }
+
+  export type ModifierScalarWhereWithAggregatesInput = {
+    AND?: ModifierScalarWhereWithAggregatesInput | ModifierScalarWhereWithAggregatesInput[]
+    OR?: ModifierScalarWhereWithAggregatesInput[]
+    NOT?: ModifierScalarWhereWithAggregatesInput | ModifierScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Modifier"> | number
+    target?: JsonWithAggregatesFilter<"Modifier">
+    value?: IntWithAggregatesFilter<"Modifier"> | number
+    type?: StringWithAggregatesFilter<"Modifier"> | string
+  }
+
+  export type AttackWhereInput = {
+    AND?: AttackWhereInput | AttackWhereInput[]
+    OR?: AttackWhereInput[]
+    NOT?: AttackWhereInput | AttackWhereInput[]
+    id?: IntFilter<"Attack"> | number
+    category?: StringFilter<"Attack"> | string
+    attackRoll?: JsonFilter<"Attack">
+    damage?: JsonFilter<"Attack">
+    critical?: JsonFilter<"Attack">
+    items?: ItemAttackListRelationFilter
+    ability?: AbilityAttackListRelationFilter
+  }
+
+  export type AttackOrderByWithRelationInput = {
+    id?: SortOrder
+    category?: SortOrder
+    attackRoll?: SortOrder
+    damage?: SortOrder
+    critical?: SortOrder
+    items?: ItemAttackOrderByRelationAggregateInput
+    ability?: AbilityAttackOrderByRelationAggregateInput
+  }
+
+  export type AttackWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AttackWhereInput | AttackWhereInput[]
+    OR?: AttackWhereInput[]
+    NOT?: AttackWhereInput | AttackWhereInput[]
+    category?: StringFilter<"Attack"> | string
+    attackRoll?: JsonFilter<"Attack">
+    damage?: JsonFilter<"Attack">
+    critical?: JsonFilter<"Attack">
+    items?: ItemAttackListRelationFilter
+    ability?: AbilityAttackListRelationFilter
+  }, "id">
+
+  export type AttackOrderByWithAggregationInput = {
+    id?: SortOrder
+    category?: SortOrder
+    attackRoll?: SortOrder
+    damage?: SortOrder
+    critical?: SortOrder
+    _count?: AttackCountOrderByAggregateInput
+    _avg?: AttackAvgOrderByAggregateInput
+    _max?: AttackMaxOrderByAggregateInput
+    _min?: AttackMinOrderByAggregateInput
+    _sum?: AttackSumOrderByAggregateInput
+  }
+
+  export type AttackScalarWhereWithAggregatesInput = {
+    AND?: AttackScalarWhereWithAggregatesInput | AttackScalarWhereWithAggregatesInput[]
+    OR?: AttackScalarWhereWithAggregatesInput[]
+    NOT?: AttackScalarWhereWithAggregatesInput | AttackScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Attack"> | number
+    category?: StringWithAggregatesFilter<"Attack"> | string
+    attackRoll?: JsonWithAggregatesFilter<"Attack">
+    damage?: JsonWithAggregatesFilter<"Attack">
+    critical?: JsonWithAggregatesFilter<"Attack">
   }
 
   export type CharacterCreateInput = {
@@ -11755,6 +20781,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesCreateNestedOneWithoutCharacterInput
@@ -11784,6 +20812,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesUncheckedCreateNestedOneWithoutCharacterInput
@@ -11812,6 +20842,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUpdateOneWithoutCharacterNestedInput
@@ -11841,6 +20873,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUncheckedUpdateOneWithoutCharacterNestedInput
@@ -11870,6 +20904,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11893,6 +20929,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11917,28 +20955,30 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AttributesCreateInput = {
-    strength: number
-    dexterity: number
-    constitution: number
-    intelligence: number
-    wisdom: number
-    charisma: number
+    strength?: number
+    dexterity?: number
+    constitution?: number
+    intelligence?: number
+    wisdom?: number
+    charisma?: number
     character: CharacterCreateNestedOneWithoutAttributesInput
   }
 
   export type AttributesUncheckedCreateInput = {
     characterId: number
-    strength: number
-    dexterity: number
-    constitution: number
-    intelligence: number
-    wisdom: number
-    charisma: number
+    strength?: number
+    dexterity?: number
+    constitution?: number
+    intelligence?: number
+    wisdom?: number
+    charisma?: number
   }
 
   export type AttributesUpdateInput = {
@@ -11963,12 +21003,12 @@ export namespace Prisma {
 
   export type AttributesCreateManyInput = {
     characterId: number
-    strength: number
-    dexterity: number
-    constitution: number
-    intelligence: number
-    wisdom: number
-    charisma: number
+    strength?: number
+    dexterity?: number
+    constitution?: number
+    intelligence?: number
+    wisdom?: number
+    charisma?: number
   }
 
   export type AttributesUpdateManyMutationInput = {
@@ -12034,6 +21074,7 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterCreateInput = {
+    value?: number
     trained?: boolean
     trainBonus?: number
     character: CharacterCreateNestedOneWithoutExpertisiesInput
@@ -12041,14 +21082,15 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterUncheckedCreateInput = {
-    id?: number
     characterId: number
     expertiseId: number
+    value?: number
     trained?: boolean
     trainBonus?: number
   }
 
   export type ExpertiseCharacterUpdateInput = {
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
     character?: CharacterUpdateOneRequiredWithoutExpertisiesNestedInput
@@ -12056,50 +21098,51 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     expertiseId?: IntFieldUpdateOperationsInput | number
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpertiseCharacterCreateManyInput = {
-    id?: number
     characterId: number
     expertiseId: number
+    value?: number
     trained?: boolean
     trainBonus?: number
   }
 
   export type ExpertiseCharacterUpdateManyMutationInput = {
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpertiseCharacterUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     expertiseId?: IntFieldUpdateOperationsInput | number
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryCreateInput = {
-    load: JsonNullValueInput | InputJsonValue
-    tibares: number
+    limit?: number
+    tibares?: number
     items?: InventoryItemCreateNestedManyWithoutInventoryInput
     character: CharacterCreateNestedOneWithoutInventoryInput
   }
 
   export type InventoryUncheckedCreateInput = {
     characterId: number
-    load: JsonNullValueInput | InputJsonValue
-    tibares: number
+    limit?: number
+    tibares?: number
     items?: InventoryItemUncheckedCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryUpdateInput = {
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
     items?: InventoryItemUpdateManyWithoutInventoryNestedInput
     character?: CharacterUpdateOneRequiredWithoutInventoryNestedInput
@@ -12107,25 +21150,25 @@ export namespace Prisma {
 
   export type InventoryUncheckedUpdateInput = {
     characterId?: IntFieldUpdateOperationsInput | number
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
     items?: InventoryItemUncheckedUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryCreateManyInput = {
     characterId: number
-    load: JsonNullValueInput | InputJsonValue
-    tibares: number
+    limit?: number
+    tibares?: number
   }
 
   export type InventoryUpdateManyMutationInput = {
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryUncheckedUpdateManyInput = {
     characterId?: IntFieldUpdateOperationsInput | number
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
   }
 
@@ -12138,12 +21181,13 @@ export namespace Prisma {
     isEquippable: boolean
     equipped: boolean
     passive: boolean
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierCreateNestedManyWithoutItemInput
+    attacks?: ItemAttackCreateNestedManyWithoutItemInput
     inventory: InventoryCreateNestedOneWithoutItemsInput
   }
 
   export type InventoryItemUncheckedCreateInput = {
+    id?: number
     inventoryId: number
     type: string
     name: string
@@ -12153,8 +21197,8 @@ export namespace Prisma {
     isEquippable: boolean
     equipped: boolean
     passive: boolean
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierUncheckedCreateNestedManyWithoutItemInput
+    attacks?: ItemAttackUncheckedCreateNestedManyWithoutItemInput
   }
 
   export type InventoryItemUpdateInput = {
@@ -12166,12 +21210,13 @@ export namespace Prisma {
     isEquippable?: BoolFieldUpdateOperationsInput | boolean
     equipped?: BoolFieldUpdateOperationsInput | boolean
     passive?: BoolFieldUpdateOperationsInput | boolean
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierUpdateManyWithoutItemNestedInput
+    attacks?: ItemAttackUpdateManyWithoutItemNestedInput
     inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
   }
 
   export type InventoryItemUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     inventoryId?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -12181,11 +21226,12 @@ export namespace Prisma {
     isEquippable?: BoolFieldUpdateOperationsInput | boolean
     equipped?: BoolFieldUpdateOperationsInput | boolean
     passive?: BoolFieldUpdateOperationsInput | boolean
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierUncheckedUpdateManyWithoutItemNestedInput
+    attacks?: ItemAttackUncheckedUpdateManyWithoutItemNestedInput
   }
 
   export type InventoryItemCreateManyInput = {
+    id?: number
     inventoryId: number
     type: string
     name: string
@@ -12195,8 +21241,6 @@ export namespace Prisma {
     isEquippable: boolean
     equipped: boolean
     passive: boolean
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
   }
 
   export type InventoryItemUpdateManyMutationInput = {
@@ -12208,11 +21252,10 @@ export namespace Prisma {
     isEquippable?: BoolFieldUpdateOperationsInput | boolean
     equipped?: BoolFieldUpdateOperationsInput | boolean
     passive?: BoolFieldUpdateOperationsInput | boolean
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
   }
 
   export type InventoryItemUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
     inventoryId?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -12222,8 +21265,74 @@ export namespace Prisma {
     isEquippable?: BoolFieldUpdateOperationsInput | boolean
     equipped?: BoolFieldUpdateOperationsInput | boolean
     passive?: BoolFieldUpdateOperationsInput | boolean
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type ItemModifierCreateInput = {
+    item: InventoryItemCreateNestedOneWithoutModifiersInput
+    modifier: ModifierCreateNestedOneWithoutItemsInput
+  }
+
+  export type ItemModifierUncheckedCreateInput = {
+    itemId: number
+    modifierId: number
+  }
+
+  export type ItemModifierUpdateInput = {
+    item?: InventoryItemUpdateOneRequiredWithoutModifiersNestedInput
+    modifier?: ModifierUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type ItemModifierUncheckedUpdateInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemModifierCreateManyInput = {
+    itemId: number
+    modifierId: number
+  }
+
+  export type ItemModifierUpdateManyMutationInput = {
+
+  }
+
+  export type ItemModifierUncheckedUpdateManyInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemAttackCreateInput = {
+    item: InventoryItemCreateNestedOneWithoutAttacksInput
+    attack: AttackCreateNestedOneWithoutItemsInput
+  }
+
+  export type ItemAttackUncheckedCreateInput = {
+    itemId: number
+    attackId: number
+  }
+
+  export type ItemAttackUpdateInput = {
+    item?: InventoryItemUpdateOneRequiredWithoutAttacksNestedInput
+    attack?: AttackUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type ItemAttackUncheckedUpdateInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+    attackId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemAttackCreateManyInput = {
+    itemId: number
+    attackId: number
+  }
+
+  export type ItemAttackUpdateManyMutationInput = {
+
+  }
+
+  export type ItemAttackUncheckedUpdateManyInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+    attackId?: IntFieldUpdateOperationsInput | number
   }
 
   export type AbilityCreateInput = {
@@ -12232,20 +21341,21 @@ export namespace Prisma {
     description: string
     passive: boolean
     manaCost: number
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
     character: CharacterCreateNestedOneWithoutAbilitiesInput
+    modifiers?: AbilityModifierCreateNestedManyWithoutAbilityInput
+    attacks?: AbilityAttackCreateNestedManyWithoutAbilityInput
   }
 
   export type AbilityUncheckedCreateInput = {
+    id?: number
     characterId: number
     type: string
     name: string
     description: string
     passive: boolean
     manaCost: number
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+    modifiers?: AbilityModifierUncheckedCreateNestedManyWithoutAbilityInput
+    attacks?: AbilityAttackUncheckedCreateNestedManyWithoutAbilityInput
   }
 
   export type AbilityUpdateInput = {
@@ -12254,31 +21364,31 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     passive?: BoolFieldUpdateOperationsInput | boolean
     manaCost?: IntFieldUpdateOperationsInput | number
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
     character?: CharacterUpdateOneRequiredWithoutAbilitiesNestedInput
+    modifiers?: AbilityModifierUpdateManyWithoutAbilityNestedInput
+    attacks?: AbilityAttackUpdateManyWithoutAbilityNestedInput
   }
 
   export type AbilityUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     passive?: BoolFieldUpdateOperationsInput | boolean
     manaCost?: IntFieldUpdateOperationsInput | number
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+    modifiers?: AbilityModifierUncheckedUpdateManyWithoutAbilityNestedInput
+    attacks?: AbilityAttackUncheckedUpdateManyWithoutAbilityNestedInput
   }
 
   export type AbilityCreateManyInput = {
+    id?: number
     characterId: number
     type: string
     name: string
     description: string
     passive: boolean
     manaCost: number
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
   }
 
   export type AbilityUpdateManyMutationInput = {
@@ -12287,19 +21397,84 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     passive?: BoolFieldUpdateOperationsInput | boolean
     manaCost?: IntFieldUpdateOperationsInput | number
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
   }
 
   export type AbilityUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     passive?: BoolFieldUpdateOperationsInput | boolean
     manaCost?: IntFieldUpdateOperationsInput | number
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type AbilityModifierCreateInput = {
+    ability: AbilityCreateNestedOneWithoutModifiersInput
+    modifier: ModifierCreateNestedOneWithoutAbilitiesInput
+  }
+
+  export type AbilityModifierUncheckedCreateInput = {
+    abilityId: number
+    modifierId: number
+  }
+
+  export type AbilityModifierUpdateInput = {
+    ability?: AbilityUpdateOneRequiredWithoutModifiersNestedInput
+    modifier?: ModifierUpdateOneRequiredWithoutAbilitiesNestedInput
+  }
+
+  export type AbilityModifierUncheckedUpdateInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityModifierCreateManyInput = {
+    abilityId: number
+    modifierId: number
+  }
+
+  export type AbilityModifierUpdateManyMutationInput = {
+
+  }
+
+  export type AbilityModifierUncheckedUpdateManyInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityAttackCreateInput = {
+    ability: AbilityCreateNestedOneWithoutAttacksInput
+    attack: AttackCreateNestedOneWithoutAbilityInput
+  }
+
+  export type AbilityAttackUncheckedCreateInput = {
+    abilityId: number
+    attackId: number
+  }
+
+  export type AbilityAttackUpdateInput = {
+    ability?: AbilityUpdateOneRequiredWithoutAttacksNestedInput
+    attack?: AttackUpdateOneRequiredWithoutAbilityNestedInput
+  }
+
+  export type AbilityAttackUncheckedUpdateInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
+    attackId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityAttackCreateManyInput = {
+    abilityId: number
+    attackId: number
+  }
+
+  export type AbilityAttackUpdateManyMutationInput = {
+
+  }
+
+  export type AbilityAttackUncheckedUpdateManyInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
+    attackId?: IntFieldUpdateOperationsInput | number
   }
 
   export type EffectCreateInput = {
@@ -12309,12 +21484,13 @@ export namespace Prisma {
     active: boolean
     duration: JsonNullValueInput | InputJsonValue
     stacks: number
-    modifiers: JsonNullValueInput | InputJsonValue
     startedAt: Date | string
     character: CharacterCreateNestedOneWithoutEffectsInput
+    modifiers?: EffectModifierCreateNestedManyWithoutEffectInput
   }
 
   export type EffectUncheckedCreateInput = {
+    id?: number
     characterId: number
     sourceType: string
     sourceId?: number | null
@@ -12322,8 +21498,8 @@ export namespace Prisma {
     active: boolean
     duration: JsonNullValueInput | InputJsonValue
     stacks: number
-    modifiers: JsonNullValueInput | InputJsonValue
     startedAt: Date | string
+    modifiers?: EffectModifierUncheckedCreateNestedManyWithoutEffectInput
   }
 
   export type EffectUpdateInput = {
@@ -12333,12 +21509,13 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     duration?: JsonNullValueInput | InputJsonValue
     stacks?: IntFieldUpdateOperationsInput | number
-    modifiers?: JsonNullValueInput | InputJsonValue
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     character?: CharacterUpdateOneRequiredWithoutEffectsNestedInput
+    modifiers?: EffectModifierUpdateManyWithoutEffectNestedInput
   }
 
   export type EffectUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
     sourceId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12346,11 +21523,12 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     duration?: JsonNullValueInput | InputJsonValue
     stacks?: IntFieldUpdateOperationsInput | number
-    modifiers?: JsonNullValueInput | InputJsonValue
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifiers?: EffectModifierUncheckedUpdateManyWithoutEffectNestedInput
   }
 
   export type EffectCreateManyInput = {
+    id?: number
     characterId: number
     sourceType: string
     sourceId?: number | null
@@ -12358,7 +21536,6 @@ export namespace Prisma {
     active: boolean
     duration: JsonNullValueInput | InputJsonValue
     stacks: number
-    modifiers: JsonNullValueInput | InputJsonValue
     startedAt: Date | string
   }
 
@@ -12369,11 +21546,11 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     duration?: JsonNullValueInput | InputJsonValue
     stacks?: IntFieldUpdateOperationsInput | number
-    modifiers?: JsonNullValueInput | InputJsonValue
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EffectUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
     sourceId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -12381,8 +21558,160 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     duration?: JsonNullValueInput | InputJsonValue
     stacks?: IntFieldUpdateOperationsInput | number
-    modifiers?: JsonNullValueInput | InputJsonValue
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EffectModifierCreateInput = {
+    effect: EffectCreateNestedOneWithoutModifiersInput
+    modifier: ModifierCreateNestedOneWithoutEffectsInput
+  }
+
+  export type EffectModifierUncheckedCreateInput = {
+    effectId: number
+    modifierId: number
+  }
+
+  export type EffectModifierUpdateInput = {
+    effect?: EffectUpdateOneRequiredWithoutModifiersNestedInput
+    modifier?: ModifierUpdateOneRequiredWithoutEffectsNestedInput
+  }
+
+  export type EffectModifierUncheckedUpdateInput = {
+    effectId?: IntFieldUpdateOperationsInput | number
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EffectModifierCreateManyInput = {
+    effectId: number
+    modifierId: number
+  }
+
+  export type EffectModifierUpdateManyMutationInput = {
+
+  }
+
+  export type EffectModifierUncheckedUpdateManyInput = {
+    effectId?: IntFieldUpdateOperationsInput | number
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ModifierCreateInput = {
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    effects?: EffectModifierCreateNestedManyWithoutModifierInput
+    abilities?: AbilityModifierCreateNestedManyWithoutModifierInput
+    items?: ItemModifierCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierUncheckedCreateInput = {
+    id?: number
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    effects?: EffectModifierUncheckedCreateNestedManyWithoutModifierInput
+    abilities?: AbilityModifierUncheckedCreateNestedManyWithoutModifierInput
+    items?: ItemModifierUncheckedCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierUpdateInput = {
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    effects?: EffectModifierUpdateManyWithoutModifierNestedInput
+    abilities?: AbilityModifierUpdateManyWithoutModifierNestedInput
+    items?: ItemModifierUpdateManyWithoutModifierNestedInput
+  }
+
+  export type ModifierUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    effects?: EffectModifierUncheckedUpdateManyWithoutModifierNestedInput
+    abilities?: AbilityModifierUncheckedUpdateManyWithoutModifierNestedInput
+    items?: ItemModifierUncheckedUpdateManyWithoutModifierNestedInput
+  }
+
+  export type ModifierCreateManyInput = {
+    id?: number
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+  }
+
+  export type ModifierUpdateManyMutationInput = {
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ModifierUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AttackCreateInput = {
+    category: string
+    attackRoll: JsonNullValueInput | InputJsonValue
+    damage: JsonNullValueInput | InputJsonValue
+    critical: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackCreateNestedManyWithoutAttackInput
+    ability?: AbilityAttackCreateNestedManyWithoutAttackInput
+  }
+
+  export type AttackUncheckedCreateInput = {
+    id?: number
+    category: string
+    attackRoll: JsonNullValueInput | InputJsonValue
+    damage: JsonNullValueInput | InputJsonValue
+    critical: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackUncheckedCreateNestedManyWithoutAttackInput
+    ability?: AbilityAttackUncheckedCreateNestedManyWithoutAttackInput
+  }
+
+  export type AttackUpdateInput = {
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackUpdateManyWithoutAttackNestedInput
+    ability?: AbilityAttackUpdateManyWithoutAttackNestedInput
+  }
+
+  export type AttackUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackUncheckedUpdateManyWithoutAttackNestedInput
+    ability?: AbilityAttackUncheckedUpdateManyWithoutAttackNestedInput
+  }
+
+  export type AttackCreateManyInput = {
+    id?: number
+    category: string
+    attackRoll: JsonNullValueInput | InputJsonValue
+    damage: JsonNullValueInput | InputJsonValue
+    critical: JsonNullValueInput | InputJsonValue
+  }
+
+  export type AttackUpdateManyMutationInput = {
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type AttackUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -12440,6 +21769,11 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -12518,6 +21852,8 @@ export namespace Prisma {
     hpMax?: SortOrder
     mp?: SortOrder
     mpMax?: SortOrder
+    condition?: SortOrder
+    disable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12553,6 +21889,8 @@ export namespace Prisma {
     hpMax?: SortOrder
     mp?: SortOrder
     mpMax?: SortOrder
+    condition?: SortOrder
+    disable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12575,6 +21913,8 @@ export namespace Prisma {
     hpMax?: SortOrder
     mp?: SortOrder
     mpMax?: SortOrder
+    condition?: SortOrder
+    disable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12661,6 +22001,14 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -12758,60 +22106,52 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type ExpertiseScalarRelationFilter = {
     is?: ExpertiseWhereInput
     isNot?: ExpertiseWhereInput
   }
 
+  export type ExpertiseCharacterCharacterIdExpertiseIdCompoundUniqueInput = {
+    characterId: number
+    expertiseId: number
+  }
+
   export type ExpertiseCharacterCountOrderByAggregateInput = {
-    id?: SortOrder
     characterId?: SortOrder
     expertiseId?: SortOrder
+    value?: SortOrder
     trained?: SortOrder
     trainBonus?: SortOrder
   }
 
   export type ExpertiseCharacterAvgOrderByAggregateInput = {
-    id?: SortOrder
     characterId?: SortOrder
     expertiseId?: SortOrder
+    value?: SortOrder
     trainBonus?: SortOrder
   }
 
   export type ExpertiseCharacterMaxOrderByAggregateInput = {
-    id?: SortOrder
     characterId?: SortOrder
     expertiseId?: SortOrder
+    value?: SortOrder
     trained?: SortOrder
     trainBonus?: SortOrder
   }
 
   export type ExpertiseCharacterMinOrderByAggregateInput = {
-    id?: SortOrder
     characterId?: SortOrder
     expertiseId?: SortOrder
+    value?: SortOrder
     trained?: SortOrder
     trainBonus?: SortOrder
   }
 
   export type ExpertiseCharacterSumOrderByAggregateInput = {
-    id?: SortOrder
     characterId?: SortOrder
     expertiseId?: SortOrder
+    value?: SortOrder
     trainBonus?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type InventoryItemListRelationFilter = {
@@ -12826,28 +22166,44 @@ export namespace Prisma {
 
   export type InventoryCountOrderByAggregateInput = {
     characterId?: SortOrder
-    load?: SortOrder
+    limit?: SortOrder
     tibares?: SortOrder
   }
 
   export type InventoryAvgOrderByAggregateInput = {
     characterId?: SortOrder
+    limit?: SortOrder
     tibares?: SortOrder
   }
 
   export type InventoryMaxOrderByAggregateInput = {
     characterId?: SortOrder
+    limit?: SortOrder
     tibares?: SortOrder
   }
 
   export type InventoryMinOrderByAggregateInput = {
     characterId?: SortOrder
+    limit?: SortOrder
     tibares?: SortOrder
   }
 
   export type InventorySumOrderByAggregateInput = {
     characterId?: SortOrder
+    limit?: SortOrder
     tibares?: SortOrder
+  }
+
+  export type ItemModifierListRelationFilter = {
+    every?: ItemModifierWhereInput
+    some?: ItemModifierWhereInput
+    none?: ItemModifierWhereInput
+  }
+
+  export type ItemAttackListRelationFilter = {
+    every?: ItemAttackWhereInput
+    some?: ItemAttackWhereInput
+    none?: ItemAttackWhereInput
   }
 
   export type InventoryScalarRelationFilter = {
@@ -12855,7 +22211,16 @@ export namespace Prisma {
     isNot?: InventoryWhereInput
   }
 
+  export type ItemModifierOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ItemAttackOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type InventoryItemCountOrderByAggregateInput = {
+    id?: SortOrder
     inventoryId?: SortOrder
     type?: SortOrder
     name?: SortOrder
@@ -12865,17 +22230,17 @@ export namespace Prisma {
     isEquippable?: SortOrder
     equipped?: SortOrder
     passive?: SortOrder
-    attacks?: SortOrder
-    modifiers?: SortOrder
   }
 
   export type InventoryItemAvgOrderByAggregateInput = {
+    id?: SortOrder
     inventoryId?: SortOrder
     quantity?: SortOrder
     slot?: SortOrder
   }
 
   export type InventoryItemMaxOrderByAggregateInput = {
+    id?: SortOrder
     inventoryId?: SortOrder
     type?: SortOrder
     name?: SortOrder
@@ -12888,6 +22253,7 @@ export namespace Prisma {
   }
 
   export type InventoryItemMinOrderByAggregateInput = {
+    id?: SortOrder
     inventoryId?: SortOrder
     type?: SortOrder
     name?: SortOrder
@@ -12900,28 +22266,125 @@ export namespace Prisma {
   }
 
   export type InventoryItemSumOrderByAggregateInput = {
+    id?: SortOrder
     inventoryId?: SortOrder
     quantity?: SortOrder
     slot?: SortOrder
   }
 
+  export type InventoryItemScalarRelationFilter = {
+    is?: InventoryItemWhereInput
+    isNot?: InventoryItemWhereInput
+  }
+
+  export type ModifierScalarRelationFilter = {
+    is?: ModifierWhereInput
+    isNot?: ModifierWhereInput
+  }
+
+  export type ItemModifierItemIdModifierIdCompoundUniqueInput = {
+    itemId: number
+    modifierId: number
+  }
+
+  export type ItemModifierCountOrderByAggregateInput = {
+    itemId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type ItemModifierAvgOrderByAggregateInput = {
+    itemId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type ItemModifierMaxOrderByAggregateInput = {
+    itemId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type ItemModifierMinOrderByAggregateInput = {
+    itemId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type ItemModifierSumOrderByAggregateInput = {
+    itemId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type AttackScalarRelationFilter = {
+    is?: AttackWhereInput
+    isNot?: AttackWhereInput
+  }
+
+  export type ItemAttackItemIdAttackIdCompoundUniqueInput = {
+    itemId: number
+    attackId: number
+  }
+
+  export type ItemAttackCountOrderByAggregateInput = {
+    itemId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type ItemAttackAvgOrderByAggregateInput = {
+    itemId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type ItemAttackMaxOrderByAggregateInput = {
+    itemId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type ItemAttackMinOrderByAggregateInput = {
+    itemId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type ItemAttackSumOrderByAggregateInput = {
+    itemId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type AbilityModifierListRelationFilter = {
+    every?: AbilityModifierWhereInput
+    some?: AbilityModifierWhereInput
+    none?: AbilityModifierWhereInput
+  }
+
+  export type AbilityAttackListRelationFilter = {
+    every?: AbilityAttackWhereInput
+    some?: AbilityAttackWhereInput
+    none?: AbilityAttackWhereInput
+  }
+
+  export type AbilityModifierOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AbilityAttackOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type AbilityCountOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     type?: SortOrder
     name?: SortOrder
     description?: SortOrder
     passive?: SortOrder
     manaCost?: SortOrder
-    attacks?: SortOrder
-    modifiers?: SortOrder
   }
 
   export type AbilityAvgOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     manaCost?: SortOrder
   }
 
   export type AbilityMaxOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     type?: SortOrder
     name?: SortOrder
@@ -12931,6 +22394,7 @@ export namespace Prisma {
   }
 
   export type AbilityMinOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     type?: SortOrder
     name?: SortOrder
@@ -12940,8 +22404,74 @@ export namespace Prisma {
   }
 
   export type AbilitySumOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     manaCost?: SortOrder
+  }
+
+  export type AbilityScalarRelationFilter = {
+    is?: AbilityWhereInput
+    isNot?: AbilityWhereInput
+  }
+
+  export type AbilityModifierAbilityIdModifierIdCompoundUniqueInput = {
+    abilityId: number
+    modifierId: number
+  }
+
+  export type AbilityModifierCountOrderByAggregateInput = {
+    abilityId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type AbilityModifierAvgOrderByAggregateInput = {
+    abilityId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type AbilityModifierMaxOrderByAggregateInput = {
+    abilityId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type AbilityModifierMinOrderByAggregateInput = {
+    abilityId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type AbilityModifierSumOrderByAggregateInput = {
+    abilityId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type AbilityAttackAbilityIdAttackIdCompoundUniqueInput = {
+    abilityId: number
+    attackId: number
+  }
+
+  export type AbilityAttackCountOrderByAggregateInput = {
+    abilityId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type AbilityAttackAvgOrderByAggregateInput = {
+    abilityId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type AbilityAttackMaxOrderByAggregateInput = {
+    abilityId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type AbilityAttackMinOrderByAggregateInput = {
+    abilityId?: SortOrder
+    attackId?: SortOrder
+  }
+
+  export type AbilityAttackSumOrderByAggregateInput = {
+    abilityId?: SortOrder
+    attackId?: SortOrder
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -12955,7 +22485,18 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type EffectModifierListRelationFilter = {
+    every?: EffectModifierWhereInput
+    some?: EffectModifierWhereInput
+    none?: EffectModifierWhereInput
+  }
+
+  export type EffectModifierOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type EffectCountOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     sourceType?: SortOrder
     sourceId?: SortOrder
@@ -12963,17 +22504,18 @@ export namespace Prisma {
     active?: SortOrder
     duration?: SortOrder
     stacks?: SortOrder
-    modifiers?: SortOrder
     startedAt?: SortOrder
   }
 
   export type EffectAvgOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     sourceId?: SortOrder
     stacks?: SortOrder
   }
 
   export type EffectMaxOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     sourceType?: SortOrder
     sourceId?: SortOrder
@@ -12984,6 +22526,7 @@ export namespace Prisma {
   }
 
   export type EffectMinOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     sourceType?: SortOrder
     sourceId?: SortOrder
@@ -12994,6 +22537,7 @@ export namespace Prisma {
   }
 
   export type EffectSumOrderByAggregateInput = {
+    id?: SortOrder
     characterId?: SortOrder
     sourceId?: SortOrder
     stacks?: SortOrder
@@ -13013,6 +22557,96 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EffectScalarRelationFilter = {
+    is?: EffectWhereInput
+    isNot?: EffectWhereInput
+  }
+
+  export type EffectModifierEffectIdModifierIdCompoundUniqueInput = {
+    effectId: number
+    modifierId: number
+  }
+
+  export type EffectModifierCountOrderByAggregateInput = {
+    effectId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type EffectModifierAvgOrderByAggregateInput = {
+    effectId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type EffectModifierMaxOrderByAggregateInput = {
+    effectId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type EffectModifierMinOrderByAggregateInput = {
+    effectId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type EffectModifierSumOrderByAggregateInput = {
+    effectId?: SortOrder
+    modifierId?: SortOrder
+  }
+
+  export type ModifierCountOrderByAggregateInput = {
+    id?: SortOrder
+    target?: SortOrder
+    value?: SortOrder
+    type?: SortOrder
+  }
+
+  export type ModifierAvgOrderByAggregateInput = {
+    id?: SortOrder
+    value?: SortOrder
+  }
+
+  export type ModifierMaxOrderByAggregateInput = {
+    id?: SortOrder
+    value?: SortOrder
+    type?: SortOrder
+  }
+
+  export type ModifierMinOrderByAggregateInput = {
+    id?: SortOrder
+    value?: SortOrder
+    type?: SortOrder
+  }
+
+  export type ModifierSumOrderByAggregateInput = {
+    id?: SortOrder
+    value?: SortOrder
+  }
+
+  export type AttackCountOrderByAggregateInput = {
+    id?: SortOrder
+    category?: SortOrder
+    attackRoll?: SortOrder
+    damage?: SortOrder
+    critical?: SortOrder
+  }
+
+  export type AttackAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type AttackMaxOrderByAggregateInput = {
+    id?: SortOrder
+    category?: SortOrder
+  }
+
+  export type AttackMinOrderByAggregateInput = {
+    id?: SortOrder
+    category?: SortOrder
+  }
+
+  export type AttackSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type AttributesCreateNestedOneWithoutCharacterInput = {
@@ -13095,6 +22729,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -13293,10 +22931,6 @@ export namespace Prisma {
     connect?: ExpertiseWhereUniqueInput
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type CharacterUpdateOneRequiredWithoutExpertisiesNestedInput = {
     create?: XOR<CharacterCreateWithoutExpertisiesInput, CharacterUncheckedCreateWithoutExpertisiesInput>
     connectOrCreate?: CharacterCreateOrConnectWithoutExpertisiesInput
@@ -13369,10 +23003,66 @@ export namespace Prisma {
     deleteMany?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
   }
 
+  export type ItemModifierCreateNestedManyWithoutItemInput = {
+    create?: XOR<ItemModifierCreateWithoutItemInput, ItemModifierUncheckedCreateWithoutItemInput> | ItemModifierCreateWithoutItemInput[] | ItemModifierUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutItemInput | ItemModifierCreateOrConnectWithoutItemInput[]
+    createMany?: ItemModifierCreateManyItemInputEnvelope
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+  }
+
+  export type ItemAttackCreateNestedManyWithoutItemInput = {
+    create?: XOR<ItemAttackCreateWithoutItemInput, ItemAttackUncheckedCreateWithoutItemInput> | ItemAttackCreateWithoutItemInput[] | ItemAttackUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutItemInput | ItemAttackCreateOrConnectWithoutItemInput[]
+    createMany?: ItemAttackCreateManyItemInputEnvelope
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+  }
+
   export type InventoryCreateNestedOneWithoutItemsInput = {
     create?: XOR<InventoryCreateWithoutItemsInput, InventoryUncheckedCreateWithoutItemsInput>
     connectOrCreate?: InventoryCreateOrConnectWithoutItemsInput
     connect?: InventoryWhereUniqueInput
+  }
+
+  export type ItemModifierUncheckedCreateNestedManyWithoutItemInput = {
+    create?: XOR<ItemModifierCreateWithoutItemInput, ItemModifierUncheckedCreateWithoutItemInput> | ItemModifierCreateWithoutItemInput[] | ItemModifierUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutItemInput | ItemModifierCreateOrConnectWithoutItemInput[]
+    createMany?: ItemModifierCreateManyItemInputEnvelope
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+  }
+
+  export type ItemAttackUncheckedCreateNestedManyWithoutItemInput = {
+    create?: XOR<ItemAttackCreateWithoutItemInput, ItemAttackUncheckedCreateWithoutItemInput> | ItemAttackCreateWithoutItemInput[] | ItemAttackUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutItemInput | ItemAttackCreateOrConnectWithoutItemInput[]
+    createMany?: ItemAttackCreateManyItemInputEnvelope
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+  }
+
+  export type ItemModifierUpdateManyWithoutItemNestedInput = {
+    create?: XOR<ItemModifierCreateWithoutItemInput, ItemModifierUncheckedCreateWithoutItemInput> | ItemModifierCreateWithoutItemInput[] | ItemModifierUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutItemInput | ItemModifierCreateOrConnectWithoutItemInput[]
+    upsert?: ItemModifierUpsertWithWhereUniqueWithoutItemInput | ItemModifierUpsertWithWhereUniqueWithoutItemInput[]
+    createMany?: ItemModifierCreateManyItemInputEnvelope
+    set?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    disconnect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    delete?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    update?: ItemModifierUpdateWithWhereUniqueWithoutItemInput | ItemModifierUpdateWithWhereUniqueWithoutItemInput[]
+    updateMany?: ItemModifierUpdateManyWithWhereWithoutItemInput | ItemModifierUpdateManyWithWhereWithoutItemInput[]
+    deleteMany?: ItemModifierScalarWhereInput | ItemModifierScalarWhereInput[]
+  }
+
+  export type ItemAttackUpdateManyWithoutItemNestedInput = {
+    create?: XOR<ItemAttackCreateWithoutItemInput, ItemAttackUncheckedCreateWithoutItemInput> | ItemAttackCreateWithoutItemInput[] | ItemAttackUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutItemInput | ItemAttackCreateOrConnectWithoutItemInput[]
+    upsert?: ItemAttackUpsertWithWhereUniqueWithoutItemInput | ItemAttackUpsertWithWhereUniqueWithoutItemInput[]
+    createMany?: ItemAttackCreateManyItemInputEnvelope
+    set?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    disconnect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    delete?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    update?: ItemAttackUpdateWithWhereUniqueWithoutItemInput | ItemAttackUpdateWithWhereUniqueWithoutItemInput[]
+    updateMany?: ItemAttackUpdateManyWithWhereWithoutItemInput | ItemAttackUpdateManyWithWhereWithoutItemInput[]
+    deleteMany?: ItemAttackScalarWhereInput | ItemAttackScalarWhereInput[]
   }
 
   export type InventoryUpdateOneRequiredWithoutItemsNestedInput = {
@@ -13383,10 +23073,122 @@ export namespace Prisma {
     update?: XOR<XOR<InventoryUpdateToOneWithWhereWithoutItemsInput, InventoryUpdateWithoutItemsInput>, InventoryUncheckedUpdateWithoutItemsInput>
   }
 
+  export type ItemModifierUncheckedUpdateManyWithoutItemNestedInput = {
+    create?: XOR<ItemModifierCreateWithoutItemInput, ItemModifierUncheckedCreateWithoutItemInput> | ItemModifierCreateWithoutItemInput[] | ItemModifierUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutItemInput | ItemModifierCreateOrConnectWithoutItemInput[]
+    upsert?: ItemModifierUpsertWithWhereUniqueWithoutItemInput | ItemModifierUpsertWithWhereUniqueWithoutItemInput[]
+    createMany?: ItemModifierCreateManyItemInputEnvelope
+    set?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    disconnect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    delete?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    update?: ItemModifierUpdateWithWhereUniqueWithoutItemInput | ItemModifierUpdateWithWhereUniqueWithoutItemInput[]
+    updateMany?: ItemModifierUpdateManyWithWhereWithoutItemInput | ItemModifierUpdateManyWithWhereWithoutItemInput[]
+    deleteMany?: ItemModifierScalarWhereInput | ItemModifierScalarWhereInput[]
+  }
+
+  export type ItemAttackUncheckedUpdateManyWithoutItemNestedInput = {
+    create?: XOR<ItemAttackCreateWithoutItemInput, ItemAttackUncheckedCreateWithoutItemInput> | ItemAttackCreateWithoutItemInput[] | ItemAttackUncheckedCreateWithoutItemInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutItemInput | ItemAttackCreateOrConnectWithoutItemInput[]
+    upsert?: ItemAttackUpsertWithWhereUniqueWithoutItemInput | ItemAttackUpsertWithWhereUniqueWithoutItemInput[]
+    createMany?: ItemAttackCreateManyItemInputEnvelope
+    set?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    disconnect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    delete?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    update?: ItemAttackUpdateWithWhereUniqueWithoutItemInput | ItemAttackUpdateWithWhereUniqueWithoutItemInput[]
+    updateMany?: ItemAttackUpdateManyWithWhereWithoutItemInput | ItemAttackUpdateManyWithWhereWithoutItemInput[]
+    deleteMany?: ItemAttackScalarWhereInput | ItemAttackScalarWhereInput[]
+  }
+
+  export type InventoryItemCreateNestedOneWithoutModifiersInput = {
+    create?: XOR<InventoryItemCreateWithoutModifiersInput, InventoryItemUncheckedCreateWithoutModifiersInput>
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutModifiersInput
+    connect?: InventoryItemWhereUniqueInput
+  }
+
+  export type ModifierCreateNestedOneWithoutItemsInput = {
+    create?: XOR<ModifierCreateWithoutItemsInput, ModifierUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: ModifierCreateOrConnectWithoutItemsInput
+    connect?: ModifierWhereUniqueInput
+  }
+
+  export type InventoryItemUpdateOneRequiredWithoutModifiersNestedInput = {
+    create?: XOR<InventoryItemCreateWithoutModifiersInput, InventoryItemUncheckedCreateWithoutModifiersInput>
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutModifiersInput
+    upsert?: InventoryItemUpsertWithoutModifiersInput
+    connect?: InventoryItemWhereUniqueInput
+    update?: XOR<XOR<InventoryItemUpdateToOneWithWhereWithoutModifiersInput, InventoryItemUpdateWithoutModifiersInput>, InventoryItemUncheckedUpdateWithoutModifiersInput>
+  }
+
+  export type ModifierUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<ModifierCreateWithoutItemsInput, ModifierUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: ModifierCreateOrConnectWithoutItemsInput
+    upsert?: ModifierUpsertWithoutItemsInput
+    connect?: ModifierWhereUniqueInput
+    update?: XOR<XOR<ModifierUpdateToOneWithWhereWithoutItemsInput, ModifierUpdateWithoutItemsInput>, ModifierUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type InventoryItemCreateNestedOneWithoutAttacksInput = {
+    create?: XOR<InventoryItemCreateWithoutAttacksInput, InventoryItemUncheckedCreateWithoutAttacksInput>
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutAttacksInput
+    connect?: InventoryItemWhereUniqueInput
+  }
+
+  export type AttackCreateNestedOneWithoutItemsInput = {
+    create?: XOR<AttackCreateWithoutItemsInput, AttackUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: AttackCreateOrConnectWithoutItemsInput
+    connect?: AttackWhereUniqueInput
+  }
+
+  export type InventoryItemUpdateOneRequiredWithoutAttacksNestedInput = {
+    create?: XOR<InventoryItemCreateWithoutAttacksInput, InventoryItemUncheckedCreateWithoutAttacksInput>
+    connectOrCreate?: InventoryItemCreateOrConnectWithoutAttacksInput
+    upsert?: InventoryItemUpsertWithoutAttacksInput
+    connect?: InventoryItemWhereUniqueInput
+    update?: XOR<XOR<InventoryItemUpdateToOneWithWhereWithoutAttacksInput, InventoryItemUpdateWithoutAttacksInput>, InventoryItemUncheckedUpdateWithoutAttacksInput>
+  }
+
+  export type AttackUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<AttackCreateWithoutItemsInput, AttackUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: AttackCreateOrConnectWithoutItemsInput
+    upsert?: AttackUpsertWithoutItemsInput
+    connect?: AttackWhereUniqueInput
+    update?: XOR<XOR<AttackUpdateToOneWithWhereWithoutItemsInput, AttackUpdateWithoutItemsInput>, AttackUncheckedUpdateWithoutItemsInput>
+  }
+
   export type CharacterCreateNestedOneWithoutAbilitiesInput = {
     create?: XOR<CharacterCreateWithoutAbilitiesInput, CharacterUncheckedCreateWithoutAbilitiesInput>
     connectOrCreate?: CharacterCreateOrConnectWithoutAbilitiesInput
     connect?: CharacterWhereUniqueInput
+  }
+
+  export type AbilityModifierCreateNestedManyWithoutAbilityInput = {
+    create?: XOR<AbilityModifierCreateWithoutAbilityInput, AbilityModifierUncheckedCreateWithoutAbilityInput> | AbilityModifierCreateWithoutAbilityInput[] | AbilityModifierUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutAbilityInput | AbilityModifierCreateOrConnectWithoutAbilityInput[]
+    createMany?: AbilityModifierCreateManyAbilityInputEnvelope
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+  }
+
+  export type AbilityAttackCreateNestedManyWithoutAbilityInput = {
+    create?: XOR<AbilityAttackCreateWithoutAbilityInput, AbilityAttackUncheckedCreateWithoutAbilityInput> | AbilityAttackCreateWithoutAbilityInput[] | AbilityAttackUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAbilityInput | AbilityAttackCreateOrConnectWithoutAbilityInput[]
+    createMany?: AbilityAttackCreateManyAbilityInputEnvelope
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+  }
+
+  export type AbilityModifierUncheckedCreateNestedManyWithoutAbilityInput = {
+    create?: XOR<AbilityModifierCreateWithoutAbilityInput, AbilityModifierUncheckedCreateWithoutAbilityInput> | AbilityModifierCreateWithoutAbilityInput[] | AbilityModifierUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutAbilityInput | AbilityModifierCreateOrConnectWithoutAbilityInput[]
+    createMany?: AbilityModifierCreateManyAbilityInputEnvelope
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+  }
+
+  export type AbilityAttackUncheckedCreateNestedManyWithoutAbilityInput = {
+    create?: XOR<AbilityAttackCreateWithoutAbilityInput, AbilityAttackUncheckedCreateWithoutAbilityInput> | AbilityAttackCreateWithoutAbilityInput[] | AbilityAttackUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAbilityInput | AbilityAttackCreateOrConnectWithoutAbilityInput[]
+    createMany?: AbilityAttackCreateManyAbilityInputEnvelope
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
   }
 
   export type CharacterUpdateOneRequiredWithoutAbilitiesNestedInput = {
@@ -13397,10 +23199,136 @@ export namespace Prisma {
     update?: XOR<XOR<CharacterUpdateToOneWithWhereWithoutAbilitiesInput, CharacterUpdateWithoutAbilitiesInput>, CharacterUncheckedUpdateWithoutAbilitiesInput>
   }
 
+  export type AbilityModifierUpdateManyWithoutAbilityNestedInput = {
+    create?: XOR<AbilityModifierCreateWithoutAbilityInput, AbilityModifierUncheckedCreateWithoutAbilityInput> | AbilityModifierCreateWithoutAbilityInput[] | AbilityModifierUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutAbilityInput | AbilityModifierCreateOrConnectWithoutAbilityInput[]
+    upsert?: AbilityModifierUpsertWithWhereUniqueWithoutAbilityInput | AbilityModifierUpsertWithWhereUniqueWithoutAbilityInput[]
+    createMany?: AbilityModifierCreateManyAbilityInputEnvelope
+    set?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    disconnect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    delete?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    update?: AbilityModifierUpdateWithWhereUniqueWithoutAbilityInput | AbilityModifierUpdateWithWhereUniqueWithoutAbilityInput[]
+    updateMany?: AbilityModifierUpdateManyWithWhereWithoutAbilityInput | AbilityModifierUpdateManyWithWhereWithoutAbilityInput[]
+    deleteMany?: AbilityModifierScalarWhereInput | AbilityModifierScalarWhereInput[]
+  }
+
+  export type AbilityAttackUpdateManyWithoutAbilityNestedInput = {
+    create?: XOR<AbilityAttackCreateWithoutAbilityInput, AbilityAttackUncheckedCreateWithoutAbilityInput> | AbilityAttackCreateWithoutAbilityInput[] | AbilityAttackUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAbilityInput | AbilityAttackCreateOrConnectWithoutAbilityInput[]
+    upsert?: AbilityAttackUpsertWithWhereUniqueWithoutAbilityInput | AbilityAttackUpsertWithWhereUniqueWithoutAbilityInput[]
+    createMany?: AbilityAttackCreateManyAbilityInputEnvelope
+    set?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    disconnect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    delete?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    update?: AbilityAttackUpdateWithWhereUniqueWithoutAbilityInput | AbilityAttackUpdateWithWhereUniqueWithoutAbilityInput[]
+    updateMany?: AbilityAttackUpdateManyWithWhereWithoutAbilityInput | AbilityAttackUpdateManyWithWhereWithoutAbilityInput[]
+    deleteMany?: AbilityAttackScalarWhereInput | AbilityAttackScalarWhereInput[]
+  }
+
+  export type AbilityModifierUncheckedUpdateManyWithoutAbilityNestedInput = {
+    create?: XOR<AbilityModifierCreateWithoutAbilityInput, AbilityModifierUncheckedCreateWithoutAbilityInput> | AbilityModifierCreateWithoutAbilityInput[] | AbilityModifierUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutAbilityInput | AbilityModifierCreateOrConnectWithoutAbilityInput[]
+    upsert?: AbilityModifierUpsertWithWhereUniqueWithoutAbilityInput | AbilityModifierUpsertWithWhereUniqueWithoutAbilityInput[]
+    createMany?: AbilityModifierCreateManyAbilityInputEnvelope
+    set?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    disconnect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    delete?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    update?: AbilityModifierUpdateWithWhereUniqueWithoutAbilityInput | AbilityModifierUpdateWithWhereUniqueWithoutAbilityInput[]
+    updateMany?: AbilityModifierUpdateManyWithWhereWithoutAbilityInput | AbilityModifierUpdateManyWithWhereWithoutAbilityInput[]
+    deleteMany?: AbilityModifierScalarWhereInput | AbilityModifierScalarWhereInput[]
+  }
+
+  export type AbilityAttackUncheckedUpdateManyWithoutAbilityNestedInput = {
+    create?: XOR<AbilityAttackCreateWithoutAbilityInput, AbilityAttackUncheckedCreateWithoutAbilityInput> | AbilityAttackCreateWithoutAbilityInput[] | AbilityAttackUncheckedCreateWithoutAbilityInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAbilityInput | AbilityAttackCreateOrConnectWithoutAbilityInput[]
+    upsert?: AbilityAttackUpsertWithWhereUniqueWithoutAbilityInput | AbilityAttackUpsertWithWhereUniqueWithoutAbilityInput[]
+    createMany?: AbilityAttackCreateManyAbilityInputEnvelope
+    set?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    disconnect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    delete?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    update?: AbilityAttackUpdateWithWhereUniqueWithoutAbilityInput | AbilityAttackUpdateWithWhereUniqueWithoutAbilityInput[]
+    updateMany?: AbilityAttackUpdateManyWithWhereWithoutAbilityInput | AbilityAttackUpdateManyWithWhereWithoutAbilityInput[]
+    deleteMany?: AbilityAttackScalarWhereInput | AbilityAttackScalarWhereInput[]
+  }
+
+  export type AbilityCreateNestedOneWithoutModifiersInput = {
+    create?: XOR<AbilityCreateWithoutModifiersInput, AbilityUncheckedCreateWithoutModifiersInput>
+    connectOrCreate?: AbilityCreateOrConnectWithoutModifiersInput
+    connect?: AbilityWhereUniqueInput
+  }
+
+  export type ModifierCreateNestedOneWithoutAbilitiesInput = {
+    create?: XOR<ModifierCreateWithoutAbilitiesInput, ModifierUncheckedCreateWithoutAbilitiesInput>
+    connectOrCreate?: ModifierCreateOrConnectWithoutAbilitiesInput
+    connect?: ModifierWhereUniqueInput
+  }
+
+  export type AbilityUpdateOneRequiredWithoutModifiersNestedInput = {
+    create?: XOR<AbilityCreateWithoutModifiersInput, AbilityUncheckedCreateWithoutModifiersInput>
+    connectOrCreate?: AbilityCreateOrConnectWithoutModifiersInput
+    upsert?: AbilityUpsertWithoutModifiersInput
+    connect?: AbilityWhereUniqueInput
+    update?: XOR<XOR<AbilityUpdateToOneWithWhereWithoutModifiersInput, AbilityUpdateWithoutModifiersInput>, AbilityUncheckedUpdateWithoutModifiersInput>
+  }
+
+  export type ModifierUpdateOneRequiredWithoutAbilitiesNestedInput = {
+    create?: XOR<ModifierCreateWithoutAbilitiesInput, ModifierUncheckedCreateWithoutAbilitiesInput>
+    connectOrCreate?: ModifierCreateOrConnectWithoutAbilitiesInput
+    upsert?: ModifierUpsertWithoutAbilitiesInput
+    connect?: ModifierWhereUniqueInput
+    update?: XOR<XOR<ModifierUpdateToOneWithWhereWithoutAbilitiesInput, ModifierUpdateWithoutAbilitiesInput>, ModifierUncheckedUpdateWithoutAbilitiesInput>
+  }
+
+  export type AbilityCreateNestedOneWithoutAttacksInput = {
+    create?: XOR<AbilityCreateWithoutAttacksInput, AbilityUncheckedCreateWithoutAttacksInput>
+    connectOrCreate?: AbilityCreateOrConnectWithoutAttacksInput
+    connect?: AbilityWhereUniqueInput
+  }
+
+  export type AttackCreateNestedOneWithoutAbilityInput = {
+    create?: XOR<AttackCreateWithoutAbilityInput, AttackUncheckedCreateWithoutAbilityInput>
+    connectOrCreate?: AttackCreateOrConnectWithoutAbilityInput
+    connect?: AttackWhereUniqueInput
+  }
+
+  export type AbilityUpdateOneRequiredWithoutAttacksNestedInput = {
+    create?: XOR<AbilityCreateWithoutAttacksInput, AbilityUncheckedCreateWithoutAttacksInput>
+    connectOrCreate?: AbilityCreateOrConnectWithoutAttacksInput
+    upsert?: AbilityUpsertWithoutAttacksInput
+    connect?: AbilityWhereUniqueInput
+    update?: XOR<XOR<AbilityUpdateToOneWithWhereWithoutAttacksInput, AbilityUpdateWithoutAttacksInput>, AbilityUncheckedUpdateWithoutAttacksInput>
+  }
+
+  export type AttackUpdateOneRequiredWithoutAbilityNestedInput = {
+    create?: XOR<AttackCreateWithoutAbilityInput, AttackUncheckedCreateWithoutAbilityInput>
+    connectOrCreate?: AttackCreateOrConnectWithoutAbilityInput
+    upsert?: AttackUpsertWithoutAbilityInput
+    connect?: AttackWhereUniqueInput
+    update?: XOR<XOR<AttackUpdateToOneWithWhereWithoutAbilityInput, AttackUpdateWithoutAbilityInput>, AttackUncheckedUpdateWithoutAbilityInput>
+  }
+
   export type CharacterCreateNestedOneWithoutEffectsInput = {
     create?: XOR<CharacterCreateWithoutEffectsInput, CharacterUncheckedCreateWithoutEffectsInput>
     connectOrCreate?: CharacterCreateOrConnectWithoutEffectsInput
     connect?: CharacterWhereUniqueInput
+  }
+
+  export type EffectModifierCreateNestedManyWithoutEffectInput = {
+    create?: XOR<EffectModifierCreateWithoutEffectInput, EffectModifierUncheckedCreateWithoutEffectInput> | EffectModifierCreateWithoutEffectInput[] | EffectModifierUncheckedCreateWithoutEffectInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutEffectInput | EffectModifierCreateOrConnectWithoutEffectInput[]
+    createMany?: EffectModifierCreateManyEffectInputEnvelope
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+  }
+
+  export type EffectModifierUncheckedCreateNestedManyWithoutEffectInput = {
+    create?: XOR<EffectModifierCreateWithoutEffectInput, EffectModifierUncheckedCreateWithoutEffectInput> | EffectModifierCreateWithoutEffectInput[] | EffectModifierUncheckedCreateWithoutEffectInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutEffectInput | EffectModifierCreateOrConnectWithoutEffectInput[]
+    createMany?: EffectModifierCreateManyEffectInputEnvelope
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -13417,6 +23345,272 @@ export namespace Prisma {
     upsert?: CharacterUpsertWithoutEffectsInput
     connect?: CharacterWhereUniqueInput
     update?: XOR<XOR<CharacterUpdateToOneWithWhereWithoutEffectsInput, CharacterUpdateWithoutEffectsInput>, CharacterUncheckedUpdateWithoutEffectsInput>
+  }
+
+  export type EffectModifierUpdateManyWithoutEffectNestedInput = {
+    create?: XOR<EffectModifierCreateWithoutEffectInput, EffectModifierUncheckedCreateWithoutEffectInput> | EffectModifierCreateWithoutEffectInput[] | EffectModifierUncheckedCreateWithoutEffectInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutEffectInput | EffectModifierCreateOrConnectWithoutEffectInput[]
+    upsert?: EffectModifierUpsertWithWhereUniqueWithoutEffectInput | EffectModifierUpsertWithWhereUniqueWithoutEffectInput[]
+    createMany?: EffectModifierCreateManyEffectInputEnvelope
+    set?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    disconnect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    delete?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    update?: EffectModifierUpdateWithWhereUniqueWithoutEffectInput | EffectModifierUpdateWithWhereUniqueWithoutEffectInput[]
+    updateMany?: EffectModifierUpdateManyWithWhereWithoutEffectInput | EffectModifierUpdateManyWithWhereWithoutEffectInput[]
+    deleteMany?: EffectModifierScalarWhereInput | EffectModifierScalarWhereInput[]
+  }
+
+  export type EffectModifierUncheckedUpdateManyWithoutEffectNestedInput = {
+    create?: XOR<EffectModifierCreateWithoutEffectInput, EffectModifierUncheckedCreateWithoutEffectInput> | EffectModifierCreateWithoutEffectInput[] | EffectModifierUncheckedCreateWithoutEffectInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutEffectInput | EffectModifierCreateOrConnectWithoutEffectInput[]
+    upsert?: EffectModifierUpsertWithWhereUniqueWithoutEffectInput | EffectModifierUpsertWithWhereUniqueWithoutEffectInput[]
+    createMany?: EffectModifierCreateManyEffectInputEnvelope
+    set?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    disconnect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    delete?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    update?: EffectModifierUpdateWithWhereUniqueWithoutEffectInput | EffectModifierUpdateWithWhereUniqueWithoutEffectInput[]
+    updateMany?: EffectModifierUpdateManyWithWhereWithoutEffectInput | EffectModifierUpdateManyWithWhereWithoutEffectInput[]
+    deleteMany?: EffectModifierScalarWhereInput | EffectModifierScalarWhereInput[]
+  }
+
+  export type EffectCreateNestedOneWithoutModifiersInput = {
+    create?: XOR<EffectCreateWithoutModifiersInput, EffectUncheckedCreateWithoutModifiersInput>
+    connectOrCreate?: EffectCreateOrConnectWithoutModifiersInput
+    connect?: EffectWhereUniqueInput
+  }
+
+  export type ModifierCreateNestedOneWithoutEffectsInput = {
+    create?: XOR<ModifierCreateWithoutEffectsInput, ModifierUncheckedCreateWithoutEffectsInput>
+    connectOrCreate?: ModifierCreateOrConnectWithoutEffectsInput
+    connect?: ModifierWhereUniqueInput
+  }
+
+  export type EffectUpdateOneRequiredWithoutModifiersNestedInput = {
+    create?: XOR<EffectCreateWithoutModifiersInput, EffectUncheckedCreateWithoutModifiersInput>
+    connectOrCreate?: EffectCreateOrConnectWithoutModifiersInput
+    upsert?: EffectUpsertWithoutModifiersInput
+    connect?: EffectWhereUniqueInput
+    update?: XOR<XOR<EffectUpdateToOneWithWhereWithoutModifiersInput, EffectUpdateWithoutModifiersInput>, EffectUncheckedUpdateWithoutModifiersInput>
+  }
+
+  export type ModifierUpdateOneRequiredWithoutEffectsNestedInput = {
+    create?: XOR<ModifierCreateWithoutEffectsInput, ModifierUncheckedCreateWithoutEffectsInput>
+    connectOrCreate?: ModifierCreateOrConnectWithoutEffectsInput
+    upsert?: ModifierUpsertWithoutEffectsInput
+    connect?: ModifierWhereUniqueInput
+    update?: XOR<XOR<ModifierUpdateToOneWithWhereWithoutEffectsInput, ModifierUpdateWithoutEffectsInput>, ModifierUncheckedUpdateWithoutEffectsInput>
+  }
+
+  export type EffectModifierCreateNestedManyWithoutModifierInput = {
+    create?: XOR<EffectModifierCreateWithoutModifierInput, EffectModifierUncheckedCreateWithoutModifierInput> | EffectModifierCreateWithoutModifierInput[] | EffectModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutModifierInput | EffectModifierCreateOrConnectWithoutModifierInput[]
+    createMany?: EffectModifierCreateManyModifierInputEnvelope
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+  }
+
+  export type AbilityModifierCreateNestedManyWithoutModifierInput = {
+    create?: XOR<AbilityModifierCreateWithoutModifierInput, AbilityModifierUncheckedCreateWithoutModifierInput> | AbilityModifierCreateWithoutModifierInput[] | AbilityModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutModifierInput | AbilityModifierCreateOrConnectWithoutModifierInput[]
+    createMany?: AbilityModifierCreateManyModifierInputEnvelope
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+  }
+
+  export type ItemModifierCreateNestedManyWithoutModifierInput = {
+    create?: XOR<ItemModifierCreateWithoutModifierInput, ItemModifierUncheckedCreateWithoutModifierInput> | ItemModifierCreateWithoutModifierInput[] | ItemModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutModifierInput | ItemModifierCreateOrConnectWithoutModifierInput[]
+    createMany?: ItemModifierCreateManyModifierInputEnvelope
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+  }
+
+  export type EffectModifierUncheckedCreateNestedManyWithoutModifierInput = {
+    create?: XOR<EffectModifierCreateWithoutModifierInput, EffectModifierUncheckedCreateWithoutModifierInput> | EffectModifierCreateWithoutModifierInput[] | EffectModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutModifierInput | EffectModifierCreateOrConnectWithoutModifierInput[]
+    createMany?: EffectModifierCreateManyModifierInputEnvelope
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+  }
+
+  export type AbilityModifierUncheckedCreateNestedManyWithoutModifierInput = {
+    create?: XOR<AbilityModifierCreateWithoutModifierInput, AbilityModifierUncheckedCreateWithoutModifierInput> | AbilityModifierCreateWithoutModifierInput[] | AbilityModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutModifierInput | AbilityModifierCreateOrConnectWithoutModifierInput[]
+    createMany?: AbilityModifierCreateManyModifierInputEnvelope
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+  }
+
+  export type ItemModifierUncheckedCreateNestedManyWithoutModifierInput = {
+    create?: XOR<ItemModifierCreateWithoutModifierInput, ItemModifierUncheckedCreateWithoutModifierInput> | ItemModifierCreateWithoutModifierInput[] | ItemModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutModifierInput | ItemModifierCreateOrConnectWithoutModifierInput[]
+    createMany?: ItemModifierCreateManyModifierInputEnvelope
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+  }
+
+  export type EffectModifierUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<EffectModifierCreateWithoutModifierInput, EffectModifierUncheckedCreateWithoutModifierInput> | EffectModifierCreateWithoutModifierInput[] | EffectModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutModifierInput | EffectModifierCreateOrConnectWithoutModifierInput[]
+    upsert?: EffectModifierUpsertWithWhereUniqueWithoutModifierInput | EffectModifierUpsertWithWhereUniqueWithoutModifierInput[]
+    createMany?: EffectModifierCreateManyModifierInputEnvelope
+    set?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    disconnect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    delete?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    update?: EffectModifierUpdateWithWhereUniqueWithoutModifierInput | EffectModifierUpdateWithWhereUniqueWithoutModifierInput[]
+    updateMany?: EffectModifierUpdateManyWithWhereWithoutModifierInput | EffectModifierUpdateManyWithWhereWithoutModifierInput[]
+    deleteMany?: EffectModifierScalarWhereInput | EffectModifierScalarWhereInput[]
+  }
+
+  export type AbilityModifierUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<AbilityModifierCreateWithoutModifierInput, AbilityModifierUncheckedCreateWithoutModifierInput> | AbilityModifierCreateWithoutModifierInput[] | AbilityModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutModifierInput | AbilityModifierCreateOrConnectWithoutModifierInput[]
+    upsert?: AbilityModifierUpsertWithWhereUniqueWithoutModifierInput | AbilityModifierUpsertWithWhereUniqueWithoutModifierInput[]
+    createMany?: AbilityModifierCreateManyModifierInputEnvelope
+    set?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    disconnect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    delete?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    update?: AbilityModifierUpdateWithWhereUniqueWithoutModifierInput | AbilityModifierUpdateWithWhereUniqueWithoutModifierInput[]
+    updateMany?: AbilityModifierUpdateManyWithWhereWithoutModifierInput | AbilityModifierUpdateManyWithWhereWithoutModifierInput[]
+    deleteMany?: AbilityModifierScalarWhereInput | AbilityModifierScalarWhereInput[]
+  }
+
+  export type ItemModifierUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<ItemModifierCreateWithoutModifierInput, ItemModifierUncheckedCreateWithoutModifierInput> | ItemModifierCreateWithoutModifierInput[] | ItemModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutModifierInput | ItemModifierCreateOrConnectWithoutModifierInput[]
+    upsert?: ItemModifierUpsertWithWhereUniqueWithoutModifierInput | ItemModifierUpsertWithWhereUniqueWithoutModifierInput[]
+    createMany?: ItemModifierCreateManyModifierInputEnvelope
+    set?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    disconnect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    delete?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    update?: ItemModifierUpdateWithWhereUniqueWithoutModifierInput | ItemModifierUpdateWithWhereUniqueWithoutModifierInput[]
+    updateMany?: ItemModifierUpdateManyWithWhereWithoutModifierInput | ItemModifierUpdateManyWithWhereWithoutModifierInput[]
+    deleteMany?: ItemModifierScalarWhereInput | ItemModifierScalarWhereInput[]
+  }
+
+  export type EffectModifierUncheckedUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<EffectModifierCreateWithoutModifierInput, EffectModifierUncheckedCreateWithoutModifierInput> | EffectModifierCreateWithoutModifierInput[] | EffectModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: EffectModifierCreateOrConnectWithoutModifierInput | EffectModifierCreateOrConnectWithoutModifierInput[]
+    upsert?: EffectModifierUpsertWithWhereUniqueWithoutModifierInput | EffectModifierUpsertWithWhereUniqueWithoutModifierInput[]
+    createMany?: EffectModifierCreateManyModifierInputEnvelope
+    set?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    disconnect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    delete?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    connect?: EffectModifierWhereUniqueInput | EffectModifierWhereUniqueInput[]
+    update?: EffectModifierUpdateWithWhereUniqueWithoutModifierInput | EffectModifierUpdateWithWhereUniqueWithoutModifierInput[]
+    updateMany?: EffectModifierUpdateManyWithWhereWithoutModifierInput | EffectModifierUpdateManyWithWhereWithoutModifierInput[]
+    deleteMany?: EffectModifierScalarWhereInput | EffectModifierScalarWhereInput[]
+  }
+
+  export type AbilityModifierUncheckedUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<AbilityModifierCreateWithoutModifierInput, AbilityModifierUncheckedCreateWithoutModifierInput> | AbilityModifierCreateWithoutModifierInput[] | AbilityModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: AbilityModifierCreateOrConnectWithoutModifierInput | AbilityModifierCreateOrConnectWithoutModifierInput[]
+    upsert?: AbilityModifierUpsertWithWhereUniqueWithoutModifierInput | AbilityModifierUpsertWithWhereUniqueWithoutModifierInput[]
+    createMany?: AbilityModifierCreateManyModifierInputEnvelope
+    set?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    disconnect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    delete?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    connect?: AbilityModifierWhereUniqueInput | AbilityModifierWhereUniqueInput[]
+    update?: AbilityModifierUpdateWithWhereUniqueWithoutModifierInput | AbilityModifierUpdateWithWhereUniqueWithoutModifierInput[]
+    updateMany?: AbilityModifierUpdateManyWithWhereWithoutModifierInput | AbilityModifierUpdateManyWithWhereWithoutModifierInput[]
+    deleteMany?: AbilityModifierScalarWhereInput | AbilityModifierScalarWhereInput[]
+  }
+
+  export type ItemModifierUncheckedUpdateManyWithoutModifierNestedInput = {
+    create?: XOR<ItemModifierCreateWithoutModifierInput, ItemModifierUncheckedCreateWithoutModifierInput> | ItemModifierCreateWithoutModifierInput[] | ItemModifierUncheckedCreateWithoutModifierInput[]
+    connectOrCreate?: ItemModifierCreateOrConnectWithoutModifierInput | ItemModifierCreateOrConnectWithoutModifierInput[]
+    upsert?: ItemModifierUpsertWithWhereUniqueWithoutModifierInput | ItemModifierUpsertWithWhereUniqueWithoutModifierInput[]
+    createMany?: ItemModifierCreateManyModifierInputEnvelope
+    set?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    disconnect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    delete?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    connect?: ItemModifierWhereUniqueInput | ItemModifierWhereUniqueInput[]
+    update?: ItemModifierUpdateWithWhereUniqueWithoutModifierInput | ItemModifierUpdateWithWhereUniqueWithoutModifierInput[]
+    updateMany?: ItemModifierUpdateManyWithWhereWithoutModifierInput | ItemModifierUpdateManyWithWhereWithoutModifierInput[]
+    deleteMany?: ItemModifierScalarWhereInput | ItemModifierScalarWhereInput[]
+  }
+
+  export type ItemAttackCreateNestedManyWithoutAttackInput = {
+    create?: XOR<ItemAttackCreateWithoutAttackInput, ItemAttackUncheckedCreateWithoutAttackInput> | ItemAttackCreateWithoutAttackInput[] | ItemAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutAttackInput | ItemAttackCreateOrConnectWithoutAttackInput[]
+    createMany?: ItemAttackCreateManyAttackInputEnvelope
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+  }
+
+  export type AbilityAttackCreateNestedManyWithoutAttackInput = {
+    create?: XOR<AbilityAttackCreateWithoutAttackInput, AbilityAttackUncheckedCreateWithoutAttackInput> | AbilityAttackCreateWithoutAttackInput[] | AbilityAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAttackInput | AbilityAttackCreateOrConnectWithoutAttackInput[]
+    createMany?: AbilityAttackCreateManyAttackInputEnvelope
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+  }
+
+  export type ItemAttackUncheckedCreateNestedManyWithoutAttackInput = {
+    create?: XOR<ItemAttackCreateWithoutAttackInput, ItemAttackUncheckedCreateWithoutAttackInput> | ItemAttackCreateWithoutAttackInput[] | ItemAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutAttackInput | ItemAttackCreateOrConnectWithoutAttackInput[]
+    createMany?: ItemAttackCreateManyAttackInputEnvelope
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+  }
+
+  export type AbilityAttackUncheckedCreateNestedManyWithoutAttackInput = {
+    create?: XOR<AbilityAttackCreateWithoutAttackInput, AbilityAttackUncheckedCreateWithoutAttackInput> | AbilityAttackCreateWithoutAttackInput[] | AbilityAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAttackInput | AbilityAttackCreateOrConnectWithoutAttackInput[]
+    createMany?: AbilityAttackCreateManyAttackInputEnvelope
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+  }
+
+  export type ItemAttackUpdateManyWithoutAttackNestedInput = {
+    create?: XOR<ItemAttackCreateWithoutAttackInput, ItemAttackUncheckedCreateWithoutAttackInput> | ItemAttackCreateWithoutAttackInput[] | ItemAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutAttackInput | ItemAttackCreateOrConnectWithoutAttackInput[]
+    upsert?: ItemAttackUpsertWithWhereUniqueWithoutAttackInput | ItemAttackUpsertWithWhereUniqueWithoutAttackInput[]
+    createMany?: ItemAttackCreateManyAttackInputEnvelope
+    set?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    disconnect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    delete?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    update?: ItemAttackUpdateWithWhereUniqueWithoutAttackInput | ItemAttackUpdateWithWhereUniqueWithoutAttackInput[]
+    updateMany?: ItemAttackUpdateManyWithWhereWithoutAttackInput | ItemAttackUpdateManyWithWhereWithoutAttackInput[]
+    deleteMany?: ItemAttackScalarWhereInput | ItemAttackScalarWhereInput[]
+  }
+
+  export type AbilityAttackUpdateManyWithoutAttackNestedInput = {
+    create?: XOR<AbilityAttackCreateWithoutAttackInput, AbilityAttackUncheckedCreateWithoutAttackInput> | AbilityAttackCreateWithoutAttackInput[] | AbilityAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAttackInput | AbilityAttackCreateOrConnectWithoutAttackInput[]
+    upsert?: AbilityAttackUpsertWithWhereUniqueWithoutAttackInput | AbilityAttackUpsertWithWhereUniqueWithoutAttackInput[]
+    createMany?: AbilityAttackCreateManyAttackInputEnvelope
+    set?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    disconnect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    delete?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    update?: AbilityAttackUpdateWithWhereUniqueWithoutAttackInput | AbilityAttackUpdateWithWhereUniqueWithoutAttackInput[]
+    updateMany?: AbilityAttackUpdateManyWithWhereWithoutAttackInput | AbilityAttackUpdateManyWithWhereWithoutAttackInput[]
+    deleteMany?: AbilityAttackScalarWhereInput | AbilityAttackScalarWhereInput[]
+  }
+
+  export type ItemAttackUncheckedUpdateManyWithoutAttackNestedInput = {
+    create?: XOR<ItemAttackCreateWithoutAttackInput, ItemAttackUncheckedCreateWithoutAttackInput> | ItemAttackCreateWithoutAttackInput[] | ItemAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: ItemAttackCreateOrConnectWithoutAttackInput | ItemAttackCreateOrConnectWithoutAttackInput[]
+    upsert?: ItemAttackUpsertWithWhereUniqueWithoutAttackInput | ItemAttackUpsertWithWhereUniqueWithoutAttackInput[]
+    createMany?: ItemAttackCreateManyAttackInputEnvelope
+    set?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    disconnect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    delete?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    connect?: ItemAttackWhereUniqueInput | ItemAttackWhereUniqueInput[]
+    update?: ItemAttackUpdateWithWhereUniqueWithoutAttackInput | ItemAttackUpdateWithWhereUniqueWithoutAttackInput[]
+    updateMany?: ItemAttackUpdateManyWithWhereWithoutAttackInput | ItemAttackUpdateManyWithWhereWithoutAttackInput[]
+    deleteMany?: ItemAttackScalarWhereInput | ItemAttackScalarWhereInput[]
+  }
+
+  export type AbilityAttackUncheckedUpdateManyWithoutAttackNestedInput = {
+    create?: XOR<AbilityAttackCreateWithoutAttackInput, AbilityAttackUncheckedCreateWithoutAttackInput> | AbilityAttackCreateWithoutAttackInput[] | AbilityAttackUncheckedCreateWithoutAttackInput[]
+    connectOrCreate?: AbilityAttackCreateOrConnectWithoutAttackInput | AbilityAttackCreateOrConnectWithoutAttackInput[]
+    upsert?: AbilityAttackUpsertWithWhereUniqueWithoutAttackInput | AbilityAttackUpsertWithWhereUniqueWithoutAttackInput[]
+    createMany?: AbilityAttackCreateManyAttackInputEnvelope
+    set?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    disconnect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    delete?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    connect?: AbilityAttackWhereUniqueInput | AbilityAttackWhereUniqueInput[]
+    update?: AbilityAttackUpdateWithWhereUniqueWithoutAttackInput | AbilityAttackUpdateWithWhereUniqueWithoutAttackInput[]
+    updateMany?: AbilityAttackUpdateManyWithWhereWithoutAttackInput | AbilityAttackUpdateManyWithWhereWithoutAttackInput[]
+    deleteMany?: AbilityAttackScalarWhereInput | AbilityAttackScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -13456,6 +23650,11 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -13559,6 +23758,14 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -13571,19 +23778,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13614,21 +23808,21 @@ export namespace Prisma {
   }
 
   export type AttributesCreateWithoutCharacterInput = {
-    strength: number
-    dexterity: number
-    constitution: number
-    intelligence: number
-    wisdom: number
-    charisma: number
+    strength?: number
+    dexterity?: number
+    constitution?: number
+    intelligence?: number
+    wisdom?: number
+    charisma?: number
   }
 
   export type AttributesUncheckedCreateWithoutCharacterInput = {
-    strength: number
-    dexterity: number
-    constitution: number
-    intelligence: number
-    wisdom: number
-    charisma: number
+    strength?: number
+    dexterity?: number
+    constitution?: number
+    intelligence?: number
+    wisdom?: number
+    charisma?: number
   }
 
   export type AttributesCreateOrConnectWithoutCharacterInput = {
@@ -13637,14 +23831,15 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterCreateWithoutCharacterInput = {
+    value?: number
     trained?: boolean
     trainBonus?: number
     expertise: ExpertiseCreateNestedOneWithoutCharacterLinkInput
   }
 
   export type ExpertiseCharacterUncheckedCreateWithoutCharacterInput = {
-    id?: number
     expertiseId: number
+    value?: number
     trained?: boolean
     trainBonus?: number
   }
@@ -13659,14 +23854,14 @@ export namespace Prisma {
   }
 
   export type InventoryCreateWithoutCharacterInput = {
-    load: JsonNullValueInput | InputJsonValue
-    tibares: number
+    limit?: number
+    tibares?: number
     items?: InventoryItemCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryUncheckedCreateWithoutCharacterInput = {
-    load: JsonNullValueInput | InputJsonValue
-    tibares: number
+    limit?: number
+    tibares?: number
     items?: InventoryItemUncheckedCreateNestedManyWithoutInventoryInput
   }
 
@@ -13681,18 +23876,19 @@ export namespace Prisma {
     description: string
     passive: boolean
     manaCost: number
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+    modifiers?: AbilityModifierCreateNestedManyWithoutAbilityInput
+    attacks?: AbilityAttackCreateNestedManyWithoutAbilityInput
   }
 
   export type AbilityUncheckedCreateWithoutCharacterInput = {
+    id?: number
     type: string
     name: string
     description: string
     passive: boolean
     manaCost: number
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+    modifiers?: AbilityModifierUncheckedCreateNestedManyWithoutAbilityInput
+    attacks?: AbilityAttackUncheckedCreateNestedManyWithoutAbilityInput
   }
 
   export type AbilityCreateOrConnectWithoutCharacterInput = {
@@ -13711,19 +23907,20 @@ export namespace Prisma {
     active: boolean
     duration: JsonNullValueInput | InputJsonValue
     stacks: number
-    modifiers: JsonNullValueInput | InputJsonValue
     startedAt: Date | string
+    modifiers?: EffectModifierCreateNestedManyWithoutEffectInput
   }
 
   export type EffectUncheckedCreateWithoutCharacterInput = {
+    id?: number
     sourceType: string
     sourceId?: number | null
     sourceName: string
     active: boolean
     duration: JsonNullValueInput | InputJsonValue
     stacks: number
-    modifiers: JsonNullValueInput | InputJsonValue
     startedAt: Date | string
+    modifiers?: EffectModifierUncheckedCreateNestedManyWithoutEffectInput
   }
 
   export type EffectCreateOrConnectWithoutCharacterInput = {
@@ -13784,9 +23981,9 @@ export namespace Prisma {
     AND?: ExpertiseCharacterScalarWhereInput | ExpertiseCharacterScalarWhereInput[]
     OR?: ExpertiseCharacterScalarWhereInput[]
     NOT?: ExpertiseCharacterScalarWhereInput | ExpertiseCharacterScalarWhereInput[]
-    id?: IntFilter<"ExpertiseCharacter"> | number
     characterId?: IntFilter<"ExpertiseCharacter"> | number
     expertiseId?: IntFilter<"ExpertiseCharacter"> | number
+    value?: IntFilter<"ExpertiseCharacter"> | number
     trained?: BoolFilter<"ExpertiseCharacter"> | boolean
     trainBonus?: IntFilter<"ExpertiseCharacter"> | number
   }
@@ -13803,13 +24000,13 @@ export namespace Prisma {
   }
 
   export type InventoryUpdateWithoutCharacterInput = {
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
     items?: InventoryItemUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateWithoutCharacterInput = {
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
     items?: InventoryItemUncheckedUpdateManyWithoutInventoryNestedInput
   }
@@ -13834,14 +24031,13 @@ export namespace Prisma {
     AND?: AbilityScalarWhereInput | AbilityScalarWhereInput[]
     OR?: AbilityScalarWhereInput[]
     NOT?: AbilityScalarWhereInput | AbilityScalarWhereInput[]
+    id?: IntFilter<"Ability"> | number
     characterId?: IntFilter<"Ability"> | number
     type?: StringFilter<"Ability"> | string
     name?: StringFilter<"Ability"> | string
     description?: StringFilter<"Ability"> | string
     passive?: BoolFilter<"Ability"> | boolean
     manaCost?: IntFilter<"Ability"> | number
-    attacks?: JsonFilter<"Ability">
-    modifiers?: JsonFilter<"Ability">
   }
 
   export type EffectUpsertWithWhereUniqueWithoutCharacterInput = {
@@ -13864,6 +24060,7 @@ export namespace Prisma {
     AND?: EffectScalarWhereInput | EffectScalarWhereInput[]
     OR?: EffectScalarWhereInput[]
     NOT?: EffectScalarWhereInput | EffectScalarWhereInput[]
+    id?: IntFilter<"Effect"> | number
     characterId?: IntFilter<"Effect"> | number
     sourceType?: StringFilter<"Effect"> | string
     sourceId?: IntNullableFilter<"Effect"> | number | null
@@ -13871,7 +24068,6 @@ export namespace Prisma {
     active?: BoolFilter<"Effect"> | boolean
     duration?: JsonFilter<"Effect">
     stacks?: IntFilter<"Effect"> | number
-    modifiers?: JsonFilter<"Effect">
     startedAt?: DateTimeFilter<"Effect"> | Date | string
   }
 
@@ -13894,6 +24090,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     expertisies?: ExpertiseCharacterCreateNestedManyWithoutCharacterInput
@@ -13922,6 +24120,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     expertisies?: ExpertiseCharacterUncheckedCreateNestedManyWithoutCharacterInput
@@ -13965,6 +24165,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expertisies?: ExpertiseCharacterUpdateManyWithoutCharacterNestedInput
@@ -13993,6 +24195,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expertisies?: ExpertiseCharacterUncheckedUpdateManyWithoutCharacterNestedInput
@@ -14002,14 +24206,15 @@ export namespace Prisma {
   }
 
   export type ExpertiseCharacterCreateWithoutExpertiseInput = {
+    value?: number
     trained?: boolean
     trainBonus?: number
     character: CharacterCreateNestedOneWithoutExpertisiesInput
   }
 
   export type ExpertiseCharacterUncheckedCreateWithoutExpertiseInput = {
-    id?: number
     characterId: number
+    value?: number
     trained?: boolean
     trainBonus?: number
   }
@@ -14058,6 +24263,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesCreateNestedOneWithoutCharacterInput
@@ -14086,6 +24293,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesUncheckedCreateNestedOneWithoutCharacterInput
@@ -14145,6 +24354,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUpdateOneWithoutCharacterNestedInput
@@ -14173,6 +24384,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUncheckedUpdateOneWithoutCharacterNestedInput
@@ -14212,11 +24425,12 @@ export namespace Prisma {
     isEquippable: boolean
     equipped: boolean
     passive: boolean
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierCreateNestedManyWithoutItemInput
+    attacks?: ItemAttackCreateNestedManyWithoutItemInput
   }
 
   export type InventoryItemUncheckedCreateWithoutInventoryInput = {
+    id?: number
     type: string
     name: string
     description: string
@@ -14225,8 +24439,8 @@ export namespace Prisma {
     isEquippable: boolean
     equipped: boolean
     passive: boolean
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierUncheckedCreateNestedManyWithoutItemInput
+    attacks?: ItemAttackUncheckedCreateNestedManyWithoutItemInput
   }
 
   export type InventoryItemCreateOrConnectWithoutInventoryInput = {
@@ -14257,6 +24471,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesCreateNestedOneWithoutCharacterInput
@@ -14285,6 +24501,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesUncheckedCreateNestedOneWithoutCharacterInput
@@ -14318,6 +24536,7 @@ export namespace Prisma {
     AND?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
     OR?: InventoryItemScalarWhereInput[]
     NOT?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
+    id?: IntFilter<"InventoryItem"> | number
     inventoryId?: IntFilter<"InventoryItem"> | number
     type?: StringFilter<"InventoryItem"> | string
     name?: StringFilter<"InventoryItem"> | string
@@ -14327,8 +24546,6 @@ export namespace Prisma {
     isEquippable?: BoolFilter<"InventoryItem"> | boolean
     equipped?: BoolFilter<"InventoryItem"> | boolean
     passive?: BoolFilter<"InventoryItem"> | boolean
-    attacks?: JsonFilter<"InventoryItem">
-    modifiers?: JsonFilter<"InventoryItem">
   }
 
   export type CharacterUpsertWithoutInventoryInput = {
@@ -14361,6 +24578,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUpdateOneWithoutCharacterNestedInput
@@ -14389,6 +24608,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUncheckedUpdateOneWithoutCharacterNestedInput
@@ -14397,21 +24618,103 @@ export namespace Prisma {
     effects?: EffectUncheckedUpdateManyWithoutCharacterNestedInput
   }
 
+  export type ItemModifierCreateWithoutItemInput = {
+    modifier: ModifierCreateNestedOneWithoutItemsInput
+  }
+
+  export type ItemModifierUncheckedCreateWithoutItemInput = {
+    modifierId: number
+  }
+
+  export type ItemModifierCreateOrConnectWithoutItemInput = {
+    where: ItemModifierWhereUniqueInput
+    create: XOR<ItemModifierCreateWithoutItemInput, ItemModifierUncheckedCreateWithoutItemInput>
+  }
+
+  export type ItemModifierCreateManyItemInputEnvelope = {
+    data: ItemModifierCreateManyItemInput | ItemModifierCreateManyItemInput[]
+  }
+
+  export type ItemAttackCreateWithoutItemInput = {
+    attack: AttackCreateNestedOneWithoutItemsInput
+  }
+
+  export type ItemAttackUncheckedCreateWithoutItemInput = {
+    attackId: number
+  }
+
+  export type ItemAttackCreateOrConnectWithoutItemInput = {
+    where: ItemAttackWhereUniqueInput
+    create: XOR<ItemAttackCreateWithoutItemInput, ItemAttackUncheckedCreateWithoutItemInput>
+  }
+
+  export type ItemAttackCreateManyItemInputEnvelope = {
+    data: ItemAttackCreateManyItemInput | ItemAttackCreateManyItemInput[]
+  }
+
   export type InventoryCreateWithoutItemsInput = {
-    load: JsonNullValueInput | InputJsonValue
-    tibares: number
+    limit?: number
+    tibares?: number
     character: CharacterCreateNestedOneWithoutInventoryInput
   }
 
   export type InventoryUncheckedCreateWithoutItemsInput = {
     characterId: number
-    load: JsonNullValueInput | InputJsonValue
-    tibares: number
+    limit?: number
+    tibares?: number
   }
 
   export type InventoryCreateOrConnectWithoutItemsInput = {
     where: InventoryWhereUniqueInput
     create: XOR<InventoryCreateWithoutItemsInput, InventoryUncheckedCreateWithoutItemsInput>
+  }
+
+  export type ItemModifierUpsertWithWhereUniqueWithoutItemInput = {
+    where: ItemModifierWhereUniqueInput
+    update: XOR<ItemModifierUpdateWithoutItemInput, ItemModifierUncheckedUpdateWithoutItemInput>
+    create: XOR<ItemModifierCreateWithoutItemInput, ItemModifierUncheckedCreateWithoutItemInput>
+  }
+
+  export type ItemModifierUpdateWithWhereUniqueWithoutItemInput = {
+    where: ItemModifierWhereUniqueInput
+    data: XOR<ItemModifierUpdateWithoutItemInput, ItemModifierUncheckedUpdateWithoutItemInput>
+  }
+
+  export type ItemModifierUpdateManyWithWhereWithoutItemInput = {
+    where: ItemModifierScalarWhereInput
+    data: XOR<ItemModifierUpdateManyMutationInput, ItemModifierUncheckedUpdateManyWithoutItemInput>
+  }
+
+  export type ItemModifierScalarWhereInput = {
+    AND?: ItemModifierScalarWhereInput | ItemModifierScalarWhereInput[]
+    OR?: ItemModifierScalarWhereInput[]
+    NOT?: ItemModifierScalarWhereInput | ItemModifierScalarWhereInput[]
+    itemId?: IntFilter<"ItemModifier"> | number
+    modifierId?: IntFilter<"ItemModifier"> | number
+  }
+
+  export type ItemAttackUpsertWithWhereUniqueWithoutItemInput = {
+    where: ItemAttackWhereUniqueInput
+    update: XOR<ItemAttackUpdateWithoutItemInput, ItemAttackUncheckedUpdateWithoutItemInput>
+    create: XOR<ItemAttackCreateWithoutItemInput, ItemAttackUncheckedCreateWithoutItemInput>
+  }
+
+  export type ItemAttackUpdateWithWhereUniqueWithoutItemInput = {
+    where: ItemAttackWhereUniqueInput
+    data: XOR<ItemAttackUpdateWithoutItemInput, ItemAttackUncheckedUpdateWithoutItemInput>
+  }
+
+  export type ItemAttackUpdateManyWithWhereWithoutItemInput = {
+    where: ItemAttackScalarWhereInput
+    data: XOR<ItemAttackUpdateManyMutationInput, ItemAttackUncheckedUpdateManyWithoutItemInput>
+  }
+
+  export type ItemAttackScalarWhereInput = {
+    AND?: ItemAttackScalarWhereInput | ItemAttackScalarWhereInput[]
+    OR?: ItemAttackScalarWhereInput[]
+    NOT?: ItemAttackScalarWhereInput | ItemAttackScalarWhereInput[]
+    itemId?: IntFilter<"ItemAttack"> | number
+    attackId?: IntFilter<"ItemAttack"> | number
   }
 
   export type InventoryUpsertWithoutItemsInput = {
@@ -14426,15 +24729,255 @@ export namespace Prisma {
   }
 
   export type InventoryUpdateWithoutItemsInput = {
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
     character?: CharacterUpdateOneRequiredWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateWithoutItemsInput = {
     characterId?: IntFieldUpdateOperationsInput | number
-    load?: JsonNullValueInput | InputJsonValue
+    limit?: IntFieldUpdateOperationsInput | number
     tibares?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type InventoryItemCreateWithoutModifiersInput = {
+    type: string
+    name: string
+    description: string
+    quantity: number
+    slot: number
+    isEquippable: boolean
+    equipped: boolean
+    passive: boolean
+    attacks?: ItemAttackCreateNestedManyWithoutItemInput
+    inventory: InventoryCreateNestedOneWithoutItemsInput
+  }
+
+  export type InventoryItemUncheckedCreateWithoutModifiersInput = {
+    id?: number
+    inventoryId: number
+    type: string
+    name: string
+    description: string
+    quantity: number
+    slot: number
+    isEquippable: boolean
+    equipped: boolean
+    passive: boolean
+    attacks?: ItemAttackUncheckedCreateNestedManyWithoutItemInput
+  }
+
+  export type InventoryItemCreateOrConnectWithoutModifiersInput = {
+    where: InventoryItemWhereUniqueInput
+    create: XOR<InventoryItemCreateWithoutModifiersInput, InventoryItemUncheckedCreateWithoutModifiersInput>
+  }
+
+  export type ModifierCreateWithoutItemsInput = {
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    effects?: EffectModifierCreateNestedManyWithoutModifierInput
+    abilities?: AbilityModifierCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierUncheckedCreateWithoutItemsInput = {
+    id?: number
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    effects?: EffectModifierUncheckedCreateNestedManyWithoutModifierInput
+    abilities?: AbilityModifierUncheckedCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierCreateOrConnectWithoutItemsInput = {
+    where: ModifierWhereUniqueInput
+    create: XOR<ModifierCreateWithoutItemsInput, ModifierUncheckedCreateWithoutItemsInput>
+  }
+
+  export type InventoryItemUpsertWithoutModifiersInput = {
+    update: XOR<InventoryItemUpdateWithoutModifiersInput, InventoryItemUncheckedUpdateWithoutModifiersInput>
+    create: XOR<InventoryItemCreateWithoutModifiersInput, InventoryItemUncheckedCreateWithoutModifiersInput>
+    where?: InventoryItemWhereInput
+  }
+
+  export type InventoryItemUpdateToOneWithWhereWithoutModifiersInput = {
+    where?: InventoryItemWhereInput
+    data: XOR<InventoryItemUpdateWithoutModifiersInput, InventoryItemUncheckedUpdateWithoutModifiersInput>
+  }
+
+  export type InventoryItemUpdateWithoutModifiersInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    slot?: IntFieldUpdateOperationsInput | number
+    isEquippable?: BoolFieldUpdateOperationsInput | boolean
+    equipped?: BoolFieldUpdateOperationsInput | boolean
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    attacks?: ItemAttackUpdateManyWithoutItemNestedInput
+    inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type InventoryItemUncheckedUpdateWithoutModifiersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    inventoryId?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    slot?: IntFieldUpdateOperationsInput | number
+    isEquippable?: BoolFieldUpdateOperationsInput | boolean
+    equipped?: BoolFieldUpdateOperationsInput | boolean
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    attacks?: ItemAttackUncheckedUpdateManyWithoutItemNestedInput
+  }
+
+  export type ModifierUpsertWithoutItemsInput = {
+    update: XOR<ModifierUpdateWithoutItemsInput, ModifierUncheckedUpdateWithoutItemsInput>
+    create: XOR<ModifierCreateWithoutItemsInput, ModifierUncheckedCreateWithoutItemsInput>
+    where?: ModifierWhereInput
+  }
+
+  export type ModifierUpdateToOneWithWhereWithoutItemsInput = {
+    where?: ModifierWhereInput
+    data: XOR<ModifierUpdateWithoutItemsInput, ModifierUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type ModifierUpdateWithoutItemsInput = {
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    effects?: EffectModifierUpdateManyWithoutModifierNestedInput
+    abilities?: AbilityModifierUpdateManyWithoutModifierNestedInput
+  }
+
+  export type ModifierUncheckedUpdateWithoutItemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    effects?: EffectModifierUncheckedUpdateManyWithoutModifierNestedInput
+    abilities?: AbilityModifierUncheckedUpdateManyWithoutModifierNestedInput
+  }
+
+  export type InventoryItemCreateWithoutAttacksInput = {
+    type: string
+    name: string
+    description: string
+    quantity: number
+    slot: number
+    isEquippable: boolean
+    equipped: boolean
+    passive: boolean
+    modifiers?: ItemModifierCreateNestedManyWithoutItemInput
+    inventory: InventoryCreateNestedOneWithoutItemsInput
+  }
+
+  export type InventoryItemUncheckedCreateWithoutAttacksInput = {
+    id?: number
+    inventoryId: number
+    type: string
+    name: string
+    description: string
+    quantity: number
+    slot: number
+    isEquippable: boolean
+    equipped: boolean
+    passive: boolean
+    modifiers?: ItemModifierUncheckedCreateNestedManyWithoutItemInput
+  }
+
+  export type InventoryItemCreateOrConnectWithoutAttacksInput = {
+    where: InventoryItemWhereUniqueInput
+    create: XOR<InventoryItemCreateWithoutAttacksInput, InventoryItemUncheckedCreateWithoutAttacksInput>
+  }
+
+  export type AttackCreateWithoutItemsInput = {
+    category: string
+    attackRoll: JsonNullValueInput | InputJsonValue
+    damage: JsonNullValueInput | InputJsonValue
+    critical: JsonNullValueInput | InputJsonValue
+    ability?: AbilityAttackCreateNestedManyWithoutAttackInput
+  }
+
+  export type AttackUncheckedCreateWithoutItemsInput = {
+    id?: number
+    category: string
+    attackRoll: JsonNullValueInput | InputJsonValue
+    damage: JsonNullValueInput | InputJsonValue
+    critical: JsonNullValueInput | InputJsonValue
+    ability?: AbilityAttackUncheckedCreateNestedManyWithoutAttackInput
+  }
+
+  export type AttackCreateOrConnectWithoutItemsInput = {
+    where: AttackWhereUniqueInput
+    create: XOR<AttackCreateWithoutItemsInput, AttackUncheckedCreateWithoutItemsInput>
+  }
+
+  export type InventoryItemUpsertWithoutAttacksInput = {
+    update: XOR<InventoryItemUpdateWithoutAttacksInput, InventoryItemUncheckedUpdateWithoutAttacksInput>
+    create: XOR<InventoryItemCreateWithoutAttacksInput, InventoryItemUncheckedCreateWithoutAttacksInput>
+    where?: InventoryItemWhereInput
+  }
+
+  export type InventoryItemUpdateToOneWithWhereWithoutAttacksInput = {
+    where?: InventoryItemWhereInput
+    data: XOR<InventoryItemUpdateWithoutAttacksInput, InventoryItemUncheckedUpdateWithoutAttacksInput>
+  }
+
+  export type InventoryItemUpdateWithoutAttacksInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    slot?: IntFieldUpdateOperationsInput | number
+    isEquippable?: BoolFieldUpdateOperationsInput | boolean
+    equipped?: BoolFieldUpdateOperationsInput | boolean
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    modifiers?: ItemModifierUpdateManyWithoutItemNestedInput
+    inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type InventoryItemUncheckedUpdateWithoutAttacksInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    inventoryId?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    slot?: IntFieldUpdateOperationsInput | number
+    isEquippable?: BoolFieldUpdateOperationsInput | boolean
+    equipped?: BoolFieldUpdateOperationsInput | boolean
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    modifiers?: ItemModifierUncheckedUpdateManyWithoutItemNestedInput
+  }
+
+  export type AttackUpsertWithoutItemsInput = {
+    update: XOR<AttackUpdateWithoutItemsInput, AttackUncheckedUpdateWithoutItemsInput>
+    create: XOR<AttackCreateWithoutItemsInput, AttackUncheckedCreateWithoutItemsInput>
+    where?: AttackWhereInput
+  }
+
+  export type AttackUpdateToOneWithWhereWithoutItemsInput = {
+    where?: AttackWhereInput
+    data: XOR<AttackUpdateWithoutItemsInput, AttackUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type AttackUpdateWithoutItemsInput = {
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
+    ability?: AbilityAttackUpdateManyWithoutAttackNestedInput
+  }
+
+  export type AttackUncheckedUpdateWithoutItemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
+    ability?: AbilityAttackUncheckedUpdateManyWithoutAttackNestedInput
   }
 
   export type CharacterCreateWithoutAbilitiesInput = {
@@ -14456,6 +24999,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesCreateNestedOneWithoutCharacterInput
@@ -14484,6 +25029,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesUncheckedCreateNestedOneWithoutCharacterInput
@@ -14495,6 +25042,40 @@ export namespace Prisma {
   export type CharacterCreateOrConnectWithoutAbilitiesInput = {
     where: CharacterWhereUniqueInput
     create: XOR<CharacterCreateWithoutAbilitiesInput, CharacterUncheckedCreateWithoutAbilitiesInput>
+  }
+
+  export type AbilityModifierCreateWithoutAbilityInput = {
+    modifier: ModifierCreateNestedOneWithoutAbilitiesInput
+  }
+
+  export type AbilityModifierUncheckedCreateWithoutAbilityInput = {
+    modifierId: number
+  }
+
+  export type AbilityModifierCreateOrConnectWithoutAbilityInput = {
+    where: AbilityModifierWhereUniqueInput
+    create: XOR<AbilityModifierCreateWithoutAbilityInput, AbilityModifierUncheckedCreateWithoutAbilityInput>
+  }
+
+  export type AbilityModifierCreateManyAbilityInputEnvelope = {
+    data: AbilityModifierCreateManyAbilityInput | AbilityModifierCreateManyAbilityInput[]
+  }
+
+  export type AbilityAttackCreateWithoutAbilityInput = {
+    attack: AttackCreateNestedOneWithoutAbilityInput
+  }
+
+  export type AbilityAttackUncheckedCreateWithoutAbilityInput = {
+    attackId: number
+  }
+
+  export type AbilityAttackCreateOrConnectWithoutAbilityInput = {
+    where: AbilityAttackWhereUniqueInput
+    create: XOR<AbilityAttackCreateWithoutAbilityInput, AbilityAttackUncheckedCreateWithoutAbilityInput>
+  }
+
+  export type AbilityAttackCreateManyAbilityInputEnvelope = {
+    data: AbilityAttackCreateManyAbilityInput | AbilityAttackCreateManyAbilityInput[]
   }
 
   export type CharacterUpsertWithoutAbilitiesInput = {
@@ -14527,6 +25108,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUpdateOneWithoutCharacterNestedInput
@@ -14555,12 +25138,278 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUncheckedUpdateOneWithoutCharacterNestedInput
     expertisies?: ExpertiseCharacterUncheckedUpdateManyWithoutCharacterNestedInput
     inventory?: InventoryUncheckedUpdateOneWithoutCharacterNestedInput
     effects?: EffectUncheckedUpdateManyWithoutCharacterNestedInput
+  }
+
+  export type AbilityModifierUpsertWithWhereUniqueWithoutAbilityInput = {
+    where: AbilityModifierWhereUniqueInput
+    update: XOR<AbilityModifierUpdateWithoutAbilityInput, AbilityModifierUncheckedUpdateWithoutAbilityInput>
+    create: XOR<AbilityModifierCreateWithoutAbilityInput, AbilityModifierUncheckedCreateWithoutAbilityInput>
+  }
+
+  export type AbilityModifierUpdateWithWhereUniqueWithoutAbilityInput = {
+    where: AbilityModifierWhereUniqueInput
+    data: XOR<AbilityModifierUpdateWithoutAbilityInput, AbilityModifierUncheckedUpdateWithoutAbilityInput>
+  }
+
+  export type AbilityModifierUpdateManyWithWhereWithoutAbilityInput = {
+    where: AbilityModifierScalarWhereInput
+    data: XOR<AbilityModifierUpdateManyMutationInput, AbilityModifierUncheckedUpdateManyWithoutAbilityInput>
+  }
+
+  export type AbilityModifierScalarWhereInput = {
+    AND?: AbilityModifierScalarWhereInput | AbilityModifierScalarWhereInput[]
+    OR?: AbilityModifierScalarWhereInput[]
+    NOT?: AbilityModifierScalarWhereInput | AbilityModifierScalarWhereInput[]
+    abilityId?: IntFilter<"AbilityModifier"> | number
+    modifierId?: IntFilter<"AbilityModifier"> | number
+  }
+
+  export type AbilityAttackUpsertWithWhereUniqueWithoutAbilityInput = {
+    where: AbilityAttackWhereUniqueInput
+    update: XOR<AbilityAttackUpdateWithoutAbilityInput, AbilityAttackUncheckedUpdateWithoutAbilityInput>
+    create: XOR<AbilityAttackCreateWithoutAbilityInput, AbilityAttackUncheckedCreateWithoutAbilityInput>
+  }
+
+  export type AbilityAttackUpdateWithWhereUniqueWithoutAbilityInput = {
+    where: AbilityAttackWhereUniqueInput
+    data: XOR<AbilityAttackUpdateWithoutAbilityInput, AbilityAttackUncheckedUpdateWithoutAbilityInput>
+  }
+
+  export type AbilityAttackUpdateManyWithWhereWithoutAbilityInput = {
+    where: AbilityAttackScalarWhereInput
+    data: XOR<AbilityAttackUpdateManyMutationInput, AbilityAttackUncheckedUpdateManyWithoutAbilityInput>
+  }
+
+  export type AbilityAttackScalarWhereInput = {
+    AND?: AbilityAttackScalarWhereInput | AbilityAttackScalarWhereInput[]
+    OR?: AbilityAttackScalarWhereInput[]
+    NOT?: AbilityAttackScalarWhereInput | AbilityAttackScalarWhereInput[]
+    abilityId?: IntFilter<"AbilityAttack"> | number
+    attackId?: IntFilter<"AbilityAttack"> | number
+  }
+
+  export type AbilityCreateWithoutModifiersInput = {
+    type: string
+    name: string
+    description: string
+    passive: boolean
+    manaCost: number
+    character: CharacterCreateNestedOneWithoutAbilitiesInput
+    attacks?: AbilityAttackCreateNestedManyWithoutAbilityInput
+  }
+
+  export type AbilityUncheckedCreateWithoutModifiersInput = {
+    id?: number
+    characterId: number
+    type: string
+    name: string
+    description: string
+    passive: boolean
+    manaCost: number
+    attacks?: AbilityAttackUncheckedCreateNestedManyWithoutAbilityInput
+  }
+
+  export type AbilityCreateOrConnectWithoutModifiersInput = {
+    where: AbilityWhereUniqueInput
+    create: XOR<AbilityCreateWithoutModifiersInput, AbilityUncheckedCreateWithoutModifiersInput>
+  }
+
+  export type ModifierCreateWithoutAbilitiesInput = {
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    effects?: EffectModifierCreateNestedManyWithoutModifierInput
+    items?: ItemModifierCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierUncheckedCreateWithoutAbilitiesInput = {
+    id?: number
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    effects?: EffectModifierUncheckedCreateNestedManyWithoutModifierInput
+    items?: ItemModifierUncheckedCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierCreateOrConnectWithoutAbilitiesInput = {
+    where: ModifierWhereUniqueInput
+    create: XOR<ModifierCreateWithoutAbilitiesInput, ModifierUncheckedCreateWithoutAbilitiesInput>
+  }
+
+  export type AbilityUpsertWithoutModifiersInput = {
+    update: XOR<AbilityUpdateWithoutModifiersInput, AbilityUncheckedUpdateWithoutModifiersInput>
+    create: XOR<AbilityCreateWithoutModifiersInput, AbilityUncheckedCreateWithoutModifiersInput>
+    where?: AbilityWhereInput
+  }
+
+  export type AbilityUpdateToOneWithWhereWithoutModifiersInput = {
+    where?: AbilityWhereInput
+    data: XOR<AbilityUpdateWithoutModifiersInput, AbilityUncheckedUpdateWithoutModifiersInput>
+  }
+
+  export type AbilityUpdateWithoutModifiersInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    manaCost?: IntFieldUpdateOperationsInput | number
+    character?: CharacterUpdateOneRequiredWithoutAbilitiesNestedInput
+    attacks?: AbilityAttackUpdateManyWithoutAbilityNestedInput
+  }
+
+  export type AbilityUncheckedUpdateWithoutModifiersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    characterId?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    manaCost?: IntFieldUpdateOperationsInput | number
+    attacks?: AbilityAttackUncheckedUpdateManyWithoutAbilityNestedInput
+  }
+
+  export type ModifierUpsertWithoutAbilitiesInput = {
+    update: XOR<ModifierUpdateWithoutAbilitiesInput, ModifierUncheckedUpdateWithoutAbilitiesInput>
+    create: XOR<ModifierCreateWithoutAbilitiesInput, ModifierUncheckedCreateWithoutAbilitiesInput>
+    where?: ModifierWhereInput
+  }
+
+  export type ModifierUpdateToOneWithWhereWithoutAbilitiesInput = {
+    where?: ModifierWhereInput
+    data: XOR<ModifierUpdateWithoutAbilitiesInput, ModifierUncheckedUpdateWithoutAbilitiesInput>
+  }
+
+  export type ModifierUpdateWithoutAbilitiesInput = {
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    effects?: EffectModifierUpdateManyWithoutModifierNestedInput
+    items?: ItemModifierUpdateManyWithoutModifierNestedInput
+  }
+
+  export type ModifierUncheckedUpdateWithoutAbilitiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    effects?: EffectModifierUncheckedUpdateManyWithoutModifierNestedInput
+    items?: ItemModifierUncheckedUpdateManyWithoutModifierNestedInput
+  }
+
+  export type AbilityCreateWithoutAttacksInput = {
+    type: string
+    name: string
+    description: string
+    passive: boolean
+    manaCost: number
+    character: CharacterCreateNestedOneWithoutAbilitiesInput
+    modifiers?: AbilityModifierCreateNestedManyWithoutAbilityInput
+  }
+
+  export type AbilityUncheckedCreateWithoutAttacksInput = {
+    id?: number
+    characterId: number
+    type: string
+    name: string
+    description: string
+    passive: boolean
+    manaCost: number
+    modifiers?: AbilityModifierUncheckedCreateNestedManyWithoutAbilityInput
+  }
+
+  export type AbilityCreateOrConnectWithoutAttacksInput = {
+    where: AbilityWhereUniqueInput
+    create: XOR<AbilityCreateWithoutAttacksInput, AbilityUncheckedCreateWithoutAttacksInput>
+  }
+
+  export type AttackCreateWithoutAbilityInput = {
+    category: string
+    attackRoll: JsonNullValueInput | InputJsonValue
+    damage: JsonNullValueInput | InputJsonValue
+    critical: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackCreateNestedManyWithoutAttackInput
+  }
+
+  export type AttackUncheckedCreateWithoutAbilityInput = {
+    id?: number
+    category: string
+    attackRoll: JsonNullValueInput | InputJsonValue
+    damage: JsonNullValueInput | InputJsonValue
+    critical: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackUncheckedCreateNestedManyWithoutAttackInput
+  }
+
+  export type AttackCreateOrConnectWithoutAbilityInput = {
+    where: AttackWhereUniqueInput
+    create: XOR<AttackCreateWithoutAbilityInput, AttackUncheckedCreateWithoutAbilityInput>
+  }
+
+  export type AbilityUpsertWithoutAttacksInput = {
+    update: XOR<AbilityUpdateWithoutAttacksInput, AbilityUncheckedUpdateWithoutAttacksInput>
+    create: XOR<AbilityCreateWithoutAttacksInput, AbilityUncheckedCreateWithoutAttacksInput>
+    where?: AbilityWhereInput
+  }
+
+  export type AbilityUpdateToOneWithWhereWithoutAttacksInput = {
+    where?: AbilityWhereInput
+    data: XOR<AbilityUpdateWithoutAttacksInput, AbilityUncheckedUpdateWithoutAttacksInput>
+  }
+
+  export type AbilityUpdateWithoutAttacksInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    manaCost?: IntFieldUpdateOperationsInput | number
+    character?: CharacterUpdateOneRequiredWithoutAbilitiesNestedInput
+    modifiers?: AbilityModifierUpdateManyWithoutAbilityNestedInput
+  }
+
+  export type AbilityUncheckedUpdateWithoutAttacksInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    characterId?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    passive?: BoolFieldUpdateOperationsInput | boolean
+    manaCost?: IntFieldUpdateOperationsInput | number
+    modifiers?: AbilityModifierUncheckedUpdateManyWithoutAbilityNestedInput
+  }
+
+  export type AttackUpsertWithoutAbilityInput = {
+    update: XOR<AttackUpdateWithoutAbilityInput, AttackUncheckedUpdateWithoutAbilityInput>
+    create: XOR<AttackCreateWithoutAbilityInput, AttackUncheckedCreateWithoutAbilityInput>
+    where?: AttackWhereInput
+  }
+
+  export type AttackUpdateToOneWithWhereWithoutAbilityInput = {
+    where?: AttackWhereInput
+    data: XOR<AttackUpdateWithoutAbilityInput, AttackUncheckedUpdateWithoutAbilityInput>
+  }
+
+  export type AttackUpdateWithoutAbilityInput = {
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackUpdateManyWithoutAttackNestedInput
+  }
+
+  export type AttackUncheckedUpdateWithoutAbilityInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    attackRoll?: JsonNullValueInput | InputJsonValue
+    damage?: JsonNullValueInput | InputJsonValue
+    critical?: JsonNullValueInput | InputJsonValue
+    items?: ItemAttackUncheckedUpdateManyWithoutAttackNestedInput
   }
 
   export type CharacterCreateWithoutEffectsInput = {
@@ -14582,6 +25431,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesCreateNestedOneWithoutCharacterInput
@@ -14610,6 +25461,8 @@ export namespace Prisma {
     hpMax?: number
     mp?: number
     mpMax?: number
+    condition?: string
+    disable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     attributes?: AttributesUncheckedCreateNestedOneWithoutCharacterInput
@@ -14621,6 +25474,23 @@ export namespace Prisma {
   export type CharacterCreateOrConnectWithoutEffectsInput = {
     where: CharacterWhereUniqueInput
     create: XOR<CharacterCreateWithoutEffectsInput, CharacterUncheckedCreateWithoutEffectsInput>
+  }
+
+  export type EffectModifierCreateWithoutEffectInput = {
+    modifier: ModifierCreateNestedOneWithoutEffectsInput
+  }
+
+  export type EffectModifierUncheckedCreateWithoutEffectInput = {
+    modifierId: number
+  }
+
+  export type EffectModifierCreateOrConnectWithoutEffectInput = {
+    where: EffectModifierWhereUniqueInput
+    create: XOR<EffectModifierCreateWithoutEffectInput, EffectModifierUncheckedCreateWithoutEffectInput>
+  }
+
+  export type EffectModifierCreateManyEffectInputEnvelope = {
+    data: EffectModifierCreateManyEffectInput | EffectModifierCreateManyEffectInput[]
   }
 
   export type CharacterUpsertWithoutEffectsInput = {
@@ -14653,6 +25523,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUpdateOneWithoutCharacterNestedInput
@@ -14681,6 +25553,8 @@ export namespace Prisma {
     hpMax?: IntFieldUpdateOperationsInput | number
     mp?: IntFieldUpdateOperationsInput | number
     mpMax?: IntFieldUpdateOperationsInput | number
+    condition?: StringFieldUpdateOperationsInput | string
+    disable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attributes?: AttributesUncheckedUpdateOneWithoutCharacterNestedInput
@@ -14689,50 +25563,351 @@ export namespace Prisma {
     abilities?: AbilityUncheckedUpdateManyWithoutCharacterNestedInput
   }
 
-  export type ExpertiseCharacterCreateManyCharacterInput = {
-    id?: number
-    expertiseId: number
-    trained?: boolean
-    trainBonus?: number
+  export type EffectModifierUpsertWithWhereUniqueWithoutEffectInput = {
+    where: EffectModifierWhereUniqueInput
+    update: XOR<EffectModifierUpdateWithoutEffectInput, EffectModifierUncheckedUpdateWithoutEffectInput>
+    create: XOR<EffectModifierCreateWithoutEffectInput, EffectModifierUncheckedCreateWithoutEffectInput>
   }
 
-  export type AbilityCreateManyCharacterInput = {
-    type: string
-    name: string
-    description: string
-    passive: boolean
-    manaCost: number
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
+  export type EffectModifierUpdateWithWhereUniqueWithoutEffectInput = {
+    where: EffectModifierWhereUniqueInput
+    data: XOR<EffectModifierUpdateWithoutEffectInput, EffectModifierUncheckedUpdateWithoutEffectInput>
   }
 
-  export type EffectCreateManyCharacterInput = {
+  export type EffectModifierUpdateManyWithWhereWithoutEffectInput = {
+    where: EffectModifierScalarWhereInput
+    data: XOR<EffectModifierUpdateManyMutationInput, EffectModifierUncheckedUpdateManyWithoutEffectInput>
+  }
+
+  export type EffectModifierScalarWhereInput = {
+    AND?: EffectModifierScalarWhereInput | EffectModifierScalarWhereInput[]
+    OR?: EffectModifierScalarWhereInput[]
+    NOT?: EffectModifierScalarWhereInput | EffectModifierScalarWhereInput[]
+    effectId?: IntFilter<"EffectModifier"> | number
+    modifierId?: IntFilter<"EffectModifier"> | number
+  }
+
+  export type EffectCreateWithoutModifiersInput = {
     sourceType: string
     sourceId?: number | null
     sourceName: string
     active: boolean
     duration: JsonNullValueInput | InputJsonValue
     stacks: number
-    modifiers: JsonNullValueInput | InputJsonValue
+    startedAt: Date | string
+    character: CharacterCreateNestedOneWithoutEffectsInput
+  }
+
+  export type EffectUncheckedCreateWithoutModifiersInput = {
+    id?: number
+    characterId: number
+    sourceType: string
+    sourceId?: number | null
+    sourceName: string
+    active: boolean
+    duration: JsonNullValueInput | InputJsonValue
+    stacks: number
+    startedAt: Date | string
+  }
+
+  export type EffectCreateOrConnectWithoutModifiersInput = {
+    where: EffectWhereUniqueInput
+    create: XOR<EffectCreateWithoutModifiersInput, EffectUncheckedCreateWithoutModifiersInput>
+  }
+
+  export type ModifierCreateWithoutEffectsInput = {
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    abilities?: AbilityModifierCreateNestedManyWithoutModifierInput
+    items?: ItemModifierCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierUncheckedCreateWithoutEffectsInput = {
+    id?: number
+    target: JsonNullValueInput | InputJsonValue
+    value: number
+    type: string
+    abilities?: AbilityModifierUncheckedCreateNestedManyWithoutModifierInput
+    items?: ItemModifierUncheckedCreateNestedManyWithoutModifierInput
+  }
+
+  export type ModifierCreateOrConnectWithoutEffectsInput = {
+    where: ModifierWhereUniqueInput
+    create: XOR<ModifierCreateWithoutEffectsInput, ModifierUncheckedCreateWithoutEffectsInput>
+  }
+
+  export type EffectUpsertWithoutModifiersInput = {
+    update: XOR<EffectUpdateWithoutModifiersInput, EffectUncheckedUpdateWithoutModifiersInput>
+    create: XOR<EffectCreateWithoutModifiersInput, EffectUncheckedCreateWithoutModifiersInput>
+    where?: EffectWhereInput
+  }
+
+  export type EffectUpdateToOneWithWhereWithoutModifiersInput = {
+    where?: EffectWhereInput
+    data: XOR<EffectUpdateWithoutModifiersInput, EffectUncheckedUpdateWithoutModifiersInput>
+  }
+
+  export type EffectUpdateWithoutModifiersInput = {
+    sourceType?: StringFieldUpdateOperationsInput | string
+    sourceId?: NullableIntFieldUpdateOperationsInput | number | null
+    sourceName?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    duration?: JsonNullValueInput | InputJsonValue
+    stacks?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    character?: CharacterUpdateOneRequiredWithoutEffectsNestedInput
+  }
+
+  export type EffectUncheckedUpdateWithoutModifiersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    characterId?: IntFieldUpdateOperationsInput | number
+    sourceType?: StringFieldUpdateOperationsInput | string
+    sourceId?: NullableIntFieldUpdateOperationsInput | number | null
+    sourceName?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    duration?: JsonNullValueInput | InputJsonValue
+    stacks?: IntFieldUpdateOperationsInput | number
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ModifierUpsertWithoutEffectsInput = {
+    update: XOR<ModifierUpdateWithoutEffectsInput, ModifierUncheckedUpdateWithoutEffectsInput>
+    create: XOR<ModifierCreateWithoutEffectsInput, ModifierUncheckedCreateWithoutEffectsInput>
+    where?: ModifierWhereInput
+  }
+
+  export type ModifierUpdateToOneWithWhereWithoutEffectsInput = {
+    where?: ModifierWhereInput
+    data: XOR<ModifierUpdateWithoutEffectsInput, ModifierUncheckedUpdateWithoutEffectsInput>
+  }
+
+  export type ModifierUpdateWithoutEffectsInput = {
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    abilities?: AbilityModifierUpdateManyWithoutModifierNestedInput
+    items?: ItemModifierUpdateManyWithoutModifierNestedInput
+  }
+
+  export type ModifierUncheckedUpdateWithoutEffectsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    target?: JsonNullValueInput | InputJsonValue
+    value?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    abilities?: AbilityModifierUncheckedUpdateManyWithoutModifierNestedInput
+    items?: ItemModifierUncheckedUpdateManyWithoutModifierNestedInput
+  }
+
+  export type EffectModifierCreateWithoutModifierInput = {
+    effect: EffectCreateNestedOneWithoutModifiersInput
+  }
+
+  export type EffectModifierUncheckedCreateWithoutModifierInput = {
+    effectId: number
+  }
+
+  export type EffectModifierCreateOrConnectWithoutModifierInput = {
+    where: EffectModifierWhereUniqueInput
+    create: XOR<EffectModifierCreateWithoutModifierInput, EffectModifierUncheckedCreateWithoutModifierInput>
+  }
+
+  export type EffectModifierCreateManyModifierInputEnvelope = {
+    data: EffectModifierCreateManyModifierInput | EffectModifierCreateManyModifierInput[]
+  }
+
+  export type AbilityModifierCreateWithoutModifierInput = {
+    ability: AbilityCreateNestedOneWithoutModifiersInput
+  }
+
+  export type AbilityModifierUncheckedCreateWithoutModifierInput = {
+    abilityId: number
+  }
+
+  export type AbilityModifierCreateOrConnectWithoutModifierInput = {
+    where: AbilityModifierWhereUniqueInput
+    create: XOR<AbilityModifierCreateWithoutModifierInput, AbilityModifierUncheckedCreateWithoutModifierInput>
+  }
+
+  export type AbilityModifierCreateManyModifierInputEnvelope = {
+    data: AbilityModifierCreateManyModifierInput | AbilityModifierCreateManyModifierInput[]
+  }
+
+  export type ItemModifierCreateWithoutModifierInput = {
+    item: InventoryItemCreateNestedOneWithoutModifiersInput
+  }
+
+  export type ItemModifierUncheckedCreateWithoutModifierInput = {
+    itemId: number
+  }
+
+  export type ItemModifierCreateOrConnectWithoutModifierInput = {
+    where: ItemModifierWhereUniqueInput
+    create: XOR<ItemModifierCreateWithoutModifierInput, ItemModifierUncheckedCreateWithoutModifierInput>
+  }
+
+  export type ItemModifierCreateManyModifierInputEnvelope = {
+    data: ItemModifierCreateManyModifierInput | ItemModifierCreateManyModifierInput[]
+  }
+
+  export type EffectModifierUpsertWithWhereUniqueWithoutModifierInput = {
+    where: EffectModifierWhereUniqueInput
+    update: XOR<EffectModifierUpdateWithoutModifierInput, EffectModifierUncheckedUpdateWithoutModifierInput>
+    create: XOR<EffectModifierCreateWithoutModifierInput, EffectModifierUncheckedCreateWithoutModifierInput>
+  }
+
+  export type EffectModifierUpdateWithWhereUniqueWithoutModifierInput = {
+    where: EffectModifierWhereUniqueInput
+    data: XOR<EffectModifierUpdateWithoutModifierInput, EffectModifierUncheckedUpdateWithoutModifierInput>
+  }
+
+  export type EffectModifierUpdateManyWithWhereWithoutModifierInput = {
+    where: EffectModifierScalarWhereInput
+    data: XOR<EffectModifierUpdateManyMutationInput, EffectModifierUncheckedUpdateManyWithoutModifierInput>
+  }
+
+  export type AbilityModifierUpsertWithWhereUniqueWithoutModifierInput = {
+    where: AbilityModifierWhereUniqueInput
+    update: XOR<AbilityModifierUpdateWithoutModifierInput, AbilityModifierUncheckedUpdateWithoutModifierInput>
+    create: XOR<AbilityModifierCreateWithoutModifierInput, AbilityModifierUncheckedCreateWithoutModifierInput>
+  }
+
+  export type AbilityModifierUpdateWithWhereUniqueWithoutModifierInput = {
+    where: AbilityModifierWhereUniqueInput
+    data: XOR<AbilityModifierUpdateWithoutModifierInput, AbilityModifierUncheckedUpdateWithoutModifierInput>
+  }
+
+  export type AbilityModifierUpdateManyWithWhereWithoutModifierInput = {
+    where: AbilityModifierScalarWhereInput
+    data: XOR<AbilityModifierUpdateManyMutationInput, AbilityModifierUncheckedUpdateManyWithoutModifierInput>
+  }
+
+  export type ItemModifierUpsertWithWhereUniqueWithoutModifierInput = {
+    where: ItemModifierWhereUniqueInput
+    update: XOR<ItemModifierUpdateWithoutModifierInput, ItemModifierUncheckedUpdateWithoutModifierInput>
+    create: XOR<ItemModifierCreateWithoutModifierInput, ItemModifierUncheckedCreateWithoutModifierInput>
+  }
+
+  export type ItemModifierUpdateWithWhereUniqueWithoutModifierInput = {
+    where: ItemModifierWhereUniqueInput
+    data: XOR<ItemModifierUpdateWithoutModifierInput, ItemModifierUncheckedUpdateWithoutModifierInput>
+  }
+
+  export type ItemModifierUpdateManyWithWhereWithoutModifierInput = {
+    where: ItemModifierScalarWhereInput
+    data: XOR<ItemModifierUpdateManyMutationInput, ItemModifierUncheckedUpdateManyWithoutModifierInput>
+  }
+
+  export type ItemAttackCreateWithoutAttackInput = {
+    item: InventoryItemCreateNestedOneWithoutAttacksInput
+  }
+
+  export type ItemAttackUncheckedCreateWithoutAttackInput = {
+    itemId: number
+  }
+
+  export type ItemAttackCreateOrConnectWithoutAttackInput = {
+    where: ItemAttackWhereUniqueInput
+    create: XOR<ItemAttackCreateWithoutAttackInput, ItemAttackUncheckedCreateWithoutAttackInput>
+  }
+
+  export type ItemAttackCreateManyAttackInputEnvelope = {
+    data: ItemAttackCreateManyAttackInput | ItemAttackCreateManyAttackInput[]
+  }
+
+  export type AbilityAttackCreateWithoutAttackInput = {
+    ability: AbilityCreateNestedOneWithoutAttacksInput
+  }
+
+  export type AbilityAttackUncheckedCreateWithoutAttackInput = {
+    abilityId: number
+  }
+
+  export type AbilityAttackCreateOrConnectWithoutAttackInput = {
+    where: AbilityAttackWhereUniqueInput
+    create: XOR<AbilityAttackCreateWithoutAttackInput, AbilityAttackUncheckedCreateWithoutAttackInput>
+  }
+
+  export type AbilityAttackCreateManyAttackInputEnvelope = {
+    data: AbilityAttackCreateManyAttackInput | AbilityAttackCreateManyAttackInput[]
+  }
+
+  export type ItemAttackUpsertWithWhereUniqueWithoutAttackInput = {
+    where: ItemAttackWhereUniqueInput
+    update: XOR<ItemAttackUpdateWithoutAttackInput, ItemAttackUncheckedUpdateWithoutAttackInput>
+    create: XOR<ItemAttackCreateWithoutAttackInput, ItemAttackUncheckedCreateWithoutAttackInput>
+  }
+
+  export type ItemAttackUpdateWithWhereUniqueWithoutAttackInput = {
+    where: ItemAttackWhereUniqueInput
+    data: XOR<ItemAttackUpdateWithoutAttackInput, ItemAttackUncheckedUpdateWithoutAttackInput>
+  }
+
+  export type ItemAttackUpdateManyWithWhereWithoutAttackInput = {
+    where: ItemAttackScalarWhereInput
+    data: XOR<ItemAttackUpdateManyMutationInput, ItemAttackUncheckedUpdateManyWithoutAttackInput>
+  }
+
+  export type AbilityAttackUpsertWithWhereUniqueWithoutAttackInput = {
+    where: AbilityAttackWhereUniqueInput
+    update: XOR<AbilityAttackUpdateWithoutAttackInput, AbilityAttackUncheckedUpdateWithoutAttackInput>
+    create: XOR<AbilityAttackCreateWithoutAttackInput, AbilityAttackUncheckedCreateWithoutAttackInput>
+  }
+
+  export type AbilityAttackUpdateWithWhereUniqueWithoutAttackInput = {
+    where: AbilityAttackWhereUniqueInput
+    data: XOR<AbilityAttackUpdateWithoutAttackInput, AbilityAttackUncheckedUpdateWithoutAttackInput>
+  }
+
+  export type AbilityAttackUpdateManyWithWhereWithoutAttackInput = {
+    where: AbilityAttackScalarWhereInput
+    data: XOR<AbilityAttackUpdateManyMutationInput, AbilityAttackUncheckedUpdateManyWithoutAttackInput>
+  }
+
+  export type ExpertiseCharacterCreateManyCharacterInput = {
+    expertiseId: number
+    value?: number
+    trained?: boolean
+    trainBonus?: number
+  }
+
+  export type AbilityCreateManyCharacterInput = {
+    id?: number
+    type: string
+    name: string
+    description: string
+    passive: boolean
+    manaCost: number
+  }
+
+  export type EffectCreateManyCharacterInput = {
+    id?: number
+    sourceType: string
+    sourceId?: number | null
+    sourceName: string
+    active: boolean
+    duration: JsonNullValueInput | InputJsonValue
+    stacks: number
     startedAt: Date | string
   }
 
   export type ExpertiseCharacterUpdateWithoutCharacterInput = {
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
     expertise?: ExpertiseUpdateOneRequiredWithoutCharacterLinkNestedInput
   }
 
   export type ExpertiseCharacterUncheckedUpdateWithoutCharacterInput = {
-    id?: IntFieldUpdateOperationsInput | number
     expertiseId?: IntFieldUpdateOperationsInput | number
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpertiseCharacterUncheckedUpdateManyWithoutCharacterInput = {
-    id?: IntFieldUpdateOperationsInput | number
     expertiseId?: IntFieldUpdateOperationsInput | number
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
   }
@@ -14743,28 +25918,28 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     passive?: BoolFieldUpdateOperationsInput | boolean
     manaCost?: IntFieldUpdateOperationsInput | number
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+    modifiers?: AbilityModifierUpdateManyWithoutAbilityNestedInput
+    attacks?: AbilityAttackUpdateManyWithoutAbilityNestedInput
   }
 
   export type AbilityUncheckedUpdateWithoutCharacterInput = {
+    id?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     passive?: BoolFieldUpdateOperationsInput | boolean
     manaCost?: IntFieldUpdateOperationsInput | number
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+    modifiers?: AbilityModifierUncheckedUpdateManyWithoutAbilityNestedInput
+    attacks?: AbilityAttackUncheckedUpdateManyWithoutAbilityNestedInput
   }
 
   export type AbilityUncheckedUpdateManyWithoutCharacterInput = {
+    id?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     passive?: BoolFieldUpdateOperationsInput | boolean
     manaCost?: IntFieldUpdateOperationsInput | number
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
   }
 
   export type EffectUpdateWithoutCharacterInput = {
@@ -14774,60 +25949,63 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
     duration?: JsonNullValueInput | InputJsonValue
     stacks?: IntFieldUpdateOperationsInput | number
-    modifiers?: JsonNullValueInput | InputJsonValue
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifiers?: EffectModifierUpdateManyWithoutEffectNestedInput
   }
 
   export type EffectUncheckedUpdateWithoutCharacterInput = {
+    id?: IntFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
     sourceId?: NullableIntFieldUpdateOperationsInput | number | null
     sourceName?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     duration?: JsonNullValueInput | InputJsonValue
     stacks?: IntFieldUpdateOperationsInput | number
-    modifiers?: JsonNullValueInput | InputJsonValue
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifiers?: EffectModifierUncheckedUpdateManyWithoutEffectNestedInput
   }
 
   export type EffectUncheckedUpdateManyWithoutCharacterInput = {
+    id?: IntFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
     sourceId?: NullableIntFieldUpdateOperationsInput | number | null
     sourceName?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     duration?: JsonNullValueInput | InputJsonValue
     stacks?: IntFieldUpdateOperationsInput | number
-    modifiers?: JsonNullValueInput | InputJsonValue
     startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExpertiseCharacterCreateManyExpertiseInput = {
-    id?: number
     characterId: number
+    value?: number
     trained?: boolean
     trainBonus?: number
   }
 
   export type ExpertiseCharacterUpdateWithoutExpertiseInput = {
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
     character?: CharacterUpdateOneRequiredWithoutExpertisiesNestedInput
   }
 
   export type ExpertiseCharacterUncheckedUpdateWithoutExpertiseInput = {
-    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
   }
 
   export type ExpertiseCharacterUncheckedUpdateManyWithoutExpertiseInput = {
-    id?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
+    value?: IntFieldUpdateOperationsInput | number
     trained?: BoolFieldUpdateOperationsInput | boolean
     trainBonus?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemCreateManyInventoryInput = {
+    id?: number
     type: string
     name: string
     description: string
@@ -14836,8 +26014,6 @@ export namespace Prisma {
     isEquippable: boolean
     equipped: boolean
     passive: boolean
-    attacks: JsonNullValueInput | InputJsonValue
-    modifiers: JsonNullValueInput | InputJsonValue
   }
 
   export type InventoryItemUpdateWithoutInventoryInput = {
@@ -14849,11 +26025,12 @@ export namespace Prisma {
     isEquippable?: BoolFieldUpdateOperationsInput | boolean
     equipped?: BoolFieldUpdateOperationsInput | boolean
     passive?: BoolFieldUpdateOperationsInput | boolean
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierUpdateManyWithoutItemNestedInput
+    attacks?: ItemAttackUpdateManyWithoutItemNestedInput
   }
 
   export type InventoryItemUncheckedUpdateWithoutInventoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -14862,11 +26039,12 @@ export namespace Prisma {
     isEquippable?: BoolFieldUpdateOperationsInput | boolean
     equipped?: BoolFieldUpdateOperationsInput | boolean
     passive?: BoolFieldUpdateOperationsInput | boolean
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+    modifiers?: ItemModifierUncheckedUpdateManyWithoutItemNestedInput
+    attacks?: ItemAttackUncheckedUpdateManyWithoutItemNestedInput
   }
 
   export type InventoryItemUncheckedUpdateManyWithoutInventoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -14875,8 +26053,166 @@ export namespace Prisma {
     isEquippable?: BoolFieldUpdateOperationsInput | boolean
     equipped?: BoolFieldUpdateOperationsInput | boolean
     passive?: BoolFieldUpdateOperationsInput | boolean
-    attacks?: JsonNullValueInput | InputJsonValue
-    modifiers?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type ItemModifierCreateManyItemInput = {
+    modifierId: number
+  }
+
+  export type ItemAttackCreateManyItemInput = {
+    attackId: number
+  }
+
+  export type ItemModifierUpdateWithoutItemInput = {
+    modifier?: ModifierUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type ItemModifierUncheckedUpdateWithoutItemInput = {
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemModifierUncheckedUpdateManyWithoutItemInput = {
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemAttackUpdateWithoutItemInput = {
+    attack?: AttackUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type ItemAttackUncheckedUpdateWithoutItemInput = {
+    attackId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemAttackUncheckedUpdateManyWithoutItemInput = {
+    attackId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityModifierCreateManyAbilityInput = {
+    modifierId: number
+  }
+
+  export type AbilityAttackCreateManyAbilityInput = {
+    attackId: number
+  }
+
+  export type AbilityModifierUpdateWithoutAbilityInput = {
+    modifier?: ModifierUpdateOneRequiredWithoutAbilitiesNestedInput
+  }
+
+  export type AbilityModifierUncheckedUpdateWithoutAbilityInput = {
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityModifierUncheckedUpdateManyWithoutAbilityInput = {
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityAttackUpdateWithoutAbilityInput = {
+    attack?: AttackUpdateOneRequiredWithoutAbilityNestedInput
+  }
+
+  export type AbilityAttackUncheckedUpdateWithoutAbilityInput = {
+    attackId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityAttackUncheckedUpdateManyWithoutAbilityInput = {
+    attackId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EffectModifierCreateManyEffectInput = {
+    modifierId: number
+  }
+
+  export type EffectModifierUpdateWithoutEffectInput = {
+    modifier?: ModifierUpdateOneRequiredWithoutEffectsNestedInput
+  }
+
+  export type EffectModifierUncheckedUpdateWithoutEffectInput = {
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EffectModifierUncheckedUpdateManyWithoutEffectInput = {
+    modifierId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EffectModifierCreateManyModifierInput = {
+    effectId: number
+  }
+
+  export type AbilityModifierCreateManyModifierInput = {
+    abilityId: number
+  }
+
+  export type ItemModifierCreateManyModifierInput = {
+    itemId: number
+  }
+
+  export type EffectModifierUpdateWithoutModifierInput = {
+    effect?: EffectUpdateOneRequiredWithoutModifiersNestedInput
+  }
+
+  export type EffectModifierUncheckedUpdateWithoutModifierInput = {
+    effectId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type EffectModifierUncheckedUpdateManyWithoutModifierInput = {
+    effectId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityModifierUpdateWithoutModifierInput = {
+    ability?: AbilityUpdateOneRequiredWithoutModifiersNestedInput
+  }
+
+  export type AbilityModifierUncheckedUpdateWithoutModifierInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityModifierUncheckedUpdateManyWithoutModifierInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemModifierUpdateWithoutModifierInput = {
+    item?: InventoryItemUpdateOneRequiredWithoutModifiersNestedInput
+  }
+
+  export type ItemModifierUncheckedUpdateWithoutModifierInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemModifierUncheckedUpdateManyWithoutModifierInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemAttackCreateManyAttackInput = {
+    itemId: number
+  }
+
+  export type AbilityAttackCreateManyAttackInput = {
+    abilityId: number
+  }
+
+  export type ItemAttackUpdateWithoutAttackInput = {
+    item?: InventoryItemUpdateOneRequiredWithoutAttacksNestedInput
+  }
+
+  export type ItemAttackUncheckedUpdateWithoutAttackInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ItemAttackUncheckedUpdateManyWithoutAttackInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityAttackUpdateWithoutAttackInput = {
+    ability?: AbilityUpdateOneRequiredWithoutAttacksNestedInput
+  }
+
+  export type AbilityAttackUncheckedUpdateWithoutAttackInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AbilityAttackUncheckedUpdateManyWithoutAttackInput = {
+    abilityId?: IntFieldUpdateOperationsInput | number
   }
 
 

@@ -137,6 +137,8 @@ exports.Prisma.CharacterScalarFieldEnum = {
   hpMax: 'hpMax',
   mp: 'mp',
   mpMax: 'mpMax',
+  condition: 'condition',
+  disable: 'disable',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -158,20 +160,21 @@ exports.Prisma.ExpertiseScalarFieldEnum = {
 };
 
 exports.Prisma.ExpertiseCharacterScalarFieldEnum = {
-  id: 'id',
   characterId: 'characterId',
   expertiseId: 'expertiseId',
+  value: 'value',
   trained: 'trained',
   trainBonus: 'trainBonus'
 };
 
 exports.Prisma.InventoryScalarFieldEnum = {
   characterId: 'characterId',
-  load: 'load',
+  limit: 'limit',
   tibares: 'tibares'
 };
 
 exports.Prisma.InventoryItemScalarFieldEnum = {
+  id: 'id',
   inventoryId: 'inventoryId',
   type: 'type',
   name: 'name',
@@ -180,23 +183,41 @@ exports.Prisma.InventoryItemScalarFieldEnum = {
   slot: 'slot',
   isEquippable: 'isEquippable',
   equipped: 'equipped',
-  passive: 'passive',
-  attacks: 'attacks',
-  modifiers: 'modifiers'
+  passive: 'passive'
+};
+
+exports.Prisma.ItemModifierScalarFieldEnum = {
+  itemId: 'itemId',
+  modifierId: 'modifierId'
+};
+
+exports.Prisma.ItemAttackScalarFieldEnum = {
+  itemId: 'itemId',
+  attackId: 'attackId'
 };
 
 exports.Prisma.AbilityScalarFieldEnum = {
+  id: 'id',
   characterId: 'characterId',
   type: 'type',
   name: 'name',
   description: 'description',
   passive: 'passive',
-  manaCost: 'manaCost',
-  attacks: 'attacks',
-  modifiers: 'modifiers'
+  manaCost: 'manaCost'
+};
+
+exports.Prisma.AbilityModifierScalarFieldEnum = {
+  abilityId: 'abilityId',
+  modifierId: 'modifierId'
+};
+
+exports.Prisma.AbilityAttackScalarFieldEnum = {
+  abilityId: 'abilityId',
+  attackId: 'attackId'
 };
 
 exports.Prisma.EffectScalarFieldEnum = {
+  id: 'id',
   characterId: 'characterId',
   sourceType: 'sourceType',
   sourceId: 'sourceId',
@@ -204,8 +225,27 @@ exports.Prisma.EffectScalarFieldEnum = {
   active: 'active',
   duration: 'duration',
   stacks: 'stacks',
-  modifiers: 'modifiers',
   startedAt: 'startedAt'
+};
+
+exports.Prisma.EffectModifierScalarFieldEnum = {
+  effectId: 'effectId',
+  modifierId: 'modifierId'
+};
+
+exports.Prisma.ModifierScalarFieldEnum = {
+  id: 'id',
+  target: 'target',
+  value: 'value',
+  type: 'type'
+};
+
+exports.Prisma.AttackScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  attackRoll: 'attackRoll',
+  damage: 'damage',
+  critical: 'critical'
 };
 
 exports.Prisma.SortOrder = {
@@ -241,8 +281,15 @@ exports.Prisma.ModelName = {
   ExpertiseCharacter: 'ExpertiseCharacter',
   Inventory: 'Inventory',
   InventoryItem: 'InventoryItem',
+  ItemModifier: 'ItemModifier',
+  ItemAttack: 'ItemAttack',
   Ability: 'Ability',
-  Effect: 'Effect'
+  AbilityModifier: 'AbilityModifier',
+  AbilityAttack: 'AbilityAttack',
+  Effect: 'Effect',
+  EffectModifier: 'EffectModifier',
+  Modifier: 'Modifier',
+  Attack: 'Attack'
 };
 
 /**

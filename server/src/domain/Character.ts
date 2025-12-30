@@ -29,8 +29,10 @@ export const MP = z.object({
 export type TMP = z.infer<typeof MP>;
 
 export const Expertise = z.object({
+	id: z.number(),
 	name: z.string(),
 	attribute: AttributeKeys,
+	value: z.number(),
 	trained: z.boolean(),
 	trainBonus: z.number(),
 });
@@ -84,6 +86,7 @@ export const AttackRoll = z.object({
 export type TAttackRoll = z.infer<typeof AttackRoll>;
 
 export const Attack = z.object({
+	id: z.number(),
 	category: z.enum(["melee", "distance", "magic"]),
 	attackRoll: AttackRoll,
 	damage: Damage.array(),
@@ -92,14 +95,7 @@ export const Attack = z.object({
 
 export type TAttack = z.infer<typeof Attack>;
 
-export const InventoryItemType = z.enum([
-	"weapon",
-	"armor",
-	"shield",
-	"consumable",
-	"accessory",
-	"misc",
-]);
+export const InventoryItemType = z.enum(["weapon", "armor", "shield", "consumable", "accessory", "misc"]);
 
 export type TInventoryItemType = z.infer<typeof InventoryItemType>;
 
@@ -114,6 +110,7 @@ export const ModifierTarget = z.union([
 	z.object({ kind: z.literal("defense") }),
 	z.object({ kind: z.literal("hp") }),
 	z.object({ kind: z.literal("mp") }),
+	z.object({ kind: z.literal("magicResistence") }),
 ]);
 
 export type TModifierTarget = z.infer<typeof ModifierTarget>;
@@ -135,16 +132,15 @@ export const Effect = z.object({
 
 	active: z.boolean(),
 	duration: z.union([
-		z.object({ type: "rounds", value: z.number() }),
-		z.object({ type: "scene" }),
-		z.object({ type: "permanent" }),
-		z.object({ type: "conditional", condition: z.string() }),
+		z.object({ type: z.literal("rounds"), value: z.number() }),
+		z.object({ type: z.literal("scene") }),
+		z.object({ type: z.literal("permanent") }),
+		z.object({ type: z.literal("conditional"), condition: z.string() }),
 	]),
-
 	stacks: z.number(),
 	modifiers: Modifier.array(),
 
-	startedAt: z.string(),
+	startedAt: z.date(),
 });
 
 export type TEffect = z.infer<typeof Effect>;
@@ -204,9 +200,10 @@ export const Character = z.object({
 
 	hp: HP,
 	mp: MP,
+	condition: z.enum(["alive", "uncounscious", "dead"]),
 	level: z.number(),
 	experience: z.number(),
-	size: z.string(),
+	size: z.enum(["Minúsculo", "Pequeno", "Médio", "Grande", "Enorme", "Colossal"]),
 	movement: z.number(),
 	magicResistence: z.number(), // (10 + 1/2 nível + mod. atributo-chave)
 	defense: z.number(),

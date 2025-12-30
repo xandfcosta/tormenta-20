@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext, useState } from "react";
+import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
 
 type User = {
 	role: "master" | "player";
@@ -11,9 +11,7 @@ type UserContext = {
 	logout(): void;
 };
 
-type NewType = null;
-
-const UserContext = createContext<UserContext | NewType>(null);
+const UserContext = createContext<UserContext | null>(null);
 
 type Props = {
 	children: ReactNode;
@@ -24,11 +22,18 @@ export function UserContextProvider({ children }: Props) {
 
 	function login(user: User) {
 		setUser(user);
+		localStorage.setItem("user", JSON.stringify(user));
 	}
 
 	function logout() {
 		setUser(null);
 	}
+
+	useEffect(() => {
+		const user = localStorage.getItem("user");
+
+		if (user) setUser(JSON.parse(user));
+	}, []);
 
 	return <UserContext value={{ user, login, logout }}>{children}</UserContext>;
 }

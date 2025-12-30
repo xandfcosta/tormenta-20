@@ -110,6 +110,8 @@ exports.Prisma.CharacterScalarFieldEnum = {
   hpMax: 'hpMax',
   mp: 'mp',
   mpMax: 'mpMax',
+  condition: 'condition',
+  disable: 'disable',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -131,20 +133,21 @@ exports.Prisma.ExpertiseScalarFieldEnum = {
 };
 
 exports.Prisma.ExpertiseCharacterScalarFieldEnum = {
-  id: 'id',
   characterId: 'characterId',
   expertiseId: 'expertiseId',
+  value: 'value',
   trained: 'trained',
   trainBonus: 'trainBonus'
 };
 
 exports.Prisma.InventoryScalarFieldEnum = {
   characterId: 'characterId',
-  load: 'load',
+  limit: 'limit',
   tibares: 'tibares'
 };
 
 exports.Prisma.InventoryItemScalarFieldEnum = {
+  id: 'id',
   inventoryId: 'inventoryId',
   type: 'type',
   name: 'name',
@@ -153,23 +156,41 @@ exports.Prisma.InventoryItemScalarFieldEnum = {
   slot: 'slot',
   isEquippable: 'isEquippable',
   equipped: 'equipped',
-  passive: 'passive',
-  attacks: 'attacks',
-  modifiers: 'modifiers'
+  passive: 'passive'
+};
+
+exports.Prisma.ItemModifierScalarFieldEnum = {
+  itemId: 'itemId',
+  modifierId: 'modifierId'
+};
+
+exports.Prisma.ItemAttackScalarFieldEnum = {
+  itemId: 'itemId',
+  attackId: 'attackId'
 };
 
 exports.Prisma.AbilityScalarFieldEnum = {
+  id: 'id',
   characterId: 'characterId',
   type: 'type',
   name: 'name',
   description: 'description',
   passive: 'passive',
-  manaCost: 'manaCost',
-  attacks: 'attacks',
-  modifiers: 'modifiers'
+  manaCost: 'manaCost'
+};
+
+exports.Prisma.AbilityModifierScalarFieldEnum = {
+  abilityId: 'abilityId',
+  modifierId: 'modifierId'
+};
+
+exports.Prisma.AbilityAttackScalarFieldEnum = {
+  abilityId: 'abilityId',
+  attackId: 'attackId'
 };
 
 exports.Prisma.EffectScalarFieldEnum = {
+  id: 'id',
   characterId: 'characterId',
   sourceType: 'sourceType',
   sourceId: 'sourceId',
@@ -177,8 +198,27 @@ exports.Prisma.EffectScalarFieldEnum = {
   active: 'active',
   duration: 'duration',
   stacks: 'stacks',
-  modifiers: 'modifiers',
   startedAt: 'startedAt'
+};
+
+exports.Prisma.EffectModifierScalarFieldEnum = {
+  effectId: 'effectId',
+  modifierId: 'modifierId'
+};
+
+exports.Prisma.ModifierScalarFieldEnum = {
+  id: 'id',
+  target: 'target',
+  value: 'value',
+  type: 'type'
+};
+
+exports.Prisma.AttackScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  attackRoll: 'attackRoll',
+  damage: 'damage',
+  critical: 'critical'
 };
 
 exports.Prisma.SortOrder = {
@@ -214,8 +254,15 @@ exports.Prisma.ModelName = {
   ExpertiseCharacter: 'ExpertiseCharacter',
   Inventory: 'Inventory',
   InventoryItem: 'InventoryItem',
+  ItemModifier: 'ItemModifier',
+  ItemAttack: 'ItemAttack',
   Ability: 'Ability',
-  Effect: 'Effect'
+  AbilityModifier: 'AbilityModifier',
+  AbilityAttack: 'AbilityAttack',
+  Effect: 'Effect',
+  EffectModifier: 'EffectModifier',
+  Modifier: 'Modifier',
+  Attack: 'Attack'
 };
 /**
  * Create the Client
@@ -225,10 +272,10 @@ const config = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "sqlite",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/prisma/client\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Character {\n  id Int @id @default(autoincrement())\n\n  // Identity\n  name        String\n  player      String\n  origin      String\n  races       Json\n  classes     Json\n  divinity    String?\n  description String  @default(\"\")\n  notes       String  @default(\"\")\n\n  // Progression\n  level           Int    @default(1)\n  experience      Int    @default(0)\n  size            String @default(\"Médio\")\n  movement        Int    @default(9)\n  defense         Int    @default(0)\n  magicResistence Int    @default(10)\n\n  // Core stats\n  hp          Int                  @default(0)\n  hpMax       Int                  @default(0)\n  mp          Int                  @default(0)\n  mpMax       Int                  @default(0)\n  attributes  Attributes?\n  expertisies ExpertiseCharacter[]\n\n  // Relations\n  inventory Inventory?\n  abilities Ability[]\n  effects   Effect[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Attributes {\n  characterId Int @id\n\n  strength     Int\n  dexterity    Int\n  constitution Int\n  intelligence Int\n  wisdom       Int\n  charisma     Int\n\n  character Character @relation(fields: [characterId], references: [id])\n}\n\nmodel Expertise {\n  id        Int    @id @default(autoincrement())\n  name      String\n  attribute String\n\n  characterLink ExpertiseCharacter[]\n}\n\nmodel ExpertiseCharacter {\n  id          Int @id @default(autoincrement())\n  characterId Int\n  expertiseId Int\n\n  trained    Boolean @default(false)\n  trainBonus Int     @default(0)\n\n  character Character @relation(fields: [characterId], references: [id])\n  expertise Expertise @relation(fields: [expertiseId], references: [id])\n}\n\nmodel Inventory {\n  characterId Int @id\n\n  load    Json\n  tibares Int\n\n  items InventoryItem[]\n\n  character Character @relation(fields: [characterId], references: [id])\n}\n\nmodel InventoryItem {\n  inventoryId Int @id\n\n  type        String\n  name        String\n  description String\n\n  quantity Int\n  slot     Int\n\n  isEquippable Boolean\n  equipped     Boolean\n  passive      Boolean\n\n  attacks   Json\n  modifiers Json\n\n  inventory Inventory @relation(fields: [inventoryId], references: [characterId])\n}\n\nmodel Ability {\n  characterId Int @id\n\n  type        String\n  name        String\n  description String\n\n  passive  Boolean\n  manaCost Int\n\n  attacks   Json\n  modifiers Json\n\n  character Character @relation(fields: [characterId], references: [id])\n}\n\nmodel Effect {\n  characterId Int @id\n\n  sourceType String\n  sourceId   Int?\n  sourceName String\n\n  active   Boolean\n  duration Json\n  stacks   Int\n\n  modifiers Json\n\n  startedAt DateTime\n\n  character Character @relation(fields: [characterId], references: [id])\n}\n"
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"client\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Character {\n  id Int @id @default(autoincrement())\n\n  // Identity\n  name        String\n  player      String\n  origin      String\n  races       Json\n  classes     Json\n  divinity    String?\n  description String  @default(\"\")\n  notes       String  @default(\"\")\n\n  // Progression\n  level           Int    @default(1)\n  experience      Int    @default(0)\n  size            String @default(\"Médio\")\n  movement        Int    @default(9)\n  defense         Int    @default(0)\n  magicResistence Int    @default(10)\n\n  // Core stats\n  hp          Int                  @default(0)\n  hpMax       Int                  @default(0)\n  mp          Int                  @default(0)\n  mpMax       Int                  @default(0)\n  condition   String               @default(\"alive\")\n  attributes  Attributes?\n  expertisies ExpertiseCharacter[]\n\n  // Relations\n  inventory Inventory?\n  abilities Ability[]\n  effects   Effect[]\n\n  disable   Boolean  @default(false)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Attributes {\n  characterId Int @id\n\n  strength     Int @default(0)\n  dexterity    Int @default(0)\n  constitution Int @default(0)\n  intelligence Int @default(0)\n  wisdom       Int @default(0)\n  charisma     Int @default(0)\n\n  character Character @relation(fields: [characterId], references: [id])\n}\n\nmodel Expertise {\n  id        Int    @id @default(autoincrement())\n  name      String\n  attribute String\n\n  characterLink ExpertiseCharacter[]\n}\n\nmodel ExpertiseCharacter {\n  characterId Int\n  expertiseId Int\n\n  value      Int     @default(0)\n  trained    Boolean @default(false)\n  trainBonus Int     @default(0)\n\n  character Character @relation(fields: [characterId], references: [id])\n  expertise Expertise @relation(fields: [expertiseId], references: [id])\n\n  @@id([characterId, expertiseId])\n}\n\nmodel Inventory {\n  characterId Int @id\n\n  limit   Int @default(0)\n  tibares Int @default(0)\n\n  items InventoryItem[]\n\n  character Character @relation(fields: [characterId], references: [id])\n}\n\nmodel InventoryItem {\n  id          Int @id @default(autoincrement())\n  inventoryId Int\n\n  type        String\n  name        String\n  description String\n\n  quantity Int\n  slot     Int\n\n  isEquippable Boolean\n  equipped     Boolean\n  passive      Boolean\n\n  modifiers ItemModifier[]\n  attacks   ItemAttack[]\n  inventory Inventory      @relation(fields: [inventoryId], references: [characterId])\n}\n\nmodel ItemModifier {\n  itemId     Int\n  modifierId Int\n\n  item     InventoryItem @relation(fields: [itemId], references: [id])\n  modifier Modifier      @relation(fields: [modifierId], references: [id])\n\n  @@id([itemId, modifierId])\n}\n\nmodel ItemAttack {\n  itemId   Int\n  attackId Int\n\n  item   InventoryItem @relation(fields: [itemId], references: [id])\n  attack Attack        @relation(fields: [attackId], references: [id])\n\n  @@id([itemId, attackId])\n}\n\nmodel Ability {\n  id          Int @id @default(autoincrement())\n  characterId Int\n\n  type        String\n  name        String\n  description String\n\n  passive  Boolean\n  manaCost Int\n\n  character Character         @relation(fields: [characterId], references: [id])\n  modifiers AbilityModifier[]\n  attacks   AbilityAttack[]\n}\n\nmodel AbilityModifier {\n  abilityId  Int\n  modifierId Int\n\n  ability  Ability  @relation(fields: [abilityId], references: [id])\n  modifier Modifier @relation(fields: [modifierId], references: [id])\n\n  @@id([abilityId, modifierId])\n}\n\nmodel AbilityAttack {\n  abilityId Int\n  attackId  Int\n\n  ability Ability @relation(fields: [abilityId], references: [id])\n  attack  Attack  @relation(fields: [attackId], references: [id])\n\n  @@id([abilityId, attackId])\n}\n\nmodel Effect {\n  id          Int @id @default(autoincrement())\n  characterId Int\n\n  sourceType String\n  sourceId   Int?\n  sourceName String\n\n  active   Boolean\n  duration Json\n  stacks   Int\n\n  startedAt DateTime\n\n  character Character        @relation(fields: [characterId], references: [id])\n  modifiers EffectModifier[]\n}\n\nmodel EffectModifier {\n  effectId   Int\n  modifierId Int\n\n  effect   Effect   @relation(fields: [effectId], references: [id])\n  modifier Modifier @relation(fields: [modifierId], references: [id])\n\n  @@id([effectId, modifierId])\n}\n\nmodel Modifier {\n  id Int @id @default(autoincrement())\n\n  target Json\n  value  Int\n  type   String\n\n  effects   EffectModifier[]\n  abilities AbilityModifier[]\n  items     ItemModifier[]\n}\n\nmodel Attack {\n  id Int @id @default(autoincrement())\n\n  category   String\n  attackRoll Json\n  damage     Json\n  critical   Json\n\n  items   ItemAttack[]\n  ability AbilityAttack[]\n}\n"
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Character\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"player\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"origin\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"races\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"classes\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"divinity\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"notes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"level\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"experience\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"size\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"movement\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"defense\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"magicResistence\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"hp\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"hpMax\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"mp\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"mpMax\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"attributes\",\"kind\":\"object\",\"type\":\"Attributes\",\"relationName\":\"AttributesToCharacter\"},{\"name\":\"expertisies\",\"kind\":\"object\",\"type\":\"ExpertiseCharacter\",\"relationName\":\"CharacterToExpertiseCharacter\"},{\"name\":\"inventory\",\"kind\":\"object\",\"type\":\"Inventory\",\"relationName\":\"CharacterToInventory\"},{\"name\":\"abilities\",\"kind\":\"object\",\"type\":\"Ability\",\"relationName\":\"AbilityToCharacter\"},{\"name\":\"effects\",\"kind\":\"object\",\"type\":\"Effect\",\"relationName\":\"CharacterToEffect\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Attributes\":{\"fields\":[{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"strength\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dexterity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"constitution\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"intelligence\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"wisdom\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"charisma\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"AttributesToCharacter\"}],\"dbName\":null},\"Expertise\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"attribute\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"characterLink\",\"kind\":\"object\",\"type\":\"ExpertiseCharacter\",\"relationName\":\"ExpertiseToExpertiseCharacter\"}],\"dbName\":null},\"ExpertiseCharacter\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"expertiseId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"trained\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"trainBonus\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"CharacterToExpertiseCharacter\"},{\"name\":\"expertise\",\"kind\":\"object\",\"type\":\"Expertise\",\"relationName\":\"ExpertiseToExpertiseCharacter\"}],\"dbName\":null},\"Inventory\":{\"fields\":[{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"load\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"tibares\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"InventoryItem\",\"relationName\":\"InventoryToInventoryItem\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"CharacterToInventory\"}],\"dbName\":null},\"InventoryItem\":{\"fields\":[{\"name\":\"inventoryId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"quantity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"slot\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"isEquippable\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"equipped\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"passive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"attacks\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"modifiers\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"inventory\",\"kind\":\"object\",\"type\":\"Inventory\",\"relationName\":\"InventoryToInventoryItem\"}],\"dbName\":null},\"Ability\":{\"fields\":[{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"passive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"manaCost\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"attacks\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"modifiers\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"AbilityToCharacter\"}],\"dbName\":null},\"Effect\":{\"fields\":[{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"sourceType\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sourceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"sourceName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"active\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"duration\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"stacks\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"modifiers\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"startedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"CharacterToEffect\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Character\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"player\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"origin\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"races\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"classes\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"divinity\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"notes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"level\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"experience\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"size\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"movement\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"defense\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"magicResistence\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"hp\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"hpMax\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"mp\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"mpMax\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"condition\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"attributes\",\"kind\":\"object\",\"type\":\"Attributes\",\"relationName\":\"AttributesToCharacter\"},{\"name\":\"expertisies\",\"kind\":\"object\",\"type\":\"ExpertiseCharacter\",\"relationName\":\"CharacterToExpertiseCharacter\"},{\"name\":\"inventory\",\"kind\":\"object\",\"type\":\"Inventory\",\"relationName\":\"CharacterToInventory\"},{\"name\":\"abilities\",\"kind\":\"object\",\"type\":\"Ability\",\"relationName\":\"AbilityToCharacter\"},{\"name\":\"effects\",\"kind\":\"object\",\"type\":\"Effect\",\"relationName\":\"CharacterToEffect\"},{\"name\":\"disable\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Attributes\":{\"fields\":[{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"strength\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dexterity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"constitution\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"intelligence\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"wisdom\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"charisma\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"AttributesToCharacter\"}],\"dbName\":null},\"Expertise\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"attribute\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"characterLink\",\"kind\":\"object\",\"type\":\"ExpertiseCharacter\",\"relationName\":\"ExpertiseToExpertiseCharacter\"}],\"dbName\":null},\"ExpertiseCharacter\":{\"fields\":[{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"expertiseId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"value\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"trained\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"trainBonus\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"CharacterToExpertiseCharacter\"},{\"name\":\"expertise\",\"kind\":\"object\",\"type\":\"Expertise\",\"relationName\":\"ExpertiseToExpertiseCharacter\"}],\"dbName\":null},\"Inventory\":{\"fields\":[{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"limit\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"tibares\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"InventoryItem\",\"relationName\":\"InventoryToInventoryItem\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"CharacterToInventory\"}],\"dbName\":null},\"InventoryItem\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"inventoryId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"quantity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"slot\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"isEquippable\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"equipped\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"passive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"modifiers\",\"kind\":\"object\",\"type\":\"ItemModifier\",\"relationName\":\"InventoryItemToItemModifier\"},{\"name\":\"attacks\",\"kind\":\"object\",\"type\":\"ItemAttack\",\"relationName\":\"InventoryItemToItemAttack\"},{\"name\":\"inventory\",\"kind\":\"object\",\"type\":\"Inventory\",\"relationName\":\"InventoryToInventoryItem\"}],\"dbName\":null},\"ItemModifier\":{\"fields\":[{\"name\":\"itemId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"modifierId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"item\",\"kind\":\"object\",\"type\":\"InventoryItem\",\"relationName\":\"InventoryItemToItemModifier\"},{\"name\":\"modifier\",\"kind\":\"object\",\"type\":\"Modifier\",\"relationName\":\"ItemModifierToModifier\"}],\"dbName\":null},\"ItemAttack\":{\"fields\":[{\"name\":\"itemId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"attackId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"item\",\"kind\":\"object\",\"type\":\"InventoryItem\",\"relationName\":\"InventoryItemToItemAttack\"},{\"name\":\"attack\",\"kind\":\"object\",\"type\":\"Attack\",\"relationName\":\"AttackToItemAttack\"}],\"dbName\":null},\"Ability\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"passive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"manaCost\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"AbilityToCharacter\"},{\"name\":\"modifiers\",\"kind\":\"object\",\"type\":\"AbilityModifier\",\"relationName\":\"AbilityToAbilityModifier\"},{\"name\":\"attacks\",\"kind\":\"object\",\"type\":\"AbilityAttack\",\"relationName\":\"AbilityToAbilityAttack\"}],\"dbName\":null},\"AbilityModifier\":{\"fields\":[{\"name\":\"abilityId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"modifierId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ability\",\"kind\":\"object\",\"type\":\"Ability\",\"relationName\":\"AbilityToAbilityModifier\"},{\"name\":\"modifier\",\"kind\":\"object\",\"type\":\"Modifier\",\"relationName\":\"AbilityModifierToModifier\"}],\"dbName\":null},\"AbilityAttack\":{\"fields\":[{\"name\":\"abilityId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"attackId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ability\",\"kind\":\"object\",\"type\":\"Ability\",\"relationName\":\"AbilityToAbilityAttack\"},{\"name\":\"attack\",\"kind\":\"object\",\"type\":\"Attack\",\"relationName\":\"AbilityAttackToAttack\"}],\"dbName\":null},\"Effect\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"characterId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"sourceType\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sourceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"sourceName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"active\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"duration\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"stacks\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"startedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"character\",\"kind\":\"object\",\"type\":\"Character\",\"relationName\":\"CharacterToEffect\"},{\"name\":\"modifiers\",\"kind\":\"object\",\"type\":\"EffectModifier\",\"relationName\":\"EffectToEffectModifier\"}],\"dbName\":null},\"EffectModifier\":{\"fields\":[{\"name\":\"effectId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"modifierId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"effect\",\"kind\":\"object\",\"type\":\"Effect\",\"relationName\":\"EffectToEffectModifier\"},{\"name\":\"modifier\",\"kind\":\"object\",\"type\":\"Modifier\",\"relationName\":\"EffectModifierToModifier\"}],\"dbName\":null},\"Modifier\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"target\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"value\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"effects\",\"kind\":\"object\",\"type\":\"EffectModifier\",\"relationName\":\"EffectModifierToModifier\"},{\"name\":\"abilities\",\"kind\":\"object\",\"type\":\"AbilityModifier\",\"relationName\":\"AbilityModifierToModifier\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"ItemModifier\",\"relationName\":\"ItemModifierToModifier\"}],\"dbName\":null},\"Attack\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"attackRoll\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"damage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"critical\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"items\",\"kind\":\"object\",\"type\":\"ItemAttack\",\"relationName\":\"AttackToItemAttack\"},{\"name\":\"ability\",\"kind\":\"object\",\"type\":\"AbilityAttack\",\"relationName\":\"AbilityAttackToAttack\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.compilerWasm = {
       getRuntime: async () => require('./query_compiler_bg.js'),
